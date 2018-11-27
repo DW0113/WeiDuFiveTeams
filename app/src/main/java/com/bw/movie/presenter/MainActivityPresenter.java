@@ -18,6 +18,6 @@ public class MainActivityPresenter  extends AppDelegate{
 
     @Override
     public void initData() {
-           //秦永聪
+
     }
 }
