@@ -1,4 +1,4 @@
-package com.bw.movie.mvp.presenter;
+package com.bw.movie.mvp.basepresenter;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,35 +7,31 @@ import android.support.v7.app.AppCompatActivity;
 import com.bw.movie.mvp.view.AppDelegate;
 
 
-/*
- *作者：刘进
- *日期：2018/10/30
- **/
+/**
+ * 作者：刘进
+ * 日期：2018/10/30
+ */
 public abstract class BaseActivityPresenter<T extends AppDelegate> extends AppCompatActivity {
-    public   T delegate;
+    protected T presenter;
 
     public abstract Class<T> getClassDelegate();
-    public BaseActivityPresenter(){
+
+    public BaseActivityPresenter() {
         try {
-            delegate = getClassDelegate().newInstance();
+            presenter = getClassDelegate().newInstance();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
         }
     }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        delegate.create(getLayoutInflater(),null,savedInstanceState);
-        setContentView(delegate.rootView());
-        delegate.getContext(this);
-        delegate.initData();
-        //设置沉浸式
-//        UltimateBar.newImmersionBuilder()
-//                .applyNav(false)         // 是否应用到导航栏
-//                .build(this)
-//                .apply();
+        presenter.create(getLayoutInflater(), null, savedInstanceState);
+        setContentView(presenter.rootView());
+        presenter.getContext(this);
+        presenter.initData();
     }
 }

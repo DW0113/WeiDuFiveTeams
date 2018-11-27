@@ -1,11 +1,9 @@
-package com.bw.movie.mvp.presenter;
+package com.bw.movie.mvp.basepresenter;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +11,18 @@ import android.view.ViewGroup;
 import com.bw.movie.mvp.view.AppDelegate;
 
 
-/*
+/**
  *作者：刘进
  *日期：2018/10/30
- **/
+ */
 public abstract class BaseFragmentPresenter<T extends AppDelegate> extends Fragment {
-    public   T delegate;
+    protected T presenter;
 
     public abstract Class<T> getClassDelegate();
-    public BaseFragmentPresenter(){
+
+    public BaseFragmentPresenter() {
         try {
-            delegate = getClassDelegate().newInstance();
+            presenter = getClassDelegate().newInstance();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -36,22 +35,16 @@ public abstract class BaseFragmentPresenter<T extends AppDelegate> extends Fragm
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        delegate.create(inflater,container,savedInstanceState);
-        return delegate.rootView();
+        presenter.create(inflater, container, savedInstanceState);
+        return presenter.rootView();
     }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        delegate.getContext(getActivity());
-//        delegate.initData();
-//    }
 
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        delegate.getContext(getActivity());
-        delegate.initData();
+        presenter.getContext(getActivity());
+        presenter.initData();
     }
 }
