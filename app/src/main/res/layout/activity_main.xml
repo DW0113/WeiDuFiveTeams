@@ -13,26 +13,33 @@
         android:layout_weight="1"
         />
     <LinearLayout
+        android:layout_marginBottom="@dimen/dimens_fragment_bottom_12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimens_fragment_bottom_80dp"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/im_move_fragment"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/ic_launcher_background" />
         <ImageView
+            android:layout_weight="1"
             android:id="@+id/im_cinema_fragment"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="40dp"
+
+           android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher_background"/>
         <ImageView
+            android:layout_weight="1"
             android:id="@+id/im_my_fragment"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimens_fragment_bottom_12dp"
             android:src="@drawable/ic_launcher_background"/>
     </LinearLayout>
 </LinearLayout>
