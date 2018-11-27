@@ -3,6 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="color_start_333333">#333333</color>
-    <color name="color_start_d8d8d8">#d8d8d8</color>
+    <!--启动页-->
+    <color name="color_start_ffffff">#ffffff</color>
+    <!--引导页-->
+    <color name="color_welcome_333333">#333333</color>
+    <color name="color_welcome_d8d8d8">#d8d8d8</color>
+    <color name="color_welcome_8e387c">#8e387c</color>
+    <color name="color_welcome_ffffff">#ffffff</color>
 </resources>

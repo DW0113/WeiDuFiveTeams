@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/vp_welcome_viewpager"
+        android:orientation="horizontal"
+        android:id="@+id/ll_welcome_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_welcome_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_welcome_537dp"/>
+    <Button
+        android:textColor="@color/color_welcome_ffffff"
+        android:layout_marginBottom="@dimen/dimens_welcome_60dp"
+        android:visibility="gone"
+        android:background="@drawable/shape_welcome_button_jump"
+        android:id="@+id/bt_welcome_jump"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="立即观影"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

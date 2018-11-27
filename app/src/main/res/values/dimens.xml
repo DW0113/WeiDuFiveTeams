@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="dimens_start_205dp"></dimen>
-    <dimen name="dimens_start_150dp"></dimen>
-    <dimen name="dimens_start_60dp"></dimen>
-    <dimen name="dimens_start_20dp"></dimen>
-    <dimen name="dimens_start_74dp"></dimen>
-    <dimen name="dimens_start_12dp"></dimen>
-    <dimen name="dimens_start_10dp"></dimen>
-    <dimen name="dimens_start_141dp"></dimen>
+    <!--启动页-->
+    <dimen name="dimens_start_24dp">24dp</dimen>
+    <dimen name="dimens_start_98dp">98dp</dimen>
+    <dimen name="dimens_start_20sp">20sp</dimen>
+    <dimen name="dimens_start_14sp">14sp</dimen>
+    <!--引导页-->
+    <dimen name="dimens_welcome_205dp">205dp</dimen>
+    <dimen name="dimens_welcome_150dp">150dp</dimen>
+    <dimen name="dimens_welcome_60dp">60dp</dimen>
+    <dimen name="dimens_welcome_20dp">20dp</dimen>
+    <dimen name="dimens_welcome_12dp">12dp</dimen>
+    <dimen name="dimens_welcome_10dp">10dp</dimen>
+    <dimen name="dimens_welcome_141dp">141dp</dimen>
+    <dimen name="dimens_welcome_537dp">537dp</dimen>
+    <dimen name="dimens_welcome_1dp">1dp</dimen>
+    <dimen name="dimens_welcome_5dp">5dp</dimen>
 </resources>
