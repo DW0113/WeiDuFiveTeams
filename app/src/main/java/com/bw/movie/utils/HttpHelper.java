@@ -10,11 +10,10 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
-
-/*
- *作者：刘进
+/**
+ 作者：刘进
  *日期：2018/11/27
- **/
+ * */
 public class HttpHelper {
     private final int SUCCESS=1;//成功
     private final int ERROR=0;//失败
