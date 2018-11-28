@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/color_fragment_movie_80333333"></solid>
+    <solid android:color="@color/color_fragment_movie_60333333"></solid>
     <corners
         android:bottomLeftRadius="@dimen/dimens_fragmen_movie_8dp"
         android:bottomRightRadius="@dimen/dimens_fragmen_movie_8dp"
