@@ -32,11 +32,11 @@
              android:layout_centerHorizontal="true"
              android:text="未登录"/>
     </RelativeLayout>
-   <RelativeLayout
-
+   <LinearLayout
+       android:layout_weight="1"
        android:layout_width="match_parent"
        android:layout_marginLeft="@dimen/dimens_fragment_my_24dp"
-       android:layout_height="@dimen/dimens_fragment_my_86dp"
+       android:layout_height="wrap_content"
        android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
        android:layout_marginRight="@dimen/dimens_fragment_my_24dp"
        android:background="@drawable/shap_my_border">
@@ -47,27 +47,29 @@
            android:gravity="center_vertical"
            android:layout_height="match_parent">
            <ImageView
-               android:layout_width="@dimen/dimens_fragment_my_24dp"
-               android:layout_height="@dimen/dimens_fragment_my_24dp"
+               android:layout_width="@dimen/dimens_fragment_my_40dp"
+               android:layout_height="@dimen/dimens_fragment_my_40dp"
                android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
                android:layout_centerVertical="true"
                android:id="@+id/iv_fragment_my_message"
-               android:src="@drawable/fragment_my_love"
+               android:src="@drawable/fragment_my_mymessage"
                />
            <TextView
-
+               android:textColor="@color/color_fragment_my_666666"
                android:layout_below="@+id/tv_fragment_my_message"
-               android:text="我的关注"
+               android:text="我的信息"
                android:layout_centerVertical="true"
                android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content" />
        </LinearLayout>
-   </RelativeLayout>
-    <RelativeLayout
+   </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_marginLeft="@dimen/dimens_fragment_my_24dp"
-        android:layout_height="@dimen/dimens_fragment_my_86dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
         android:layout_marginRight="@dimen/dimens_fragment_my_24dp"
         android:background="@drawable/shap_my_border">
@@ -79,15 +81,16 @@
            android:gravity="center_vertical"
            android:layout_height="match_parent">
            <ImageView
-               android:layout_width="@dimen/dimens_fragment_my_24dp"
-               android:layout_height="@dimen/dimens_fragment_my_24dp"
+               android:layout_width="@dimen/dimens_fragment_my_40dp"
+               android:layout_height="@dimen/dimens_fragment_my_40dp"
                android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
                android:layout_centerVertical="true"
                android:id="@+id/iv_fragment_my_love"
                android:src="@drawable/fragment_my_love"
                />
            <TextView
-
+               android:textColor="@color/color_fragment_my_666666"
+               android:textSize="@dimen/dimens_fragment_my_14sp"
                android:layout_below="@+id/tv_fragment_my_love"
                android:text="我的关注"
                android:layout_centerVertical="true"
@@ -96,21 +99,23 @@
                android:layout_height="wrap_content" />
        </LinearLayout>
         <LinearLayout
-            android:layout_marginLeft="@dimen/dimens_fragment_my_160dp"
+            android:layout_marginLeft="@dimen/dimens_fragment_my_54dp"
 
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="@dimen/dimens_fragment_my_24dp"
-                android:layout_height="@dimen/dimens_fragment_my_24dp"
+                android:layout_width="@dimen/dimens_fragment_my_40dp"
+                android:layout_height="@dimen/dimens_fragment_my_40dp"
               android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/iv_fragment_my_record"
                 android:src="@drawable/fragment_my_record"
                 />
             <TextView
+                android:textColor="@color/color_fragment_my_666666"
+                android:textSize="@dimen/dimens_fragment_my_14sp"
                android:id="@+id/tv_fragment_my_record"
                 android:text="购票记录"
                 android:layout_centerVertical="true"
@@ -118,11 +123,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_marginLeft="@dimen/dimens_fragment_my_24dp"
-        android:layout_height="@dimen/dimens_fragment_my_86dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginRight="24dp"
         android:background="@drawable/shap_my_border">
@@ -134,15 +141,16 @@
             android:gravity="center_vertical"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="@dimen/dimens_fragment_my_24dp"
-                android:layout_height="@dimen/dimens_fragment_my_24dp"
+                android:layout_width="@dimen/dimens_fragment_my_40dp"
+                android:layout_height="@dimen/dimens_fragment_my_40dp"
                 android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
                 android:layout_centerVertical="true"
                android:id="@+id/im_fragment_my_feedback"
                 android:src="@drawable/fragment_my_feedback"
                 />
             <TextView
-
+                android:textColor="@color/color_fragment_my_666666"
+                android:textSize="@dimen/dimens_fragment_my_14sp"
                 android:layout_below="@+id/iv_fragment_my_love"
                 android:text="意见反馈"
                 android:layout_centerVertical="true"
@@ -151,22 +159,23 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
-            android:layout_marginLeft="@dimen/dimens_fragment_my_160dp"
+            android:layout_marginLeft="@dimen/dimens_fragment_my_54dp"
 
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="@dimen/dimens_fragment_my_24dp"
-                android:layout_height="@dimen/dimens_fragment_my_24dp"
+                android:layout_width="@dimen/dimens_fragment_my_40dp"
+                android:layout_height="@dimen/dimens_fragment_my_40dp"
                 android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/iv_fragment_my_version"
                 android:src="@drawable/fragment_my_version"
                 />
             <TextView
-
+                android:textColor="@color/color_fragment_my_666666"
+                android:textSize="@dimen/dimens_fragment_my_14sp"
                 android:layout_below="@+id/iv_fragment_my_love"
                 android:text="最新版本"
                 android:layout_centerVertical="true"
@@ -174,12 +183,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
     <TextView
+        android:textColor="@color/color_fragment_my_666666"
+        android:textSize="@dimen/dimens_fragment_my_14sp"
          android:gravity="center_horizontal"
-         android:layout_marginTop="@dimen/dimens_fragment_my_20dp"
+
+         android:layout_marginTop="@dimen/dimens_fragment_my_24dp"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"
+         android:layout_height="@dimen/dimens_fragment_my_30dp"
          android:text="八维移动通信学院毕业作品"
         />
 </LinearLayout>
