@@ -57,6 +57,7 @@
     <dimen name="dimens_fragmen_movie_50dp">50dp</dimen>
     <dimen name="dimens_fragmen_movie_85dp">85dp</dimen>
     <dimen name="dimens_fragmen_movie_126dp">126dp</dimen>
+    <dimen name="dimens_fragmen_movie_158dp">158dp</dimen>
     <dimen name="dimens_fragmen_movie_164dp">164dp</dimen>
     <dimen name="dimens_fragmen_movie_186dp">186dp</dimen>
     <dimen name="dimens_fragmen_movie_200dp">200dp</dimen>
