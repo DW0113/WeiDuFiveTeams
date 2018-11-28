@@ -24,6 +24,9 @@
     <dimen name="dimens_fragment_my_220dp">220dp</dimen>
     <dimen name="dimens_fragment_my_24dp">24dp</dimen>
     <dimen name="dimens_fragment_my_12dp">8dp</dimen>
+    <dimen name="dimens_fragment_my_6dp">6dp</dimen>
+    <dimen name="dimens_fragment_my_16dp">16dp</dimen>
+    <dimen name="dimens_fragment_my_1dp">1dp</dimen>
     <dimen name="dimens_fragment_my_160dp">160dp</dimen>
     <dimen name="dimens_fragment_my_80dp">80dp</dimen>
     <dimen name="dimens_fragment_my_86dp">86dp</dimen>
@@ -37,5 +40,6 @@
     <dimen name="dimens_fragment_my_20sp">20sp</dimen>
     <dimen name="dimens_fragment_my_10dp">10dp</dimen>
     <dimen name="dimens_fragment_my_2dp">2dp</dimen>
+    <dimen name="dimens_fragment_my_0dp">0dp</dimen>
     <dimen name="dimens_fragment_my_200dp">200dp</dimen>
 </resources>
