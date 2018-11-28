@@ -45,8 +45,8 @@ public class MainActivityPresenter  extends AppDelegate implements View.OnClickL
         im_cinema_fragment = (ImageView) get(R.id.im_cinema_fragment);
         im_my_fragment = (ImageView) get(R.id.im_my_fragment);
         //把fragment放到集合里面
-        fragmentlist.add(new CinemaFragment());
         fragmentlist.add(new MovieFragment());
+        fragmentlist.add(new CinemaFragment());
         fragmentlist.add(new MyFragment());
         //适配器
         MyAdpater myAdpater = new MyAdpater(((MainActivity)context).getSupportFragmentManager());

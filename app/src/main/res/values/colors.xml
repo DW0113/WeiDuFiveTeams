@@ -10,7 +10,9 @@
     <color name="color_welcome_d8d8d8">#d8d8d8</color>
     <color name="color_welcome_8e387c">#8e387c</color>
     <color name="color_welcome_ffffff">#ffffff</color>
+    <!--我的页面-->
     <color name="color_fragment_my_666666">#666666</color>
     <color name="color_fragment_my_CCCCCC">#CCCCCC</color>
+    <color name="color_fragment_my_FFFFFF">#ffffff</color>
 
 </resources>
