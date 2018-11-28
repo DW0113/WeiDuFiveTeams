@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <EditText
-        android:background="@drawable/idea_my_tv"
+        android:background="@drawable/idea_my_edtxt"
         android:id="@+id/ed_activity_idea_edtxt"
         android:layout_margin="@dimen/dimens_fragment_my_10dp"
         android:hint="写下您对产品的感受吧!工作人员将会在第一时间评估处理。"
@@ -30,7 +30,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/ed_activity_idea_edtxt"
         android:text="提交"
-        android:background="@drawable/idea_my_edtxt"
+        android:background="@drawable/idea_my_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>

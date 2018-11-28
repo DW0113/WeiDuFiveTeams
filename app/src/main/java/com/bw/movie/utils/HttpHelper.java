@@ -3,6 +3,7 @@ package com.bw.movie.utils;
 import android.os.Handler;
 import android.os.Message;
 
+
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -10,6 +11,8 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+
+
 /**
  作者：刘进
  *日期：2018/11/27
@@ -79,7 +82,7 @@ public class HttpHelper {
         void error(String error);
     }
 
-    public void post(String url,RequestBody body){
+    public void post(String url, RequestBody body){
         OkHttpClient client = new OkHttpClient();
         Request request=new Request.Builder()
                 .url(url)
