@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_movie_item_hotmovie"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_fragmen_movie_203dp"
+        android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp">
+
+        <TextView
+            android:id="@+id/tv_movie_item_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="热门电影"
+            android:textSize="@dimen/dimens_fragmen_movie_16sp" />
+
+        <ImageView
+            android:id="@+id/iv_movie_item_type_bottom"
+            android:layout_width="@dimen/dimens_fragmen_movie_30dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_3dp"
+            android:layout_below="@+id/tv_movie_item_type"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_4dp"
+            android:background="@drawable/shape_movie_hotmovie_bottom" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_movie_item_movietype"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/iv_movie_item_type_bottom"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_20dp" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -15,5 +15,13 @@
     <color name="color_fragment_my_CCCCCC">#CCCCCC</color>
     <color name="color_fragment_my_FFFFFF">#ffffff</color>
     <color name="color_fragment_my_C0C0C0">#C0C0C0</color>
-    <color name="color_fragment_my_B71451">#B71451</color>
+    color_fragment_my_C0C0C0
+    <!--影片页面-->
+    <color name="color_fragment_movie_FFFFFF">#ffffff</color>
+    <color name="color_fragment_movie_80333333">#80333333</color>
+    <color name="color_fragment_movie_440a33">#440a33</color>
+    <color name="color_fragment_movie_e8175e">#e8175e</color>
+    <color name="color_fragment_movie_fad961">#fad961</color>
+    <color name="color_fragment_movie_f66b1c">#f66b1c</color>
+
 </resources>
