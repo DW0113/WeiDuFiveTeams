@@ -11,7 +11,7 @@ import java.util.Calendar;
 /**
  * 作者：马利亚
  * 日期：2018/11/28
- * 内容：
+ * 内容：系统通知
  */
 public class MessageActivityPresenter extends AppDelegate{
     private Context context;
