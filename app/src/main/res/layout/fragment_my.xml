@@ -1,9 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_height="match_parent">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="我的页面"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/my_background"
+        android:layout_height="@dimen/dimens_fragment_my_220dp">
+        <ImageView
+            android:layout_marginTop="@dimen/dimens_fragment_my_30dp"
+            android:layout_marginLeft="@dimen/dimens_fragment_my_24dp"
+            android:src="@drawable/fragment_my_message"
+            android:layout_width="@dimen/dimens_fragment_my_24dp"
+            android:layout_height="@dimen/dimens_fragment_my_24dp"
+            />
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:src="@drawable/fragment_my_head_portrait"
+            android:layout_centerHorizontal="true"
+            android:layout_width="@dimen/dimens_fragment_my_72dp"
+            android:id="@+id/riv_fragment_my_head_portrait"
+            android:layout_height="@dimen/dimens_fragment_my_72dp"
+            app:riv_oval="true"
+            android:layout_marginTop="@dimen/dimens_fragment_my_70dp" />
+         <TextView
+             android:textColor="#ffffff"
+             android:layout_below="@+id/riv_fragment_my_head_portrait"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+             android:layout_centerHorizontal="true"
+             android:text="未登录"/>
+    </RelativeLayout>
+   <RelativeLayout
+
+       android:layout_width="match_parent"
+       android:layout_marginLeft="@dimen/dimens_fragment_my_24dp"
+       android:layout_height="@dimen/dimens_fragment_my_86dp"
+       android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+       android:layout_marginRight="@dimen/dimens_fragment_my_24dp"
+       android:background="@drawable/shap_my_border">
+       <LinearLayout
+           android:layout_marginLeft="@dimen/dimens_fragment_my_30dp"
+           android:layout_width="@dimen/dimens_fragment_my_80dp"
+           android:orientation="vertical"
+           android:gravity="center_vertical"
+           android:layout_height="match_parent">
+           <ImageView
+               android:layout_width="@dimen/dimens_fragment_my_24dp"
+               android:layout_height="@dimen/dimens_fragment_my_24dp"
+               android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
+               android:layout_centerVertical="true"
+               android:id="@+id/iv_fragment_my_message"
+               android:src="@drawable/fragment_my_love"
+               />
+           <TextView
+
+               android:layout_below="@+id/tv_fragment_my_message"
+               android:text="我的关注"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+   </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/dimens_fragment_my_24dp"
+        android:layout_height="@dimen/dimens_fragment_my_86dp"
+        android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+        android:layout_marginRight="@dimen/dimens_fragment_my_24dp"
+        android:background="@drawable/shap_my_border">
+       <LinearLayout
+           android:layout_marginLeft="@dimen/dimens_fragment_my_30dp"
+           android:id="@+id/ll_fragment_my_love"
+           android:layout_width="@dimen/dimens_fragment_my_80dp"
+           android:orientation="vertical"
+           android:gravity="center_vertical"
+           android:layout_height="match_parent">
+           <ImageView
+               android:layout_width="@dimen/dimens_fragment_my_24dp"
+               android:layout_height="@dimen/dimens_fragment_my_24dp"
+               android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
+               android:layout_centerVertical="true"
+               android:id="@+id/iv_fragment_my_love"
+               android:src="@drawable/fragment_my_love"
+               />
+           <TextView
+
+               android:layout_below="@+id/tv_fragment_my_love"
+               android:text="我的关注"
+               android:layout_centerVertical="true"
+               android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="@dimen/dimens_fragment_my_160dp"
+
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="@dimen/dimens_fragment_my_24dp"
+                android:layout_height="@dimen/dimens_fragment_my_24dp"
+              android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/iv_fragment_my_record"
+                android:src="@drawable/fragment_my_record"
+                />
+            <TextView
+               android:id="@+id/tv_fragment_my_record"
+                android:text="购票记录"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/dimens_fragment_my_24dp"
+        android:layout_height="@dimen/dimens_fragment_my_86dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/shap_my_border">
+        <LinearLayout
+            android:layout_marginLeft="@dimen/dimens_fragment_my_30dp"
+            android:id="@+id/ll_fragment_my_record"
+            android:layout_width="@dimen/dimens_fragment_my_80dp"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="@dimen/dimens_fragment_my_24dp"
+                android:layout_height="@dimen/dimens_fragment_my_24dp"
+                android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
+                android:layout_centerVertical="true"
+               android:id="@+id/im_fragment_my_feedback"
+                android:src="@drawable/fragment_my_feedback"
+                />
+            <TextView
+
+                android:layout_below="@+id/iv_fragment_my_love"
+                android:text="意见反馈"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="@dimen/dimens_fragment_my_160dp"
+
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="@dimen/dimens_fragment_my_24dp"
+                android:layout_height="@dimen/dimens_fragment_my_24dp"
+                android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/iv_fragment_my_version"
+                android:src="@drawable/fragment_my_version"
+                />
+            <TextView
+
+                android:layout_below="@+id/iv_fragment_my_love"
+                android:text="最新版本"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView
+         android:gravity="center_horizontal"
+         android:layout_marginTop="@dimen/dimens_fragment_my_20dp"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="八维移动通信学院毕业作品"
+        />
 </LinearLayout>

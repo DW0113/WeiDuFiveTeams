@@ -20,4 +20,17 @@
     <dimen name="dimens_fragment_bottom_80dp">80dp</dimen>
     <dimen name="dimens_fragment_bottom_60dp">60dp</dimen>
     <dimen name="dimens_fragment_bottom_12dp">12dp</dimen>
+    <!--我的页面-->
+    <dimen name="dimens_fragment_my_220dp">220dp</dimen>
+
+    <dimen name="dimens_fragment_my_10dp">10dp</dimen>
+    <dimen name="dimens_fragment_my_24dp">24dp</dimen>
+    <dimen name="dimens_fragment_my_12dp">12dp</dimen>
+    <dimen name="dimens_fragment_my_160dp">160dp</dimen>
+    <dimen name="dimens_fragment_my_80dp">80dp</dimen>
+    <dimen name="dimens_fragment_my_86dp">86dp</dimen>
+    <dimen name="dimens_fragment_my_30dp">30dp</dimen>
+    <dimen name="dimens_fragment_my_70dp">70dp</dimen>
+    <dimen name="dimens_fragment_my_72dp">72dp</dimen>
+    <dimen name="dimens_fragment_my_20dp">20dp</dimen>
 </resources>
