@@ -44,19 +44,19 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_movie_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimens_fragmen_movie_223dp"
-        android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
-        android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
-        android:layout_marginTop="@dimen/dimens_fragmen_movie_85dp" />
+   <recycler.coverflow.RecyclerCoverFlow
+       android:id="@+id/rc_movie_banner"
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/dimens_fragmen_movie_223dp"
+       android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+       android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+       android:layout_marginTop="@dimen/dimens_fragmen_movie_85dp"/>
 
     <LinearLayout
         android:id="@+id/ll_movie_dot"
         android:layout_width="@dimen/dimens_fragmen_movie_312dp"
         android:layout_height="@dimen/dimens_fragmen_movie_3dp"
-        android:layout_below="@+id/vp_movie_viewpager"
+        android:layout_below="@+id/rc_movie_banner"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/dimens_fragmen_movie_20dp"
         android:layout_marginTop="@dimen/dimens_fragmen_movie_20dp"
