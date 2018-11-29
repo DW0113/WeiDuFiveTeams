@@ -17,17 +17,18 @@
             android:layout_height="@dimen/dimens_fragment_my_30dp"
             />
         <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/tv_fragment_my_login"
             android:src="@drawable/fragment_my_head_portrait"
             android:layout_centerHorizontal="true"
             android:layout_width="@dimen/dimens_fragment_my_72dp"
-            android:id="@+id/riv_fragment_my_head_portrait"
             android:layout_height="@dimen/dimens_fragment_my_72dp"
+
             app:riv_oval="true"
             android:layout_marginTop="@dimen/dimens_fragment_my_70dp" />
          <TextView
+             android:id="@+id/tv_fragment_my_text"
+             android:layout_below="@+id/tv_fragment_my_login"
              android:textColor="#ffffff"
-             android:id="@+id/tv_fragment_my_login"
-             android:layout_below="@+id/riv_fragment_my_head_portrait"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="@dimen/dimens_fragment_my_10dp"

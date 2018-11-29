@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 import com.bw.movie.R;
@@ -27,6 +28,7 @@ public class MovieBannerAdapter extends RecyclerView.Adapter<MovieBannerAdapter.
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = View.inflate(context, R.layout.movie_adapter_banner, null);
         MyViewHolder holder = new MyViewHolder(view);
+        holder.textView = view.findViewById(R.id.tv_movie_banner_imagename);
         holder.simpleDraweeView = view.findViewById(R.id.sdv_movie_banner_image);
         return holder;
     }
@@ -34,6 +36,7 @@ public class MovieBannerAdapter extends RecyclerView.Adapter<MovieBannerAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.simpleDraweeView.setImageURI(list.get(position).getImageUrl());
+        holder.textView.setText(list.get(position).getName());
     }
 
     @Override
@@ -47,6 +50,7 @@ public class MovieBannerAdapter extends RecyclerView.Adapter<MovieBannerAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         SimpleDraweeView simpleDraweeView;
+        TextView textView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
         }

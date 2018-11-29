@@ -17,8 +17,8 @@
 
             <ImageView
                 android:id="@+id/iv_movie_location_image"
-                android:layout_width="@dimen/dimens_fragmen_movie_30dp"
-                android:layout_height="@dimen/dimens_fragmen_movie_30dp"
+                android:layout_width="@dimen/dimens_fragmen_movie_48dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_48dp"
                 android:layout_marginLeft="@dimen/dimens_start_24dp"
                 android:src="@drawable/movie_location" />
 
@@ -27,9 +27,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dimens_fragmen_movie_6dp"
                 android:layout_toRightOf="@+id/iv_movie_location_image"
                 android:text="北京"
-                android:textColor="@color/color_fragment_movie_FFFFFF" />
+                android:textColor="@color/color_fragment_movie_FFFFFF"
+                android:textSize="@dimen/dimens_fragmen_movie_14sp" />
 
             <ImageView
                 android:id="@+id/iv_movie_search"
@@ -44,13 +46,13 @@
         </RelativeLayout>
     </RelativeLayout>
 
-   <recycler.coverflow.RecyclerCoverFlow
-       android:id="@+id/rc_movie_banner"
-       android:layout_width="match_parent"
-       android:layout_height="@dimen/dimens_fragmen_movie_223dp"
-       android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
-       android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
-       android:layout_marginTop="@dimen/dimens_fragmen_movie_85dp"/>
+    <recycler.coverflow.RecyclerCoverFlow
+        android:id="@+id/rc_movie_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_fragmen_movie_223dp"
+        android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_85dp" />
 
     <LinearLayout
         android:id="@+id/ll_movie_dot"

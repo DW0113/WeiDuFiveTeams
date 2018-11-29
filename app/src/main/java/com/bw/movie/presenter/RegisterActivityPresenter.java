@@ -1,15 +1,21 @@
 package com.bw.movie.presenter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.LoginActivity;
+import com.bw.movie.activity.RegisterActivity;
+import com.bw.movie.model.RegisteredBean;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.HttpHelper;
+import com.google.gson.Gson;
 
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
@@ -32,6 +38,7 @@ import okhttp3.RequestBody;
     private String et_register_pwd_get;
     private String et_register_sex_get;
     private String decrypt;
+    private SharedPreferences register;
 
     @Override
     public int getLayoutId() {
@@ -54,6 +61,8 @@ import okhttp3.RequestBody;
         et_register_sex = get(R.id.et_register_sex);
         RelativeLayout rl_register= get(R.id.rl_register);
         rl_register.setOnClickListener(this);
+        register = context.getSharedPreferences("register", Context.MODE_PRIVATE);
+
     }
 
     @Override
@@ -87,7 +96,14 @@ import okhttp3.RequestBody;
                new HttpHelper().post("http://mobile.bwstudent.com/movieApi/user/v1/registerUser",requestBody).result(new HttpHelper.Httplistenner() {
                     @Override
                     public void success(String data) {
-                        Toast.makeText(context,"成功吗？"+data,Toast.LENGTH_LONG).show();
+
+                        RegisteredBean registeredBean = new Gson().fromJson(data, RegisteredBean.class);
+                        Toast.makeText(context,""+data,Toast.LENGTH_LONG).show();
+                        if(registeredBean.getStatus().equals("0000")){
+                            register.edit().putString("et_register_phone_get",et_register_phone_get).putString("et_register_pwd_get",et_register_pwd_get).commit();
+                            context.startActivity(new Intent(context, LoginActivity.class));
+                            ((RegisterActivity)context).finish();
+                        }
                     }
 
                     @Override

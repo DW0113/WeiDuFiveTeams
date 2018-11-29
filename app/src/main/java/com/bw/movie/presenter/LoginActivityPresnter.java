@@ -2,6 +2,7 @@ package com.bw.movie.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.text.method.HideReturnsTransformationMethod;
@@ -14,12 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.LoginActivity;
+import com.bw.movie.activity.MainActivity;
 import com.bw.movie.activity.RegisterActivity;
 import com.bw.movie.activity.StartActivity;
 import com.bw.movie.activity.WelcomeActivity;
+import com.bw.movie.model.LoginBean;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.HttpHelper;
+import com.google.gson.Gson;
 
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
@@ -37,6 +42,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
     private String login_phone_get;
     private String decrypt;
    private boolean isChecked=true;
+    private SharedPreferences register;
 
     @Override
     public int getLayoutId() {
@@ -59,6 +65,11 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
         login_pwd = get(R.id.login_pwd);
         ImageView im_login_eye= get(R.id.im_login_eye);
         im_login_eye.setOnClickListener(this);
+        register = context.getSharedPreferences("register", Context.MODE_PRIVATE);
+        String et_register_pwd_get = register.getString("et_register_pwd_get", "");
+        String et_register_phone_get = register.getString("et_register_phone_get", "");
+        login_phone.setText(et_register_phone_get);
+        login_pwd.setText(et_register_pwd_get);
     }
 
     @Override
@@ -79,17 +90,18 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
                 if(isChecked){
                     //如果选中，显示密码
                     login_pwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    isChecked=false;
                 }else{
                     //否则隐藏密码
                     login_pwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
+                    isChecked=true;
                 }
 
 
                 break;
         }
     }
-
+   //网络判断
     private void dohttp() {
         FormBody requestBody=new FormBody.Builder()
                 .add("phone",login_phone_get)
@@ -98,8 +110,14 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
         new HttpHelper().post("http://mobile.bwstudent.com/movieApi/user/v1/login",requestBody).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
-                Toast.makeText(context,"成功吗？"+data,Toast.LENGTH_LONG).show();
-
+                Toast.makeText(context,""+data,Toast.LENGTH_LONG).show();
+                LoginBean loginBean = new Gson().fromJson(data, LoginBean.class);
+                if(loginBean.getStatus().equals("0000")){
+                    Toast.makeText(context,"hhh",Toast.LENGTH_LONG).show();
+                    ((LoginActivity)context).finish();
+                    SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+                    login.edit().putString("username",loginBean.getResult().getUserInfo().getNickName()).commit();
+                }
             }
 
             @Override
