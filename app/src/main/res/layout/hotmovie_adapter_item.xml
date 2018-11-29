@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  
+    <RelativeLayout
+        android:id="@+id/rl_hotmovie_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_welcome_150dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_40dp"
+        android:background="@drawable/movie_serarch_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_158dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp">
+
+            <TextView
+                android:id="@+id/tv_hotmovie_moviename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_fragment_movie_FFFFFF"
+                android:textSize="@dimen/dimens_fragmen_movie_16sp" />
+
+            <ImageView
+                android:id="@+id/iv_hotmovie_like"
+                android:layout_width="@dimen/dimens_fragmen_movie_18dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_18dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+                android:src="@drawable/movie_search_like" />
+
+            <TextView
+                android:id="@+id/tv_hotmovie_moviedesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_hotmovie_moviename"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_6dp"
+                android:ellipsize="end"
+                android:lines="5"
+                android:textColor="@color/color_fragment_movie_FFFFFF" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.facebook.drawee.view.SimpleDraweeView
+        fresco:roundedCornerRadius="@dimen/dimens_fragmen_movie_8dp"
+        android:id="@+id/sdv_hotmovie_movieimage"
+        android:layout_width="@dimen/dimens_fragmen_movie_130dp"
+        android:layout_height="@dimen/dimens_fragmen_movie_158dp"
+        android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp" />
+    <ImageView
+        android:src="@drawable/movie_group"
+        android:layout_below="@+id/rl_hotmovie_top"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+        android:layout_marginBottom="@dimen/dimens_fragmen_movie_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

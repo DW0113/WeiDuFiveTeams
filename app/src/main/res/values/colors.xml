@@ -22,7 +22,7 @@
     <!--影片页面-->
     <color name="color_fragment_movie_fFFFFFF">#ffffffff</color>
     <color name="color_fragment_movie_FFFFFF">#ffffff</color>
-    <color name="color_fragment_movie_60333333">#60333333</color>
+    <color name="color_fragment_movie_60333333">#90333333</color>
     <color name="color_fragment_movie_440a33">#440a33</color>
     <color name="color_fragment_movie_e8175e">#e8175e</color>
     <color name="color_fragment_movie_fad961">#fad961</color>
@@ -34,4 +34,6 @@
     <color name="color_cinema_333333">#333333</color>
     <color name="color_cinema_D3D3D3">#D3D3D3</color>
     <color name="color_cinema_C0C0C0">#C0C0C0</color>
+
+    <color name="color_60999999">#20999999</color>
 </resources>

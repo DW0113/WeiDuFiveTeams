@@ -58,6 +58,15 @@ public class MovieBean {
         private long releaseTime;
         private String releaseTimeShow;
         private String summary;
+        private boolean isSelect;
+
+        public boolean isSelect() {
+            return isSelect;
+        }
+
+        public void setSelect(boolean select) {
+            isSelect = select;
+        }
 
         public boolean isFollowMovie() {
             return followMovie;
