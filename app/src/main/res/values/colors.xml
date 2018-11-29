@@ -15,4 +15,7 @@
     <color name="color_fragment_my_CCCCCC">#CCCCCC</color>
     <color name="color_fragment_my_FFFFFF">#ffffff</color>
     <color name="color_fragment_my_C0C0C0">#C0C0C0</color>
+    <!--登录页面-->
+    <color name="color_login_FFFFFF">#ffffff</color>
+    <color name="text_9">#CCCCCC</color>
 </resources>

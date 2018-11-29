@@ -23,6 +23,7 @@
     <!--我的页面-->
     <dimen name="dimens_fragment_my_220dp">220dp</dimen>
     <dimen name="dimens_fragment_my_24dp">24dp</dimen>
+    <dimen name="dimens_fragment_my_18dp">18dp</dimen>
     <dimen name="dimens_fragment_my_12dp">8dp</dimen>
     <dimen name="dimens_fragment_my_6dp">6dp</dimen>
     <dimen name="dimens_fragment_my_16dp">16dp</dimen>
