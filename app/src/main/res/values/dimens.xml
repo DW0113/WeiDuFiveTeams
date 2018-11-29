@@ -43,4 +43,30 @@
     <dimen name="dimens_fragment_my_2dp">2dp</dimen>
     <dimen name="dimens_fragment_my_0dp">0dp</dimen>
     <dimen name="dimens_fragment_my_200dp">200dp</dimen>
+    <!--影片页面DP-->
+    <dimen name="dimens_fragmen_movie_3dp">3dp</dimen>
+    <dimen name="dimens_fragmen_movie_4dp">4dp</dimen>
+    <dimen name="dimens_fragmen_movie_6dp">6dp</dimen>
+    <dimen name="dimens_fragmen_movie_8dp">8dp</dimen>
+    <dimen name="dimens_fragmen_movie_10dp">10dp</dimen>
+    <dimen name="dimens_fragmen_movie_12dp">12dp</dimen>
+    <dimen name="dimens_fragmen_movie_18dp">18dp</dimen>
+    <dimen name="dimens_fragmen_movie_20dp">20dp</dimen>
+    <dimen name="dimens_fragmen_movie_24dp">24dp</dimen>
+    <dimen name="dimens_fragmen_movie_30dp">30dp</dimen>
+    <dimen name="dimens_fragmen_movie_40dp">40dp</dimen>
+    <dimen name="dimens_fragmen_movie_50dp">50dp</dimen>
+    <dimen name="dimens_fragmen_movie_85dp">85dp</dimen>
+    <dimen name="dimens_fragmen_movie_126dp">126dp</dimen>
+    <dimen name="dimens_fragmen_movie_158dp">158dp</dimen>
+    <dimen name="dimens_fragmen_movie_164dp">164dp</dimen>
+    <dimen name="dimens_fragmen_movie_186dp">186dp</dimen>
+    <dimen name="dimens_fragmen_movie_200dp">200dp</dimen>
+    <dimen name="dimens_fragmen_movie_203dp">203dp</dimen>
+    <dimen name="dimens_fragmen_movie_223dp">223dp</dimen>
+    <dimen name="dimens_fragmen_movie_240dp">240dp</dimen>
+    <dimen name="dimens_fragmen_movie_312dp">312dp</dimen>
+    <!--影片页面SP-->
+    <dimen name="dimens_fragmen_movie_16sp">16sp</dimen>
+    <dimen name="dimens_fragmen_movie_14sp">14sp</dimen>
 </resources>
