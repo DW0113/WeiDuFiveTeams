@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
+
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        android:layout_weight="1" />
+
     <LinearLayout
-        android:layout_marginBottom="@dimen/dimens_fragment_bottom_12dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_fragment_bottom_80dp"
+        android:layout_marginBottom="@dimen/dimens_fragment_bottom_12dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -25,21 +26,22 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_launcher_background" />
+
         <ImageView
-            android:layout_weight="1"
             android:id="@+id/im_cinema_fragment"
             android:layout_width="wrap_content"
-
-           android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background"/>
-        <ImageView
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:src="@drawable/ic_launcher_background" />
+
+        <ImageView
             android:id="@+id/im_my_fragment"
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginRight="@dimen/dimens_fragment_bottom_12dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_weight="1"
+            android:src="@drawable/ic_launcher_background" />
     </LinearLayout>
 </LinearLayout>
