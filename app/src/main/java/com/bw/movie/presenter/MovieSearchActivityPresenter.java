@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.bw.movie.R;
+import com.bw.movie.fragment.ComingSoonFragment;
+import com.bw.movie.fragment.HotMovieFragment;
+import com.bw.movie.fragment.IsHotFragment;
 import com.bw.movie.mvp.view.AppDelegate;
 
 import java.util.ArrayList;
@@ -31,6 +34,10 @@ public class MovieSearchActivityPresenter extends AppDelegate {
         btn_moviesearch_comingsoon = get(R.id.btn_moviesearch_comingsoon);
         btn_moviesearch_ishot = get(R.id.btn_moviesearch_ishot);
         btn_moviesearch_hotmovie = get(R.id.btn_moviesearch_hotmovie);
+        //添加fragment
+        fragmentList.add(new HotMovieFragment());
+        fragmentList.add(new IsHotFragment());
+        fragmentList.add(new ComingSoonFragment());
     }
 
     @Override
