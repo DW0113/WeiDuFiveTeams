@@ -3,13 +3,9 @@ package com.bw.movie.presenter;
 import android.content.Context;
 
 import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.LocationSource;
 import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.model.MyLocationStyle;
 import com.bw.movie.R;
-import com.bw.movie.activity.CinemaMapActivity;
 import com.bw.movie.mvp.view.AppDelegate;
-import com.bw.movie.utils.PermissionUtils;
 
 /*
  *作者：刘进

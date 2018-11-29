@@ -3,11 +3,13 @@ package com.bw.movie.presenter;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 
+
 import com.bw.movie.R;
 import com.bw.movie.adapter.RecommendedAdapter;
 import com.bw.movie.model.RecommendedBean;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.HttpHelper;
+
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 

@@ -11,6 +11,7 @@
     <color name="color_welcome_8e387c">#8e387c</color>
     <color name="color_welcome_ffffff">#ffffff</color>
     <!--我的页面-->
+
     <color name="color_fragment_my_666666">#666666</color>
     <color name="color_fragment_my_CCCCCC">#CCCCCC</color>
     <color name="color_fragment_my_FFFFFF">#ffffff</color>
@@ -28,5 +29,9 @@
     <color name="color_fragment_movie_f66b1c">#f66b1c</color>
     <color name="color_fragment_movie_000000">#000000</color>
     <color name="color_fragment_movie_333333">#ff333333</color>
-
+    <!--影院页面-->
+    <color name="color_cinema_ffffff">#ffffff</color>
+    <color name="color_cinema_333333">#333333</color>
+    <color name="color_cinema_D3D3D3">#D3D3D3</color>
+    <color name="color_cinema_C0C0C0">#C0C0C0</color>
 </resources>

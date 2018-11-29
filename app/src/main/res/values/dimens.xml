@@ -74,5 +74,22 @@
     <!--影片页面SP-->
     <dimen name="dimens_fragmen_movie_14sp">14sp</dimen>
     <dimen name="dimens_fragmen_movie_16sp">16sp</dimen>
-
+    <!--展示影院的首页-->
+    <dimen name="dimens_cinema_80dp">80dp</dimen>
+    <dimen name="dimens_cinema_170dp">170dp</dimen>
+    <dimen name="dimens_cinema_140dp">140dp</dimen>
+    <dimen name="dimens_cinema_190dp">190dp</dimen>
+    <dimen name="dimens_cinema_90dp">90dp</dimen>
+    <dimen name="dimens_cinema_24dp">24dp</dimen>
+    <dimen name="dimens_cinema_28dp">28dp</dimen>
+    <dimen name="dimens_cinema_29dp">29dp</dimen>
+    <dimen name="dimens_cinema_30dp">30dp</dimen>
+    <dimen name="dimens_cinema_10dp">10dp</dimen>
+    <dimen name="dimens_cinema_16dp">16dp</dimen>
+    <dimen name="dimens_cinema_40dp">40dp</dimen>
+    <dimen name="dimens_cinema_60dp">60dp</dimen>
+    <dimen name="dimens_cinema_6dp">6dp</dimen>
+    <dimen name="dimens_cinema_20dp">20dp</dimen>
+    <dimen name="dimens_cinema_48dp">48dp</dimen>
+    <dimen name="dimens_cinema_14sp">14sp</dimen>
 </resources>
