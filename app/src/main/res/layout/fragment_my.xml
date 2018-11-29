@@ -26,6 +26,7 @@
             android:layout_marginTop="@dimen/dimens_fragment_my_70dp" />
          <TextView
              android:textColor="#ffffff"
+             android:id="@+id/tv_fragment_my_login"
              android:layout_below="@+id/riv_fragment_my_head_portrait"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
