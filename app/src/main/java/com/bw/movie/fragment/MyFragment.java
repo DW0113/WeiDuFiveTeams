@@ -11,4 +11,11 @@ import com.bw.movie.presenter.MyFragmentPresenter;
     public Class<MyFragmentPresenter> getClassDelegate() {
         return MyFragmentPresenter.class;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.onResume();
+
+    }
 }

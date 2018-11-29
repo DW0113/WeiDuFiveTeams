@@ -3,6 +3,7 @@ package com.bw.movie.presenter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.LoginActivity;
+import com.bw.movie.adapter.Personal_confidence_Activity;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -24,6 +26,8 @@ import com.makeramen.roundedimageview.RoundedImageView;
     public class MyFragmentPresenter extends AppDelegate implements View.OnClickListener {
     private ImageView iv_fragment_my_news;
     private RoundedImageView tv_fragment_my_login;
+    private TextView tv_fragment_my_text;
+    private String username;
 
     @Override
     public int getLayoutId() {
@@ -46,16 +50,15 @@ import com.makeramen.roundedimageview.RoundedImageView;
           //找控件
         tv_fragment_my_login = get(R.id.tv_fragment_my_login);
         tv_fragment_my_login.setOnClickListener(this);
-        TextView tv_fragment_my_text= get(R.id.tv_fragment_my_text);
+        tv_fragment_my_text = get(R.id.tv_fragment_my_text);
+        //获取登录用户名
         SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
-        String username = login.getString("username", "");
-        Toast.makeText(context,"姓名："+username,Toast.LENGTH_LONG).show();
-        if(username.equals("")&&username==null){
+        username = login.getString("nickName", "");
+        //判断是否登录，来改变字体
+        if(TextUtils.isEmpty(username)) {
             tv_fragment_my_text.setText("未登录");
-            return;
         }
-      else{
-
+        else{
             tv_fragment_my_text.setText(username+"");
         }
 
@@ -64,9 +67,22 @@ import com.makeramen.roundedimageview.RoundedImageView;
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            //点击登录
             case R.id.tv_fragment_my_login:
-                   context.startActivity(new Intent(context, LoginActivity.class));
+                Toast.makeText(context,"姓名："+username,Toast.LENGTH_LONG).show();
+                //判断是否登录
+                if(TextUtils.isEmpty(username)){
+
+                    context.startActivity(new Intent(context, LoginActivity.class));
+                    return;
+                }
+                else{
+                    context.startActivity(new Intent(context, Personal_confidence_Activity.class));
+
+                }
+
                 break;
+                //
             case R.id.iv_fragment_my_news:
                 Intent intent = new Intent(((MainActivity)context), MessageActivity.class);
                 context.startActivity(intent);
@@ -74,5 +90,15 @@ import com.makeramen.roundedimageview.RoundedImageView;
         }
     }
 
-
+//返回的一个方法，用来刷新的
+    public void onResume() {
+        SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        username = login.getString("nickName", "");
+        if(TextUtils.isEmpty(username)) {
+            tv_fragment_my_text.setText("未登录");
+        }
+        else{
+            tv_fragment_my_text.setText(username+"");
+        }
+    }
 }

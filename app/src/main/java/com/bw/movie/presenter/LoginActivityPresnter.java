@@ -43,6 +43,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
     private String decrypt;
    private boolean isChecked=true;
     private SharedPreferences register;
+    private SharedPreferences login;
 
     @Override
     public int getLayoutId() {
@@ -65,11 +66,14 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
         login_pwd = get(R.id.login_pwd);
         ImageView im_login_eye= get(R.id.im_login_eye);
         im_login_eye.setOnClickListener(this);
+        //获得注册得到手机号与密码，直接展示
         register = context.getSharedPreferences("register", Context.MODE_PRIVATE);
         String et_register_pwd_get = register.getString("et_register_pwd_get", "");
         String et_register_phone_get = register.getString("et_register_phone_get", "");
         login_phone.setText(et_register_phone_get);
         login_pwd.setText(et_register_pwd_get);
+        //存登录的值
+        login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -78,6 +82,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
             case R.id.tv_login_register:
                 //点击注册，然后就跳转到注册页面
                 context.startActivity(new Intent(context, RegisterActivity.class));
+
                 break;
              case R.id.tv_login:
                  //点击登录的时候，
@@ -101,7 +106,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
                 break;
         }
     }
-   //网络判断
+   //网络请求
     private void dohttp() {
         FormBody requestBody=new FormBody.Builder()
                 .add("phone",login_phone_get)
@@ -113,10 +118,8 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
                 Toast.makeText(context,""+data,Toast.LENGTH_LONG).show();
                 LoginBean loginBean = new Gson().fromJson(data, LoginBean.class);
                 if(loginBean.getStatus().equals("0000")){
-                    Toast.makeText(context,"hhh",Toast.LENGTH_LONG).show();
-                    ((LoginActivity)context).finish();
-                    SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
-                    login.edit().putString("username",loginBean.getResult().getUserInfo().getNickName()).commit();
+                    login.edit().putString("nickName",loginBean.getResult().getUserInfo().getNickName()).commit();
+                    context.startActivity(new Intent(context,MainActivity.class));
                 }
             }
 
