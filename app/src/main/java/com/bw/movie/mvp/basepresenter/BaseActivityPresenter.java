@@ -32,7 +32,11 @@ public abstract class BaseActivityPresenter<T extends AppDelegate> extends AppCo
         presenter.create(getLayoutInflater(), null, savedInstanceState);
         UltimateBar.newImmersionBuilder().applyNav(false).build(this).apply();
         setContentView(presenter.rootView());
+        //initViews();
         presenter.getContext(this);
         presenter.initData();
     }
+
+//    public void initViews(){};
+
 }
