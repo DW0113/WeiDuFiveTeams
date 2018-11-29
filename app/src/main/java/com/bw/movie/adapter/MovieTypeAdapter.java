@@ -1,14 +1,18 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.MainActivity;
+import com.bw.movie.activity.MovieSearchActivity;
 import com.bw.movie.model.MovieBean;
 
 import java.util.ArrayList;
@@ -50,13 +54,22 @@ public class MovieTypeAdapter extends RecyclerView.Adapter<MovieTypeAdapter.MyVi
         MyViewHolder holder = new MyViewHolder(view);
         holder.movie_type = view.findViewById(R.id.tv_movie_item_type);
         holder.recyclerView = view.findViewById(R.id.rv_movie_item_movietype);
+        holder.image_next = view.findViewById(R.id.iv_movie_item_next);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.movie_type.setText(movieType[position]);
         setMovieChildAdapter(holder.recyclerView,position,context);
+        holder.image_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(((MainActivity)context), MovieSearchActivity.class);
+                intent.putExtra("position",position);
+                context.startActivity(intent);
+            }
+        });
     }
 
     private void setMovieChildAdapter(RecyclerView recyclerView, int position, Context context) {
@@ -87,6 +100,7 @@ public class MovieTypeAdapter extends RecyclerView.Adapter<MovieTypeAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView movie_type;
         RecyclerView recyclerView;
+        ImageView image_next;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
         }

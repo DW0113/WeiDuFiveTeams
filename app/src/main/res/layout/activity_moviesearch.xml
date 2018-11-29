@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_moviesearch_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_20dp">
+
+        <ImageView
+            android:id="@+id/iv_moviesearch_location_image"
+            android:layout_width="@dimen/dimens_fragmen_movie_30dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_30dp"
+            android:src="@drawable/moviesearch_location" />
+
+        <TextView
+            android:id="@+id/tv_moviesearch_location_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_6dp"
+            android:layout_toRightOf="@+id/iv_moviesearch_location_image"
+            android:text="北京" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/dimens_fragmen_movie_220dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_movie_search">
+
+            <ImageView
+                android:id="@+id/iv_moviesearch_search_image"
+                android:layout_width="@dimen/dimens_fragmen_movie_20dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dimens_fragmen_movie_20dp"
+                android:src="@drawable/movie_seach" />
+
+            <AutoCompleteTextView
+                android:id="@+id/atv_moviesearch_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dimens_fragmen_movie_10dp"
+                android:layout_toLeftOf="@+id/tv_moviesearch_search_text"
+                android:layout_toRightOf="@+id/iv_moviesearch_search_image"
+                android:background="@null"
+                android:hint="铁血战士"
+                android:textColorHint="@color/color_fragment_movie_FFFFFF"
+                android:textSize="@dimen/dimens_fragmen_movie_14sp" />
+
+            <TextView
+                android:id="@+id/tv_moviesearch_search_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+                android:text="搜索"
+                android:textColor="@color/color_fragment_movie_FFFFFF" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_moviesearch_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_fragmen_movie_30dp"
+        android:layout_below="@+id/rl_moviesearch_top"
+        android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_8dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_moviesearch_hotmovie"
+            android:layout_width="@dimen/dimens_fragmen_movie_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_moviesearch_button_background"
+            android:gravity="center"
+            android:text="热门电影"
+            android:textColor="@color/color_fragment_movie_FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_moviesearch_ishot"
+            android:layout_width="@dimen/dimens_fragmen_movie_0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_8dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_8dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_moviesearch_button_background_noselect"
+            android:text="正在热映"
+            android:textColor="@color/color_fragment_movie_000000" />
+
+        <Button
+            android:id="@+id/btn_moviesearch_comingsoon"
+            android:layout_width="@dimen/dimens_fragmen_movie_0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_moviesearch_button_background_noselect"
+            android:text="即将上映"
+            android:textColor="@color/color_fragment_movie_000000" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_moviesearch_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_moviesearch_button"
+        android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_20dp" />
+</RelativeLayout>
