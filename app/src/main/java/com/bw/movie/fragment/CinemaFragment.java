@@ -11,4 +11,5 @@ import com.bw.movie.presenter.CinemaFragmentPresenter;
     public Class<CinemaFragmentPresenter> getClassDelegate() {
         return CinemaFragmentPresenter.class;
     }
+
 }

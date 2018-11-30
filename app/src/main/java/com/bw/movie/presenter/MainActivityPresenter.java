@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bw.movie.R;
@@ -51,6 +52,7 @@ public class MainActivityPresenter  extends AppDelegate implements View.OnClickL
         //适配器
         MyAdpater myAdpater = new MyAdpater(((MainActivity)context).getSupportFragmentManager());
         vp_main_viewpager.setAdapter(myAdpater);
+        vp_main_viewpager.setOffscreenPageLimit(3);
         //点击事件
         im_my_fragment.setOnClickListener(this);
         im_cinema_fragment.setOnClickListener(this);

@@ -59,7 +59,7 @@ public class MovieFragmentPresenter extends AppDelegate {
 
     //即将上映请求数据
     private void doHttpComingSoon() {
-        new HttpHelper().get(Http.MOVIE_COMING_SOON).result(new HttpHelper.Httplistenner() {
+        new HttpHelper().get(Http.MOVIE_COMING_SOON+1).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
                 Gson gson = new Gson();
@@ -77,7 +77,7 @@ public class MovieFragmentPresenter extends AppDelegate {
 
     //正在热映请求数据
     private void doHttpIsHot() {
-        new HttpHelper().get(Http.MOVIE_ISHOT).result(new HttpHelper.Httplistenner() {
+        new HttpHelper().get(Http.MOVIE_ISHOT+1).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
                 Gson gson = new Gson();
@@ -95,7 +95,7 @@ public class MovieFragmentPresenter extends AppDelegate {
 
     //热门电影请求数据
     private void doHttpHotMovie() {
-        new HttpHelper().get(Http.MOVIE_HOTMOIE).result(new HttpHelper.Httplistenner() {
+        new HttpHelper().get(Http.MOVIE_HOTMOIE+1).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
                 Gson gson = new Gson();
