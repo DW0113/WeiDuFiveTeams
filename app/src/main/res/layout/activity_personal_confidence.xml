@@ -1,131 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/shape_cinema_near"
     android:layout_height="match_parent">
+
+  <RelativeLayout
+        android:layout_marginTop="@dimen/dimens_personal_28dp"
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dimens_personal_28dp">
+
+      <ImageView
+         android:layout_marginLeft="@dimen/dimens_cinema_16dp"
+          android:layout_width="@dimen/dimens_personal_28dp"
+          android:layout_height="wrap_content"
+         android:id="@+id/im_persenter_banck"
+          android:src="@drawable/persenter_back" />
+
+      <TextView
+         android:layout_alignParentRight="true"
+          android:layout_marginLeft="@dimen/dimens_cinema_16dp"
+          android:id="@+id/tv_login_The_editor"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+         android:textColor="@color/color_login_FFFFFF"
+          android:layout_marginRight="@dimen/dimens_fragment_my_10dp"
+          android:text="编辑"
+          android:textSize="@dimen/dimens_start_20sp" />
+      <TextView
+          android:layout_alignParentRight="true"
+          android:layout_marginLeft="@dimen/dimens_cinema_16dp"
+          android:id="@+id/tv_login_The_complete"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/color_login_FFFFFF"
+          android:layout_marginRight="@dimen/dimens_fragment_my_10dp"
+          android:text="完成"
+          android:visibility="gone"
+          android:textSize="@dimen/dimens_start_20sp" />
+  </RelativeLayout>
+
     <!--列表展示-->
     <RelativeLayout
+        android:layout_marginTop="@dimen/dimens_personal_55dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <RelativeLayout
-            android:layout_marginTop="30dp"
-            android:id="@+id/layout_1"
+
+            android:layout_marginTop="50dp"
+            android:id="@+id/layout_11"
 
             android:layout_width="match_parent"
-            android:layout_height="45dp">
-
+            android:layout_height="@dimen/dimens_personal_45dp">
+       <ImageView
+           android:visibility="gone"
+           android:id="@+id/im_persenter_heand1"
+           android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+           android:layout_marginLeft="@dimen/dimens_cinema_16dp"
+           android:layout_width="@dimen/dimens_cinema_20dp"
+           android:layout_height="@dimen/dimens_cinema_20dp"
+           android:src="@drawable/persenter_edit"/>
             <TextView
-                android:text="用户名"
-                android:textSize="16dp"
-                android:layout_marginLeft="55dp"
+                android:text="头像"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
+            <ImageView
+                android:id="@+id/im_persenter_heand"
+                android:src="@drawable/fragment_my_head_portrait"
+                android:layout_marginRight="@dimen/dimens_fragment_my_10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <View
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="@dimen/dimens_personal_28dp"
+                android:layout_marginRight="@dimen/dimens_cinema_20dp"
                 android:layout_alignParentBottom="true"
                 android:background="#A9A9A9"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"></View>
+                android:layout_height="@dimen/dimens_fragmen_movie_1dp"></View>
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_8dp"
+            android:id="@+id/layout_1"
+            android:layout_below="@+id/layout_11"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_personal_45dp">
+            <ImageView
+                android:id="@+id/im_persenter_username"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+                android:layout_marginLeft="@dimen/dimens_cinema_16dp"
+                android:layout_width="@dimen/dimens_cinema_20dp"
+                android:layout_height="@dimen/dimens_cinema_20dp"
+                android:src="@drawable/persenter_edit"/>
+            <TextView
+                android:text="用户名"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginRight="@dimen/dimens_fragment_my_16dp"
+                android:layout_alignParentRight="true"
+                android:text="用户名"
+                android:id="@+id/tv_personal_username"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_marginLeft="@dimen/dimens_personal_28dp"
+                android:layout_marginRight="@dimen/dimens_cinema_20dp"
+                android:layout_alignParentBottom="true"
+                android:background="#A9A9A9"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_fragmen_movie_1dp"></View>
         </RelativeLayout>
 
 
         <RelativeLayout
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_8dp"
             android:id="@+id/layout_2"
             android:layout_below="@+id/layout_1"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
-
+            android:layout_height="@dimen/dimens_personal_45dp">
+            <ImageView
+                android:id="@+id/im_persenter_sex"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+                android:layout_marginLeft="@dimen/dimens_cinema_16dp"
+                android:layout_width="@dimen/dimens_cinema_20dp"
+                android:layout_height="@dimen/dimens_cinema_20dp"
+                android:src="@drawable/persenter_edit"/>
             <TextView
                 android:text="性别"
-                android:textSize="16dp"
-                android:layout_marginLeft="55dp"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
-            <View
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="20dp"
-                android:layout_alignParentBottom="true"
-                android:background="#A9A9A9"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"></View>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginTop="8dp"
-            android:id="@+id/layout_3"
-            android:layout_below="@+id/layout_2"
-            android:layout_width="match_parent"
-            android:layout_height="45dp">
-
             <TextView
-                android:text="QQ邮箱"
-                android:textSize="16dp"
-                android:layout_marginLeft="55dp"
+                android:layout_marginRight="@dimen/dimens_fragment_my_16dp"
+                android:layout_alignParentRight="true"
+                android:text="用户名"
+                android:id="@+id/tv_personal_sex"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
             <View
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="@dimen/dimens_personal_28dp"
+                android:layout_marginRight="@dimen/dimens_cinema_20dp"
                 android:layout_alignParentBottom="true"
                 android:background="#A9A9A9"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"></View>
+                android:layout_height="@dimen/dimens_fragmen_movie_1dp"></View>
         </RelativeLayout>
+
+
 
         <RelativeLayout
             android:id="@+id/layout_4"
-            android:layout_marginTop="8dp"
-            android:layout_below="@+id/layout_3"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_8dp"
+            android:layout_below="@+id/layout_2"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
-
+            android:layout_height="@dimen/dimens_personal_45dp">
+            <ImageView
+                android:id="@+id/im_persenter_phone"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+                android:layout_marginLeft="@dimen/dimens_cinema_16dp"
+                android:layout_width="@dimen/dimens_cinema_20dp"
+                android:layout_height="@dimen/dimens_cinema_20dp"
+                android:src="@drawable/persenter_edit"/>
             <TextView
                 android:text="手机号"
-                android:textSize="16dp"
-                android:layout_marginLeft="55dp"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginRight="@dimen/dimens_fragment_my_16dp"
+                android:layout_alignParentRight="true"
+                android:text="用户名"
+                android:id="@+id/tv_personal_phone"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <View
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="@dimen/dimens_personal_28dp"
+                android:layout_marginRight="@dimen/dimens_cinema_20dp"
                 android:layout_alignParentBottom="true"
                 android:background="#A9A9A9"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"></View>
+                android:layout_height="@dimen/dimens_fragmen_movie_1dp"></View>
         </RelativeLayout>
 
 
         <RelativeLayout
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_8dp"
             android:layout_below="@+id/layout_4"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
-
+            android:layout_height="@dimen/dimens_personal_45dp">
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/im_persenter_birthday"
+                android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+                android:layout_marginLeft="@dimen/dimens_cinema_16dp"
+                android:layout_width="@dimen/dimens_cinema_20dp"
+                android:layout_height="@dimen/dimens_cinema_20dp"
+                android:src="@drawable/persenter_edit"/>
             <TextView
                 android:text="生日"
-                android:textSize="16dp"
+                android:textSize="@dimen/dimens_cinema_16dp"
                 android:gravity="center"
-                android:layout_marginLeft="55dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
+            <TextView
+                android:layout_marginRight="@dimen/dimens_fragment_my_16dp"
+                android:layout_alignParentRight="true"
+                android:text="用户名"
+                android:id="@+id/tv_personal_birthday"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <View
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="@dimen/dimens_personal_28dp"
+                android:layout_marginRight="@dimen/dimens_cinema_20dp"
                 android:layout_alignParentBottom="true"
                 android:background="#A9A9A9"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"></View>
+                android:layout_height="@dimen/dimens_fragmen_movie_1dp"></View>
         </RelativeLayout>
 
         <RelativeLayout
@@ -150,4 +273,4 @@
         </RelativeLayout>
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
