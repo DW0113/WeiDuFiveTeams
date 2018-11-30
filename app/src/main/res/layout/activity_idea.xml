@@ -24,6 +24,7 @@
         android:layout_below="@+id/tv_activity_idea_feedback"
         />
     <Button
+        android:id="@+id/bt_idea_activity_btn"
         android:layout_margin="@dimen/dimens_fragment_my_10dp"
         android:textSize="@dimen/dimens_fragment_my_16dp"
         android:textColor="@color/color_fragment_my_FFFFFF"
@@ -33,4 +34,11 @@
         android:background="@drawable/idea_my_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/iv_idea_activity_img"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dimens_fragment_my_10dp"
+        android:src="@drawable/idea_activity_back"
+        android:layout_width="@dimen/dimens_fragment_my_80dp"
+        android:layout_height="@dimen/dimens_fragment_my_80dp" />
 </RelativeLayout>

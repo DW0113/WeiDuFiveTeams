@@ -5,4 +5,5 @@
        android:startColor="@color/color_fragment_my_B71451"
        android:endColor="@color/color_fragment_movie_440a33"
        />
+   <corners android:radius="@dimen/dimens_fragment_my_14sp"/>
 </shape>
