@@ -109,7 +109,6 @@ public class MainActivityPresenter  extends AppDelegate implements View.OnClickL
                 im_move_fragment.setImageResource(R.drawable.fragment_movie);
                 im_cinema_fragment.setImageResource(R.drawable.fragment_cinema);
                 im_my_fragment.setImageResource(R.drawable.fragment_my_selected);
-
                 break;
         }
 

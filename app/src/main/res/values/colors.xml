@@ -17,12 +17,16 @@
     <color name="color_fragment_my_C0C0C0">#C0C0C0</color>
     <!--登录页面-->
     <color name="color_login_FFFFFF">#ffffff</color>
-    <color name="text_9">#CCCCCC</color>
+    <color name="color_login_CCCCCC">#CCCCCC</color>
     <!--影片页面-->
+    <color name="color_fragment_movie_fFFFFFF">#ffffffff</color>
     <color name="color_fragment_movie_FFFFFF">#ffffff</color>
     <color name="color_fragment_movie_60333333">#60333333</color>
     <color name="color_fragment_movie_440a33">#440a33</color>
     <color name="color_fragment_movie_e8175e">#e8175e</color>
     <color name="color_fragment_movie_fad961">#fad961</color>
     <color name="color_fragment_movie_f66b1c">#f66b1c</color>
+    <color name="color_fragment_movie_000000">#000000</color>
+    <color name="color_fragment_movie_333333">#ff333333</color>
+
 </resources>
