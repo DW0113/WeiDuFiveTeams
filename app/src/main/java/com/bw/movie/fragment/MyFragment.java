@@ -12,5 +12,9 @@ import com.bw.movie.presenter.MyFragmentPresenter;
         return MyFragmentPresenter.class;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.onResume();
+    }
 }
