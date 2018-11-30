@@ -63,13 +63,9 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<ComingSoonAdapter.My
         return list.size();
     }
 
-    public void sethotMovieList(List<MovieBean.ResultBean> hotMovieList) {
-        this.list = hotMovieList;
-        notifyDataSetChanged();
-    }
-
     public void setcomingSoonList(List<MovieBean.ResultBean> comingSoonList) {
         this.list = comingSoonList;
+        notifyDataSetChanged();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

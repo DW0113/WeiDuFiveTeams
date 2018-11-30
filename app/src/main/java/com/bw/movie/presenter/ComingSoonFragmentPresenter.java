@@ -81,7 +81,7 @@ public class ComingSoonFragmentPresenter extends AppDelegate {
                 if (page == 1){
                     comingSoonList.clear();
                 }
-                if (movieBean.getResult().isEmpty()){
+                if(!movieBean.getResult().isEmpty()){
                     comingSoonList.addAll(movieBean.getResult());
                     comingSoonAdapter.setcomingSoonList(comingSoonList);
                 }
