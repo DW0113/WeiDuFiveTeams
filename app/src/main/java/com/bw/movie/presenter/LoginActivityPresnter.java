@@ -125,7 +125,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
                             .putString("sex",userInfo.getSex()+"")
                             .putString("birthday",userInfo.getBirthday()+"")
                             .putString("headpic",userInfo.getHeadPic())
-                            .putString("userld",userInfo.getId()+"")
+                            .putString("userld",loginBean.getResult().getUserId()+"")
                             .putString("sessionId",loginBean.getResult().getSessionId())
                             .commit();
                     context.startActivity(new Intent(context,MainActivity.class));
