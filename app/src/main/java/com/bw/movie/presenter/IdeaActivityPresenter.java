@@ -52,15 +52,14 @@ public class IdeaActivityPresenter extends AppDelegate implements View.OnClickLi
 
     }
 
-    private void doHttpIdea() {
+    private void doHttpIdea(String userId, String sessionId, String content) {
         FormBody build = new FormBody.Builder()
-                .add("userId","")
-                .add("sessionId", "15435612476682260")
-                .add("content","哈哈哈").build();
+                .add("userId",userId)
+                .add("sessionId",sessionId)
+                .add("content",content).build();
         new HttpHelper().post(Http.ACTIVITY_FEEDBACK,build).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
-
                 IdeaBean ideaBean = new Gson().fromJson(data, IdeaBean.class);
                 String message = ideaBean.getMessage();
                 if (message.equals("注册成功")){
@@ -91,16 +90,16 @@ public class IdeaActivityPresenter extends AppDelegate implements View.OnClickLi
                 break;
             case R.id.bt_idea_activity_btn:
                 //获取输入框内的字
-                String idea_activity_edtxt = ed_activity_idea_edtxt.getText().toString().trim();
+                String content= ed_activity_idea_edtxt.getText().toString().trim();
                 //判断是否为空
-                if (TextUtils.isEmpty(idea_activity_edtxt)){
+                if (TextUtils.isEmpty(content)){
                     Toast.makeText(context,"您还没有输入哦",Toast.LENGTH_LONG).show();
                     return;
                 }
-
-                doHttpIdea();
-
-
+                SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+                String userld = login.getString("userld","");
+                String sessionId = login.getString("sessionId", "");
+                doHttpIdea(userld,sessionId,content);
                 break;
         }
     }

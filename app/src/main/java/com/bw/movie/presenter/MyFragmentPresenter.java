@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.IdeaActivity;
 import com.bw.movie.activity.MainActivity;
 import com.bw.movie.activity.MessageActivity;
 
@@ -47,6 +48,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
     @Override
     public void initData() {
         //初始化控件
+        setOnClick(this,R.id.ll_fragment_my_record);
         iv_fragment_my_news=(ImageView)get(R.id.iv_fragment_my_news);
         iv_fragment_my_news.setOnClickListener(this);
         ll_fragment_my_information = get(R.id.ll_fragment_my_information);
@@ -90,6 +92,10 @@ import com.makeramen.roundedimageview.RoundedImageView;
             case R.id.ll_fragment_my_information:
 
                 context.startActivity(new Intent(context, Personal_confidence_Activity.class));
+                break;
+            case R.id.ll_fragment_my_record:
+                Intent intent1 = new Intent(((MainActivity)context), IdeaActivity.class);
+                context.startActivity(intent1);
                 break;
         }
     }
