@@ -43,6 +43,7 @@ import static android.app.Activity.RESULT_OK;
  *日期：2018/11/29
  * */public class Personal_confidence_Persenter extends AppDelegate implements View.OnClickListener {
 
+
     private RelativeLayout tv_login_exit;
     private SharedPreferences login;
     private ImageView im_persenter_username;
