@@ -1,5 +1,6 @@
 <shape android:shape="rectangle"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="@dimen/dimens_fragment_my_10dp"></corners>
-  <stroke android:width="@dimen/dimens_fragment_my_2dp" android:color="@color/color_fragment_my_CCCCCC"></stroke>
+  <stroke android:width="@dimen/dimens_fragment_my_2dp" android:color="@color/color_fragment_my_CCCCCC"
+      ></stroke>
 </shape>

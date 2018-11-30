@@ -27,7 +27,7 @@
         <activity android:name=".activity.CinemaSearchActivity"/>
         <activity android:name=".activity.CinemaMapActivity"/>
         <activity android:name=".activity.MovieSearchActivity"></activity>
-
+        <activity android:name=".activity.CinemaShowActivity"/>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="b0c3dcc1c07976dc0d570d1e18505ef9">
 
         </meta-data>
