@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_fragmen_movie_186dp"
+        android:background="@drawable/movie_top_background">
+
+        <RelativeLayout
+            android:id="@+id/commended_item"
+            android:layout_marginLeft="@dimen/dimens_cinema_24dp"
+            android:layout_marginRight="@dimen/dimens_cinema_24dp"
+            android:layout_marginTop="@dimen/dimens_cinema_10dp"
+            android:layout_marginBottom="@dimen/dimens_cinema_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_cinema_90dp">
+
+            <ImageView
+                android:src="@mipmap/ic_launcher"
+                android:layout_margin="@dimen/dimens_cinema_10dp"
+                android:id="@+id/iv_cinema_logo"
+                android:layout_width="@dimen/dimens_cinema_80dp"
+                android:layout_height="@dimen/dimens_cinema_80dp" />
+            <TextView
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:textColor="@color/color_cinema_ffffff"
+                android:layout_margin="@dimen/dimens_cinema_10dp"
+                android:layout_toRightOf="@+id/iv_cinema_logo"
+                android:id="@+id/tv_cinema_name"
+                android:text="国际影城"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="@color/color_cinema_ffffff"
+                android:id="@+id/tv_cinema_address"
+                android:layout_marginLeft="@dimen/dimens_cinema_10dp"
+                android:layout_marginTop="@dimen/dimens_cinema_40dp"
+                android:text="电影地址"
+                android:layout_toRightOf="@+id/iv_cinema_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            
+            <ImageView
+                android:src="@mipmap/ic_launcher"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/dimens_cinema_24dp"
+                android:layout_width="@dimen/dimens_cinema_24dp"
+                android:layout_height="@dimen/dimens_cinema_24dp" />
+            
+        </RelativeLayout>
+        
+    </RelativeLayout>
+
+</RelativeLayout>
