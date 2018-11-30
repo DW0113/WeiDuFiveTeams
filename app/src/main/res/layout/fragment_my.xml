@@ -103,7 +103,6 @@
        </LinearLayout>
         <LinearLayout
             android:layout_marginLeft="@dimen/dimens_fragment_my_54dp"
-
             android:layout_width="wrap_content"
             android:orientation="vertical"
             android:gravity="center_vertical"
@@ -152,6 +151,7 @@
                 android:src="@drawable/fragment_my_feedback"
                 />
             <TextView
+                android:id="@+id/tv_activity_my_idea"
                 android:textColor="@color/color_fragment_my_666666"
                 android:textSize="@dimen/dimens_fragment_my_14sp"
                 android:layout_below="@+id/iv_fragment_my_love"

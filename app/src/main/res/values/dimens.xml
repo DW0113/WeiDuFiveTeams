@@ -74,6 +74,9 @@
     <dimen name="dimens_fragmen_movie_220dp">220dp</dimen>
     <dimen name="dimens_fragmen_movie_223dp">223dp</dimen>
     <dimen name="dimens_fragmen_movie_240dp">240dp</dimen>
+
+    <dimen name="dimens_fragment_my_22dp">22dp</dimen>
+    <dimen name="dimens_fragment_my_100dp">100dp</dimen>
     <dimen name="dimens_fragmen_movie_312dp">312dp</dimen>
     <dimen name="dimens_fragmen_movie_400dp">400dp</dimen>
     <!--影片页面SP-->

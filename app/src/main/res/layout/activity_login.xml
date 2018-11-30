@@ -17,6 +17,7 @@
             android:layout_width="@dimen/dimens_fragment_my_24dp"
             android:layout_height="@dimen/dimens_fragment_my_24dp" />
         <EditText
+            android:textColor="@color/color_fragment_my_FFFFFF"
             android:theme="@style/MyEditText"
             android:textColorHint="@color/color_login_FFFFFF"
             android:id="@+id/login_phone"
@@ -43,6 +44,7 @@
             android:layout_width="@dimen/dimens_fragment_my_24dp"
             android:layout_height="@dimen/dimens_fragment_my_24dp" />
         <EditText
+            android:textColor="@color/color_fragment_my_FFFFFF"
             android:inputType="textPassword"
             android:theme="@style/MyEditText"
             android:textColorHint="@color/color_login_FFFFFF"
