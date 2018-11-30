@@ -29,11 +29,13 @@
     <color name="color_fragment_movie_f66b1c">#f66b1c</color>
     <color name="color_fragment_movie_000000">#000000</color>
     <color name="color_fragment_movie_333333">#ff333333</color>
+    <color name="color_fragment_movie_DCDCDC">#DCDCDC</color>
     <!--影院页面-->
     <color name="color_cinema_ffffff">#ffffff</color>
     <color name="color_cinema_333333">#333333</color>
     <color name="color_cinema_D3D3D3">#D3D3D3</color>
     <color name="color_cinema_C0C0C0">#C0C0C0</color>
 
+    <color name="color_fragment_my_B71451">#B71451</color>
     <color name="color_60999999">#20999999</color>
 </resources>

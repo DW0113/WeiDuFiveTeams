@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.IdeaActivity;
 import com.bw.movie.activity.MainActivity;
 import com.bw.movie.activity.MessageActivity;
+
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
     private RoundedImageView tv_fragment_my_login;
     private TextView tv_fragment_my_text;
     private String username;
+    private LinearLayout ll_fragment_my_information;
 
     @Override
     public int getLayoutId() {
@@ -44,9 +48,11 @@ import com.makeramen.roundedimageview.RoundedImageView;
     @Override
     public void initData() {
         //初始化控件
+        setOnClick(this,R.id.ll_fragment_my_record);
         iv_fragment_my_news=(ImageView)get(R.id.iv_fragment_my_news);
         iv_fragment_my_news.setOnClickListener(this);
-
+        ll_fragment_my_information = get(R.id.ll_fragment_my_information);
+        ll_fragment_my_information.setOnClickListener(this);
           //找控件
         tv_fragment_my_login = get(R.id.tv_fragment_my_login);
         tv_fragment_my_login.setOnClickListener(this);
@@ -76,16 +82,20 @@ import com.makeramen.roundedimageview.RoundedImageView;
                     context.startActivity(new Intent(context, LoginActivity.class));
                     return;
                 }
-                else{
-                    context.startActivity(new Intent(context, Personal_confidence_Activity.class));
-
-                }
 
                 break;
                 //
             case R.id.iv_fragment_my_news:
                 Intent intent = new Intent(((MainActivity)context), MessageActivity.class);
                 context.startActivity(intent);
+                break;
+            case R.id.ll_fragment_my_information:
+
+                context.startActivity(new Intent(context, Personal_confidence_Activity.class));
+                break;
+            case R.id.ll_fragment_my_record:
+                Intent intent1 = new Intent(((MainActivity)context), IdeaActivity.class);
+                context.startActivity(intent1);
                 break;
         }
     }

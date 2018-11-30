@@ -1,23 +1,31 @@
 package com.bw.movie.presenter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.MessageActivity;
+import com.bw.movie.model.MessagesBean;
 import com.bw.movie.mvp.view.AppDelegate;
+import com.bw.movie.utils.Http;
+import com.bw.movie.utils.HttpHelper;
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 
 /**
  * 作者：马利亚
  * 日期：2018/11/28
- * 内容：
+ * 内容：系统通知
  */
-public class MessageActivityPresenter extends AppDelegate{
+public class MessageActivityPresenter extends AppDelegate implements View.OnClickListener {
     private Context context;
     private TextView tv_activity_message_timeyear;
     private String mMonth,mDay,mHours,mMinute;
     private TextView tv_activity_message_yeardaytime;
+    private TextView tv_activity_message_unread;
 
     @Override
     public int getLayoutId() {
@@ -33,6 +41,12 @@ public class MessageActivityPresenter extends AppDelegate{
     public void initData() {
         //初始化控件
         init();
+        //点击事件
+        setOnClick(this,R.id.iv_message_activity_img);
+        setOnClick(this,R.id.tv_activity_message_unread);
+
+
+
         Calendar calendar = Calendar.getInstance();
         //获取日期的月
         mMonth = String.valueOf(calendar.get(Calendar.MONTH) + 1);
@@ -60,10 +74,43 @@ public class MessageActivityPresenter extends AppDelegate{
         }
         tv_activity_message_timeyear.setText(mMonth+"-"+mDay+"  "+mHours+":"+mMinute);
         tv_activity_message_yeardaytime.setText(mMonth+"-"+mDay+"  "+mHours+":"+mMinute);
+
+
+
+
+    }
+
+    private void doHttpMessage() {
+        new HttpHelper().get(Http.ACTIVITY_MESSAGE).result(new HttpHelper.Httplistenner() {
+            @Override
+            public void success(String data) {
+                MessagesBean messagesBean = new Gson().fromJson(data, MessagesBean.class);
+                Toast.makeText(context,messagesBean+"",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void error(String error) {
+
+            }
+        });
     }
 
     private void init() {
+        tv_activity_message_unread=(TextView)get(R.id.tv_activity_message_unread);
         tv_activity_message_yeardaytime=(TextView)get(R.id.tv_activity_message_yeardaytime);
         tv_activity_message_timeyear=(TextView)get(R.id.tv_activity_message_timeyear);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.iv_message_activity_img:
+                ((MessageActivity)context).finish();
+                break;
+            case R.id.tv_activity_message_unread:
+                //查询是否有新消息
+                //doHttpMessage();
+                break;
+        }
     }
 }

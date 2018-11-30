@@ -16,6 +16,5 @@ import com.bw.movie.presenter.MyFragmentPresenter;
     public void onResume() {
         super.onResume();
         presenter.onResume();
-
     }
 }
