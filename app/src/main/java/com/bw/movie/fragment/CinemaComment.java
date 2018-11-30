@@ -1,14 +1,14 @@
 package com.bw.movie.fragment;
 
 import com.bw.movie.mvp.basepresenter.BaseFragmentPresenter;
-import com.bw.movie.presenter.Cinema_Near_Pesenter;
+import com.bw.movie.presenter.CinemaCommentPesenter;
 
 /*
  *作者：刘进
  *日期：2018/11/28
- **/public class Cinema_Near extends BaseFragmentPresenter<Cinema_Near_Pesenter> {
+ **/public class CinemaComment extends BaseFragmentPresenter<CinemaCommentPesenter> {
     @Override
-    public Class<Cinema_Near_Pesenter> getClassDelegate() {
-        return Cinema_Near_Pesenter.class;
+    public Class<CinemaCommentPesenter> getClassDelegate() {
+        return CinemaCommentPesenter.class;
     }
 }
