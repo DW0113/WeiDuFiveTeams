@@ -6,7 +6,9 @@ import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -27,4 +29,7 @@ public interface BaseService {
     @Multipart
     @POST
     Observable<ResponseBody> part(@Url String url, @HeaderMap Map<String, String> map, @Part MultipartBody.Part pay);
+    @GET
+    Observable<ResponseBody> getheader(@Url String url,@HeaderMap Map<String,String> map);
+
 }

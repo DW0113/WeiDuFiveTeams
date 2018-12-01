@@ -77,6 +77,7 @@
         android:layout_marginRight="@dimen/dimens_fragment_my_24dp"
         android:background="@drawable/shap_my_border">
        <LinearLayout
+
            android:layout_marginLeft="@dimen/dimens_fragment_my_30dp"
            android:id="@+id/ll_fragment_my_love"
            android:layout_width="@dimen/dimens_fragment_my_80dp"
@@ -102,6 +103,7 @@
                android:layout_height="wrap_content" />
        </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_fragment_my_recordd"
             android:layout_marginLeft="@dimen/dimens_fragment_my_54dp"
             android:layout_width="wrap_content"
             android:orientation="vertical"

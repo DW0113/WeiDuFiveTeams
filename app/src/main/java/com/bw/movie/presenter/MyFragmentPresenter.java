@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.LoginActivity;
+import com.bw.movie.activity.MyLoveActivity;
+import com.bw.movie.activity.RecordActivity;
 import com.bw.movie.adapter.Personal_confidence_Activity;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -57,6 +59,10 @@ import com.makeramen.roundedimageview.RoundedImageView;
         tv_fragment_my_login = get(R.id.tv_fragment_my_login);
         tv_fragment_my_login.setOnClickListener(this);
         tv_fragment_my_text = get(R.id.tv_fragment_my_text);
+        LinearLayout  ll_fragment_my_love=get(R.id.ll_fragment_my_love);
+        LinearLayout  ll_fragment_my_recordd=get(R.id.ll_fragment_my_recordd);
+        ll_fragment_my_love.setOnClickListener(this);
+        ll_fragment_my_recordd.setOnClickListener(this);
         //获取登录用户名
         SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         username = login.getString("nickName", "");
@@ -96,6 +102,12 @@ import com.makeramen.roundedimageview.RoundedImageView;
             case R.id.ll_fragment_my_record:
                 Intent intent1 = new Intent(((MainActivity)context), IdeaActivity.class);
                 context.startActivity(intent1);
+                break;
+            case R.id.ll_fragment_my_recordd:
+                 context.startActivity(new Intent(context, RecordActivity.class));
+                break;
+            case R.id.ll_fragment_my_love:
+                context.startActivity(new Intent(context, MyLoveActivity.class));
                 break;
         }
     }

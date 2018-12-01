@@ -74,6 +74,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
         login_pwd.setText(et_register_pwd_get);
         //存登录的值
         login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+
     }
 
     @Override

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <RelativeLayout
+
+        android:paddingLeft="@dimen/dimens_cinema_40dp"
+        android:paddingRight="@dimen/dimens_cinema_40dp"
+        android:layout_marginTop="@dimen/dimens_personal_28dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_cinema_30dp">
+        <Button
+            android:textColor="@color/color_cinema_333333"
+            android:text="推荐影院"
+            android:visibility="gone"
+            android:id="@+id/tv_move__love_color"
+            android:background="@drawable/shape_cinema_near"
+            android:layout_width="@dimen/dimens_cinema_140dp"
+            android:layout_height="@dimen/dimens_cinema_30dp">
+
+        </Button>
+        <Button
+            android:textColor="@color/color_cinema_333333"
+            android:text="电影"
+            android:id="@+id/tv_move_love"
+            android:layout_width="@dimen/dimens_cinema_140dp"
+            android:background="@drawable/shape_cinema_hide"
+            android:layout_height="@dimen/dimens_cinema_30dp">
+        </Button>
+        <!--
+            附近
+        -->
+        <Button
+            android:textColor="@color/color_cinema_333333"
+            android:text="附近影院"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:id="@+id/tv_cinima_love_color"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_cinema_near"
+            android:layout_width="@dimen/dimens_cinema_140dp"
+            android:layout_height="@dimen/dimens_cinema_30dp"/>
+        <Button
+            android:textColor="@color/color_cinema_333333"
+            android:text="电影院"
+            android:layout_centerInParent="true"
+            android:id="@+id/tv_cinima_love"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_cinema_hide"
+            android:layout_width="@dimen/dimens_cinema_140dp"
+            android:layout_height="@dimen/dimens_cinema_30dp"/>
+
+
+    </RelativeLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_marginTop="@dimen/dimens_cinema_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vp_viewpager_love"/>
+</LinearLayout>
