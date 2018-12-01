@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:background="@drawable/movie_details_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:alpha="0.2"
+        android:id="@+id/sdv_movie_details_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_movie_details_image"
+            android:layout_width="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_30dp"
+            android:src="@drawable/movie_details" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_6dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_30dp"
+            android:layout_toRightOf="@+id/iv_movie_details_image"
+            android:text="电影详情"
+            android:textColor="@color/color_fragment_movie_FFFFFF"
+            android:textSize="@dimen/dimens_fragmen_movie_14sp" />
+
+        <ImageView
+            android:layout_width="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_30dp"
+            android:src="@drawable/movie_search_like" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_movie_details_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_70dp">
+
+        <TextView
+            android:id="@+id/tv_movie_details_moviename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/color_fragment_movie_FFFFFF"
+            android:textSize="@dimen/dimens_fragmen_movie_20sp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdv_movie_details_image"
+            android:layout_width="@dimen/dimens_fragmen_movie_450dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_700dp"
+            android:layout_below="@+id/tv_movie_details_moviename"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_30dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_movie_details_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_movie_details_bottom"
+        android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_40dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_movie_details_details"
+            android:layout_width="@dimen/dimens_fragmen_movie_58dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_32dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_movie_details_button"
+            android:text="详情"
+            android:textColor="@color/color_fragment_movie_FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_movie_details_foreshow"
+            android:layout_width="@dimen/dimens_fragmen_movie_58dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_32dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_movie_details_button"
+            android:text="预告"
+            android:textColor="@color/color_fragment_movie_FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_movie_details_stageshow"
+            android:layout_width="@dimen/dimens_fragmen_movie_58dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_32dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_movie_details_button"
+            android:text="剧照"
+            android:textColor="@color/color_fragment_movie_FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_movie_details_filmrevie"
+            android:layout_width="@dimen/dimens_fragmen_movie_58dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_32dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_movie_details_button"
+            android:text="影评"
+            android:textColor="@color/color_fragment_movie_FFFFFF" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_movie_details_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dimens_fragmen_movie_20dp"
+        android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_12dp">
+
+        <ImageView
+            android:id="@+id/iv_movie_details_back"
+            android:layout_width="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_60dp"
+            android:src="@drawable/moviesearch_back" />
+
+        <ImageView
+            android:id="@+id/iv_movie_details_buy"
+            android:layout_width="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/movie_details_publish" />
+    </RelativeLayout>
+    <!--剧情简介-->
+    <RelativeLayout
+        android:id="@+id/rl_movie_details_details"
+        android:layout_width="match_parent"
+        android:layout_height="900dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="850dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
+            android:background="@drawable/shape_movie_details_background">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimens_fragmen_movie_200dp"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_movie_details_details_movie_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_20dp"
+                    android:textColor="@color/color_fragment_movie_3333333"
+                    android:textSize="@dimen/dimens_fragmen_movie_12sp" />
+
+                <TextView
+                    android:id="@+id/tv_movie_details_details_movie_director"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dimens_fragmen_movie_10dp"
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+                    android:textColor="@color/color_fragment_movie_3333333"
+                    android:textSize="@dimen/dimens_fragmen_movie_12sp" />
+
+                <TextView
+                    android:id="@+id/tv_movie_details_details_movie_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dimens_fragmen_movie_10dp"
+                    android:textColor="@color/color_fragment_movie_3333333"
+                    android:textSize="@dimen/dimens_fragmen_movie_12sp" />
+
+                <TextView
+                    android:id="@+id/tv_movie_details_details_movie_placeOrigin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_fragment_movie_3333333"
+                    android:textSize="@dimen/dimens_fragmen_movie_12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_movie_details_details_down"
+                android:layout_width="@dimen/dimens_fragmen_movie_24dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/dimens_fragmen_movie_24dp"
+                android:src="@drawable/movie_details_dow" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+                android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_150dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="剧情简介"
+                    android:textSize="@dimen/dimens_fragmen_movie_16sp" />
+
+                <View
+                    android:layout_width="@dimen/dimens_fragmen_movie_30dp"
+                    android:layout_height="@dimen/dimens_fragmen_movie_3dp"
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_6dp"
+                    android:background="@drawable/shape_cinema_near" />
+
+                <TextView
+                    android:id="@+id/tv_movie_details_details_movie_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_20dp"
+                    android:ellipsize="end"
+                    android:lines="4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_20dp"
+                    android:text="演职人员"
+                    android:textSize="@dimen/dimens_fragmen_movie_16sp" />
+
+                <View
+                    android:layout_width="@dimen/dimens_fragmen_movie_30dp"
+                    android:layout_height="@dimen/dimens_fragmen_movie_3dp"
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_6dp"
+                    android:background="@drawable/shape_cinema_near" />
+
+                <TextView
+                    android:layout_width="@dimen/dimens_fragmen_movie_75dp"
+                    android:layout_height="@dimen/dimens_fragmen_movie_32dp"
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_12dp"
+                    android:background="@drawable/shape_movie_details_actor_name"
+                    android:gravity="center"
+                    android:text="演员名字"
+                    android:textColor="@color/color_fragment_movie_FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tv_movie_details_details_actor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_12dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdv_movie_details_details_image"
+            android:layout_width="@dimen/dimens_fragmen_movie_111dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_149dp"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+            fresco:roundedCornerRadius="@dimen/dimens_fragmen_movie_6dp" />
+    </RelativeLayout>
+
+
+    <!--预告-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rl_movie_details_foreshow"
+        android:layout_width="match_parent"
+        android:layout_height="850dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_movie_details_background">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="剧情简介"
+                android:textSize="@dimen/dimens_fragmen_movie_16sp" />
+
+            <View
+                android:layout_width="@dimen/dimens_fragmen_movie_30dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_3dp"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_6dp"
+                android:background="@drawable/shape_cinema_near" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_movie_details_foreshow"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_movie_details_foreshow_down"
+            android:layout_width="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/dimens_fragmen_movie_24dp"
+            android:src="@drawable/movie_details_dow" />
+    </RelativeLayout>
+    <!--剧照-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rl_movie_details_stageshow"
+        android:layout_width="match_parent"
+        android:layout_height="850dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_movie_details_background">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="剧情简介"
+                android:textSize="@dimen/dimens_fragmen_movie_16sp" />
+
+            <View
+                android:layout_width="@dimen/dimens_fragmen_movie_30dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_3dp"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_6dp"
+                android:background="@drawable/shape_cinema_near" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_gravity="center"
+                android:id="@+id/rv_movie_details_stageshow"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_movie_details_stageshow_down"
+            android:layout_width="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/dimens_fragmen_movie_24dp"
+            android:src="@drawable/movie_details_dow" />
+    </RelativeLayout>
+</RelativeLayout>

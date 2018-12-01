@@ -36,9 +36,15 @@ public class MovieTypeChildeAdapter extends RecyclerView.Adapter<MovieTypeChilde
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int i) {
         holder.textView.setText(list.get(i).getName());
         holder.imageView.setImageURI(list.get(i).getImageUrl());
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClick.Click(list.get(i).getId());
+            }
+        });
     }
 
     @Override
@@ -56,5 +62,15 @@ public class MovieTypeChildeAdapter extends RecyclerView.Adapter<MovieTypeChilde
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
         }
+    }
+
+    private OnClick onClick;
+
+    public void setOnClick(OnClick onClick) {
+        this.onClick = onClick;
+    }
+
+    public interface OnClick{
+        void Click(int id);
     }
 }

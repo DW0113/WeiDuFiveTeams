@@ -70,6 +70,12 @@ public class MovieTypeAdapter extends RecyclerView.Adapter<MovieTypeAdapter.MyVi
                 context.startActivity(intent);
             }
         });
+        adapter.setOnClick(new MovieTypeChildeAdapter.OnClick() {
+            @Override
+            public void Click(int id) {
+                onClick.Click(id);
+            }
+        });
     }
 
     private void setMovieChildAdapter(RecyclerView recyclerView, int position, Context context) {
@@ -104,5 +110,15 @@ public class MovieTypeAdapter extends RecyclerView.Adapter<MovieTypeAdapter.MyVi
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
         }
+    }
+
+    private OnClick onClick;
+
+    public void setOnClick(OnClick onClick) {
+        this.onClick = onClick;
+    }
+
+    public interface OnClick{
+        void Click(int id);
     }
 }

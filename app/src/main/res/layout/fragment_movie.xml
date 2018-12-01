@@ -74,4 +74,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </RelativeLayout>
+   <RelativeLayout
+       android:id="@+id/rl_movie_progress"
+       android:layout_marginTop="@dimen/dimens_fragmen_movie_200dp"
+       android:background="@color/color_fragment_movie_FFFFFF"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <ProgressBar
+           android:layout_centerInParent="true"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+   </RelativeLayout>
 </RelativeLayout>

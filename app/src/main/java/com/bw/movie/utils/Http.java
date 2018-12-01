@@ -1,9 +1,10 @@
 package com.bw.movie.utils;
 
 public class Http {
-    public final static String MOVIE_HOTMOIE = "http://172.17.8.100/movieApi/movie/v1/findHotMovieList?userId=18&sessionId=15320748258726&count=10&page=1";
-    public final static String MOVIE_ISHOT = "http://172.17.8.100/movieApi/movie/v1/findReleaseMovieList?userId=18&sessionId=15320748258726&count=10&page=1";
-    public final static String MOVIE_COMING_SOON = "http://172.17.8.100/movieApi/movie/v1/findComingSoonMovieList?userId=18&sessionId=15320748258726&count=10&page=1";
+    public final static String MOVIE_DETAILS="http://172.17.8.100/movieApi/movie/v1/findMoviesDetail?userId=18&sessionId=15320748258726&movieId=";
+    public final static String MOVIE_HOTMOIE = "http://172.17.8.100/movieApi/movie/v1/findHotMovieList?userId=18&sessionId=15320748258726&count=10&page=";
+    public final static String MOVIE_ISHOT = "http://172.17.8.100/movieApi/movie/v1/findReleaseMovieList?userId=18&sessionId=15320748258726&count=10&page=";
+    public final static String MOVIE_COMING_SOON = "http://172.17.8.100/movieApi/movie/v1/findComingSoonMovieList?userId=18&sessionId=15320748258726&count=10&page=";
     public final static String ACTIVITY_FEEDBACK="http://172.17.8.100/movieApi/tool/v1/verify/recordFeedBack?";
     public final static String ACTIVITY_RENEWAL="http://172.17.8.100/movieApi/tool/v1/findNewVersion?userId=2260&sessionId=15435612476682260&ak=01";
     public final static String ACTIVITY_MESSAGE="http://172.17.8.100/movieApi/tool/v1/verify/findUnreadMessageCount?userId=2260&sessionId=15435612476682260";

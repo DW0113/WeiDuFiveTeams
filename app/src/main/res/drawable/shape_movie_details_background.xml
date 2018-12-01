@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+  <solid android:color="@color/color_fragment_movie_FFFFFF"></solid>
+    <corners android:topLeftRadius="@dimen/dimens_fragmen_movie_10dp"
+        android:topRightRadius="@dimen/dimens_fragmen_movie_10dp"
+        ></corners>
+</shape>

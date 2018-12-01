@@ -18,7 +18,7 @@ import com.bw.movie.mvp.view.AppDelegate;
  */
 public class StartActivityPresnter extends AppDelegate{
     private Context context;
-    private int time= 2;
+    private int time= 0;
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
