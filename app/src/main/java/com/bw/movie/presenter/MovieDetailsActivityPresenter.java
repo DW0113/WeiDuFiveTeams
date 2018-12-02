@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.speech.RecognitionListener;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -24,8 +25,11 @@ import com.bw.movie.utils.HttpHelper;
 import com.bw.movie.utils.SimpDrawViewUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.List;
+
+import cn.jzvd.Jzvd;
 
 public class MovieDetailsActivityPresenter extends AppDelegate implements View.OnClickListener {
     private Context context;
@@ -54,6 +58,9 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
     private MovieDetailsForemShowAdapter foremShowAdapter;
     private MovieDetailsStageShowAdapter stageShowAdapter;
     private SimpleDraweeView sdv_movie_details_background;
+    private ImageView iv_movie_details_filmrevie_down;
+    private XRecyclerView xrv_movie_details_filmrevie;
+    private RelativeLayout rl_movie_details_filmrevie;
 
     @Override
     public int getLayoutId() {
@@ -83,6 +90,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
         setOnClick(this,R.id.iv_movie_details_details_down);
         setOnClick(this,R.id.iv_movie_details_foreshow_down);
         setOnClick(this,R.id.iv_movie_details_stageshow_down);
+        setOnClick(this,R.id.iv_movie_details_filmrevie_down);
         //设置预告片布局管理器
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         rv_movie_details_foreshow.setLayoutManager(linearLayoutManager);
@@ -93,9 +101,12 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
         rv_movie_details_stageshow.setLayoutManager(staggeredGridLayoutManager);
         stageShowAdapter = new MovieDetailsStageShowAdapter(context);
         rv_movie_details_stageshow.setAdapter(stageShowAdapter);
-
+        //设置影评布局管理器
+        LinearLayoutManager linearLayoutManager_ilmrevie = new LinearLayoutManager(context);
+        xrv_movie_details_filmrevie.setLayoutManager(linearLayoutManager_ilmrevie);
     }
     private void initView() {
+        sdv_movie_details_background = get(R.id.sdv_movie_details_background);
         rl_movie_details_details = get(R.id.rl_movie_details_details);
         tv_movie_details_details_actor_name = get(R.id.tv_movie_details_details_actor_name);
         tv_movie_details_details_movie_desc = get(R.id.tv_movie_details_details_movie_desc);
@@ -105,20 +116,24 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
         sdv_movie_details_details_image = get(R.id.sdv_movie_details_details_image);
         tv_movie_details_moviename = get(R.id.tv_movie_details_moviename);
         sdv_movie_details_image = get(R.id.sdv_movie_details_image);
-        btn_movie_details_filmrevie = get(R.id.btn_movie_details_filmrevie);
-        btn_movie_details_foreshow = get(R.id.btn_movie_details_foreshow);
-        btn_movie_details_stageshow = get(R.id.btn_movie_details_stageshow);
         iv_movie_details_back = get(R.id.iv_movie_details_back);
         iv_movie_details_buy = get(R.id.iv_movie_details_buy);
         tv_movie_details_details_movie_type = get(R.id.tv_movie_details_details_movie_type);
+        //预告
+        btn_movie_details_foreshow = get(R.id.btn_movie_details_foreshow);
         iv_movie_details_foreshow_down = get(R.id.iv_movie_details_foreshow_down);
         rv_movie_details_foreshow = get(R.id.rv_movie_details_foreshow);
         rl_movie_details_foreshow = get(R.id.rl_movie_details_foreshow);
+        //剧照
+        btn_movie_details_stageshow = get(R.id.btn_movie_details_stageshow);
         rl_movie_details_stageshow = get(R.id.rl_movie_details_stageshow);
         iv_movie_details_stageshow_down = get(R.id.iv_movie_details_stageshow_down);
         rv_movie_details_stageshow = get(R.id.rv_movie_details_stageshow);
-        sdv_movie_details_background = get(R.id.sdv_movie_details_background);
-
+        //影评
+        btn_movie_details_filmrevie = get(R.id.btn_movie_details_filmrevie);
+        iv_movie_details_filmrevie_down = get(R.id.iv_movie_details_filmrevie_down);
+        xrv_movie_details_filmrevie = get(R.id.xrv_movie_details_filmrevie);
+        rl_movie_details_filmrevie = get(R.id.rl_movie_details_filmrevie);
     }
 
     //请求电影详情数据
@@ -139,7 +154,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
                 tv_movie_details_details_movie_director.setText("导演："+movieDetailsBean.getResult().getDirector());
                 tv_movie_details_details_movie_duration.setText("时长："+movieDetailsBean.getResult().getDuration());
                 tv_movie_details_details_movie_placeOrigin.setText("产地："+movieDetailsBean.getResult().getPlaceOrigin());
-                foremShowAdapter.setList(movieDetailsBean.getResult().getShortFilmList());
+                foremShowAdapter.setList(movieDetailsBean);
                 stageShowAdapter.setList(movieDetailsBean.getResult().getPosterList());
             }
 
@@ -167,8 +182,16 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
                 objectAnimator_details_select.setDuration(1000);
                 objectAnimator_details_select.start();
                 break;
+            case R.id.iv_movie_details_filmrevie_down:
+                ObjectAnimator objectAnimator_filmrevie = ObjectAnimator.ofFloat(rl_movie_details_filmrevie,"translationY",0,1800);
+                objectAnimator_filmrevie.setDuration(1000);
+                objectAnimator_filmrevie.start();
+                break;
             case R.id.btn_movie_details_filmrevie:
-
+                rl_movie_details_details.setVisibility(View.VISIBLE);
+                ObjectAnimator objectAnimator_filmrevie_select = ObjectAnimator.ofFloat(rl_movie_details_filmrevie,"translationY",1800,0);
+                objectAnimator_filmrevie_select.setDuration(1000);
+                objectAnimator_filmrevie_select.start();
                 break;
             case R.id.iv_movie_details_foreshow_down:
                 ObjectAnimator objectAnimator_foreshow = ObjectAnimator.ofFloat(rl_movie_details_foreshow,"translationY",0,1800);
@@ -194,4 +217,9 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
                 break;
         }
     }
+
+    public void setVieo() {
+        Jzvd.releaseAllVideos();
+    }
 }
+

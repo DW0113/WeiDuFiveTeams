@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
         <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_margin="@dimen/dimens_fragmen_movie_10dp"
             android:id="@+id/sdv_movie_stage_show_item"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             fresco:roundedCornerRadius="@dimen/dimens_fragmen_movie_8dp" />
 </RelativeLayout>

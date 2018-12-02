@@ -22,7 +22,7 @@ import java.util.List;
 public class Cinema_Near_Pesenter extends AppDelegate {
 
     private XRecyclerView mRecyclerView;
-    private String url = "http://172.17.8.100/movieApi/cinema/v1/findRecommendCinemas";
+    private String url = "movieApi/cinema/v1/findRecommendCinemas";
     private CinemaAdapter adapter;
 
     @Override

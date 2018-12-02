@@ -93,7 +93,7 @@ import okhttp3.RequestBody;
                 .add("sex",et_register_sex_get+"")
                 .add("pwd2",decrypt)
                 .build();
-               new HttpHelper().post("http://mobile.bwstudent.com/movieApi/user/v1/registerUser",requestBody).result(new HttpHelper.Httplistenner() {
+               new HttpHelper().post("movieApi/user/v1/registerUser",requestBody).result(new HttpHelper.Httplistenner() {
                     @Override
                     public void success(String data) {
 

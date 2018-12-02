@@ -25,7 +25,7 @@ public class HttpHelper {
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url(url)
+                .url(Http.BASE_URL+url)
                 .build();
         try {
             doHttp(client, request);
@@ -79,7 +79,7 @@ public class HttpHelper {
     public HttpHelper post(String url, FormBody body){
         OkHttpClient client = new OkHttpClient();
         Request request=new Request.Builder()
-                .url(url)
+                .url(Http.BASE_URL+url)
                 .post(body)
                 .build();
         try {

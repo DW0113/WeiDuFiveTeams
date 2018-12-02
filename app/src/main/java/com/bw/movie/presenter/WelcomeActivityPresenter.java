@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.LoginActivity;
 import com.bw.movie.activity.MainActivity;
 import com.bw.movie.activity.WelcomeActivity;
 import com.bw.movie.adapter.WelcomeAdapter;
@@ -46,7 +47,7 @@ public class WelcomeActivityPresenter extends AppDelegate {
         flag = sp.getBoolean("flag", false);
         //判断是否是首次登录，非首次登录直接跳转
         if (flag){
-            Intent intent = new Intent(((WelcomeActivity)context), MainActivity.class);
+            Intent intent = new Intent(((WelcomeActivity)context), LoginActivity.class);
             context.startActivity(intent);
             ((WelcomeActivity) context).finish();
             return;

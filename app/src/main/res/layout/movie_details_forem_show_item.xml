@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <VideoView
-        android:id="@+id/vv_movie_details_adapter_item"
+    <cn.jzvd.JzvdStd
         android:layout_marginBottom="@dimen/dimens_fragmen_movie_20dp"
+        android:id="@+id/videoplayer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimens_fragmen_movie_150dp" />
+        android:layout_height="200dp"/>
 </RelativeLayout>

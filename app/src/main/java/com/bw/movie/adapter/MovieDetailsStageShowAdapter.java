@@ -5,12 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.bw.movie.R;
-import com.bw.movie.model.MovieDetailsBean;
+import com.bw.movie.utils.ScreenUtil;
 import com.bw.movie.utils.UitlsToos;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.tencent.android.tpush.horse.Tools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +34,9 @@ public class MovieDetailsStageShowAdapter extends RecyclerView.Adapter<MovieDeta
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.simpleDraweeView.setImageURI(list.get(position));
-        UitlsToos.setControllerListener(holder.simpleDraweeView,list.get(position),150);
-    }
+        //holder.simpleDraweeView.setImageURI(list.get(position));
+        UitlsToos.setControllerListener(holder.simpleDraweeView,list.get(position),800);
+        ScreenUtil.getScreenWidth(context);     }
 
     @Override
     public int getItemCount() {

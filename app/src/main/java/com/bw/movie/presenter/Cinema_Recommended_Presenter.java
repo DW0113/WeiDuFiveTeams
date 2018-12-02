@@ -63,7 +63,7 @@ public class Cinema_Recommended_Presenter extends AppDelegate {
     }
     //请求数据
     private void recommendedHttp() {
-        new HttpHelper().get("http://172.17.8.100/movieApi/cinema/v1/findAllCinemas?page="+1+"&count="+30).result(new HttpHelper.Httplistenner() {
+        new HttpHelper().get("movieApi/cinema/v1/findAllCinemas?page="+1+"&count="+30).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
 

@@ -23,7 +23,7 @@ public class Utility {
     public Utility(){
         Retrofit retrofit=new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl("http://172.17.8.100/movieApi/user/v1/")
+                .baseUrl(Http.BASE_URL)
                 .build();
         mBaseService=retrofit.create(BaseService.class);
     }

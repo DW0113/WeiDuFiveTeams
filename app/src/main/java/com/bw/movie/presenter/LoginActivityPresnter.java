@@ -113,7 +113,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
                 .add("phone",login_phone_get)
                 .add("pwd",decrypt)
                 .build();
-        new HttpHelper().post("http://mobile.bwstudent.com/movieApi/user/v1/login",requestBody).result(new HttpHelper.Httplistenner() {
+        new HttpHelper().post("movieApi/user/v1/login",requestBody).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
                 Toast.makeText(context,""+data,Toast.LENGTH_LONG).show();
