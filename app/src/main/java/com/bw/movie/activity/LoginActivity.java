@@ -13,10 +13,4 @@ public class LoginActivity extends BaseActivityPresenter<LoginActivityPresnter> 
         return LoginActivityPresnter.class;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(LoginActivity.this,"走了吗",Toast.LENGTH_LONG).show();
-
-    }
 }

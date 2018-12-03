@@ -20,6 +20,7 @@ import com.bw.movie.R;
 import com.bw.movie.activity.LoginActivity;
 import com.bw.movie.activity.MyLoveActivity;
 import com.bw.movie.activity.RecordActivity;
+import com.bw.movie.activity.Sign_in_Activity;
 import com.bw.movie.adapter.Personal_confidence_Activity;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -34,6 +35,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
     private TextView tv_fragment_my_text;
     private String username;
     private LinearLayout ll_fragment_my_information;
+    private ImageView iv_fragment_my_sign_in;
 
     @Override
     public int getLayoutId() {
@@ -59,6 +61,8 @@ import com.makeramen.roundedimageview.RoundedImageView;
         tv_fragment_my_login = get(R.id.tv_fragment_my_login);
         tv_fragment_my_login.setOnClickListener(this);
         tv_fragment_my_text = get(R.id.tv_fragment_my_text);
+        iv_fragment_my_sign_in = get(R.id.iv_fragment_my_Sign_in);
+        iv_fragment_my_sign_in.setOnClickListener(this);
         LinearLayout  ll_fragment_my_love=get(R.id.ll_fragment_my_love);
         LinearLayout  ll_fragment_my_recordd=get(R.id.ll_fragment_my_recordd);
         ll_fragment_my_love.setOnClickListener(this);
@@ -95,8 +99,13 @@ import com.makeramen.roundedimageview.RoundedImageView;
                 context.startActivity(intent);
                 break;
             case R.id.ll_fragment_my_information:
+                if(TextUtils.isEmpty(username)) {
+                    context.startActivity(new Intent(context, LoginActivity.class));
+                }
+                else{
+                    context.startActivity(new Intent(context, Personal_confidence_Activity.class));
+                }
 
-                context.startActivity(new Intent(context, Personal_confidence_Activity.class));
                 break;
             case R.id.ll_fragment_my_record:
                 Intent intent1 = new Intent(((MainActivity)context), IdeaActivity.class);
@@ -107,6 +116,9 @@ import com.makeramen.roundedimageview.RoundedImageView;
                 break;
             case R.id.ll_fragment_my_love:
                 context.startActivity(new Intent(context, MyLoveActivity.class));
+                break;
+            case R.id.iv_fragment_my_Sign_in:
+                    context.startActivity(new Intent(context, Sign_in_Activity.class));
                 break;
         }
     }

@@ -157,6 +157,7 @@ import static android.app.Activity.RESULT_OK;
                 setPhoto();
                 break;
 
+
         }
     }
 
