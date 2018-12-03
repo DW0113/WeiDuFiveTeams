@@ -23,8 +23,8 @@ import com.bw.movie.mvp.view.AppDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * 作者：秦永聪
+/**
+ * 作者：刘进
  *日期：2018/11/27
  * */
 public class CinemaFragmentPresenter extends AppDelegate implements View.OnClickListener {

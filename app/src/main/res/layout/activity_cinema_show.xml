@@ -56,8 +56,14 @@
         android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
         android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
         android:layout_marginTop="@dimen/dimens_fragmen_movie_85dp" />
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_marginTop="@dimen/dimens_cinema_140dp"
+        android:layout_below="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/relativeLayout"
         android:layout_alignParentBottom="true"
         android:background="@drawable/shape_show_animation"
@@ -70,12 +76,16 @@
             android:layout_height="@dimen/dimens_cinema_40dp">
 
             <TextView
+                android:id="@+id/details"
+                android:textSize="@dimen/dimens_cinema_20dp"
                 android:text="详情"
                 android:layout_marginLeft="@dimen/dimens_cinema_80dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/comment"
+                android:textSize="@dimen/dimens_cinema_20dp"
                 android:layout_centerVertical="true"
                 android:text="评价"
                 android:layout_alignParentRight="true"

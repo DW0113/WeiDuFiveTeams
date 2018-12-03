@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,14 +16,23 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.activity.CinemaShowActivity;
+import com.bw.movie.adapter.BannerAdapter;
 import com.bw.movie.adapter.CinemaAdapter;
 import com.bw.movie.adapter.CinemaBannerAdapter;
 import com.bw.movie.adapter.MovieTypeAdapter;
+
+import com.bw.movie.adapter.QueryMovieAdapter;
+import com.bw.movie.fragment.CinemaComment;
+import com.bw.movie.fragment.CinemaDetails;
+import com.bw.movie.model.BannerBean;
 import com.bw.movie.model.CinemaItemBean;
+import com.bw.movie.model.DetailsBean;
+import com.bw.movie.model.MovieAndCinemaBean;
 import com.bw.movie.model.MovieBean;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.Http;
@@ -29,13 +41,14 @@ import com.bw.movie.utils.HttpListener;
 import com.bw.movie.utils.Utility;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import recycler.coverflow.RecyclerCoverFlow;
 
-/*
+/**
  *作者：刘进
  *日期：2018/11/29
  **/
@@ -45,14 +58,18 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
     private String id;
     private ImageView mImage;
     private TextView mName,mAddress;
-    private ImageView test;
     private RecyclerCoverFlow rc_movie_banner;
     private CinemaBannerAdapter adapter;
-    private ImageView iv_hide;
     private RelativeLayout details_show;
-    //private TableLayout mTablayout;
     private ViewPager mViewPager;
-
+    private TextView mComment,mDateils;
+    private ImageView iv_hide;
+    private List<Fragment> mList;
+    private BannerAdapter bannerAdapter;
+    private RecyclerView mMovieRecyclerView;
+    private QueryMovieAdapter movieAdapter;
+    private String url = "http://172.17.8.100/movieApi/movie/v1/findMovieScheduleList";
+    private SharedPreferences preferences;
 
     @Override
     public int getLayoutId() {
@@ -68,8 +85,11 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
     public void initData() {
         details_show = get(R.id.relativeLayout);
         iv_hide = get(R.id.iv_hide);
-        setOnClick(this,R.id.iv_hide);
+        setOnClick(this,R.id.iv_hide
+        );
+        //详情
 //        test = get(R.id.test);
+
         //初始化控件
         mViewPager = get(R.id.vp_viewpager);
         //初始化控件
@@ -87,33 +107,85 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
         rc_movie_banner = get(R.id.rc_movie_banner);
         //设置布局管理器
         LinearLayoutManager manager = new LinearLayoutManager(context);
-        adapter = new CinemaBannerAdapter(context);
-        rc_movie_banner.setAdapter(adapter);
 
-        bannerHttp();
+         bannerAdapter = new BannerAdapter(context);
+         rc_movie_banner.setAdapter(bannerAdapter);
+
         //Intent
         Intent intent = ((CinemaShowActivity) context).getIntent();
          id = intent.getStringExtra("id");
+
+        bannerHttp(id);
         //Toast.makeText(context, ""+id, Toast.LENGTH_SHORT).show();
         //取数据
         login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         String userId = login.getString("userId", "");
         String sessionId = login.getString("sessionId", "");
         Http();
+        //初始化控件详情和评价
+        mComment = get(R.id.comment);
+        mDateils = get(R.id.details);
+        mList = new ArrayList<>();
+        mList.add(new CinemaDetails());
+        mList.add(new CinemaComment());
+        //
+        //查询影院里的电影
+        mMovieRecyclerView = get(R.id.recyclerView);
+         movieAdapter = new QueryMovieAdapter(context);
+        LinearLayoutManager linearLayoutManage = new LinearLayoutManager(context);
+        mMovieRecyclerView.setLayoutManager(linearLayoutManage);
+        mMovieRecyclerView.setAdapter(movieAdapter);
+
+        //适配器
+        MyAdapter myAdapter = new MyAdapter(((CinemaShowActivity) context).getSupportFragmentManager());
+        mViewPager.setAdapter(myAdapter);
+
+        bannerAdapter.click(new BannerAdapter.setOnClickLisnear() {
+            @Override
+            public void getClick(int movieId) {
+                movieHttp(id,movieId);
+            }
+        });
+        movieHttp(id,1);
+
     }
 
-    private void bannerHttp() {
-        new HttpHelper().get(Http.MOVIE_ISHOT+1).result(new HttpHelper.Httplistenner() {
+    private void movieHttp(String id,int movieId) {
+
+        Map<String,String> map = new HashMap<>();
+        map.put("cinemasId",id);
+        map.put("movieId",movieId+"");
+        new Utility().get(url,map).result(new HttpListener() {
             @Override
             public void success(String data) {
-                Gson gson = new Gson();
-                MovieBean movieBean = gson.fromJson(data, MovieBean.class);
-                List<MovieBean.ResultBean> isHotList = movieBean.getResult();
-                adapter.setList(isHotList);
+                //Toast.makeText(context, data+"", Toast.LENGTH_SHORT).show();
+                MovieAndCinemaBean movieAndCinemaBean = new Gson().fromJson(data, MovieAndCinemaBean.class);
+                List<MovieAndCinemaBean.ResultBean> movieData = movieAndCinemaBean.getResult();
+                movieAdapter.setList(movieData);
             }
 
             @Override
-            public void error(String error) {
+            public void fail(String error) {
+
+            }
+        });
+    }
+
+
+    private void bannerHttp(final String id) {
+        Map map=new HashMap<>();
+        map.put("cinemaId",id);
+        new Utility().get("movieApi/movie/v1/findMovieListByCinemaId",map).result(new HttpListener() {
+            @Override
+            public void success(String data) {
+                Gson gson = new Gson();
+                BannerBean movieBean = gson.fromJson(data, BannerBean.class);
+                List<BannerBean.ResultBean> result = movieBean.getResult();
+                bannerAdapter.setList(result);
+            }
+
+            @Override
+            public void fail(String error) {
 
             }
         });
@@ -154,7 +226,7 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
                 break;
         }
     }
-
+    //打开
     private void showShopCar() {
         int heightPixels = context.getResources().getDisplayMetrics().heightPixels;
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(details_show, "translationY", heightPixels, 0);
@@ -175,6 +247,25 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
                 details_show.setVisibility(View.GONE);
             }
         }, 1000);
+
+    }
+    //
+    class MyAdapter extends FragmentPagerAdapter{
+
+        public MyAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            return mList.get(i);
+        }
+
+        @Override
+        public int getCount() {
+            return mList.size();
+        }
+
 
     }
 }
