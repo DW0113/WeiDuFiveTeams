@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_suitable_cinema_item"
+        android:layout_marginBottom="@dimen/dimens_fragmen_movie_20dp"
+        android:background="@drawable/shape_suitable_cinema_item_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            fresco:actualImageScaleType="center"
+            android:id="@+id/sdv_suitable_cinema_item_logo"
+            android:layout_width="@dimen/dimens_fragmen_movie_100dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_100dp"
+            android:layout_margin="@dimen/dimens_fragmen_movie_10dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_fragmen_movie_100dp"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_toRightOf="@+id/sdv_suitable_cinema_item_logo">
+
+            <TextView
+                android:textColor="@color/color_fragment_movie_000000"
+                android:id="@+id/tv_suitable_cinema_item_cinemaname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+                android:textSize="@dimen/dimens_fragmen_movie_16sp" />
+
+            <TextView
+                android:textColor="@color/color_fragment_movie_000000"
+                android:id="@+id/tv_suitable_cinema_item_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_suitable_cinema_item_cinemaname"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:textColor="@color/color_fragment_movie_000000"
+                    android:id="@+id/tv_suitable_cinema_item_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp" />
+
+                <ImageView
+                    android:id="@+id/iv_suitable_cinema_item_like"
+                    android:layout_width="@dimen/dimens_fragmen_movie_24dp"
+                    android:layout_height="@dimen/dimens_fragmen_movie_24dp"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

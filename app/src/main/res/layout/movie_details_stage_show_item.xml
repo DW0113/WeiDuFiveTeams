@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
         <com.facebook.drawee.view.SimpleDraweeView
+            android:scaleType="fitXY"
             android:layout_margin="@dimen/dimens_fragmen_movie_10dp"
             android:id="@+id/sdv_movie_stage_show_item"
             android:layout_width="match_parent"
