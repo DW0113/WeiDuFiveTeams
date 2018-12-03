@@ -235,7 +235,7 @@ import static android.app.Activity.RESULT_OK;
         String sessionId = login.getString("sessionId", "");
         Toast.makeText(context,userld+"jj"+sessionId,Toast.LENGTH_LONG).show();
         Map<String,String> map = new HashMap<>();
-       // map.put("uid",s.getString("uid",""));
+        // map.put("uid",s.getString("uid",""));
         map.put("userld",userld);
         map.put("sessionId",sessionId);
         new Utility().part("/verify/uploadHeadPic",map,part).result(new HttpListener() {
@@ -253,7 +253,6 @@ import static android.app.Activity.RESULT_OK;
 
             @Override
             public void fail(String error) {
-
             }
         });
 

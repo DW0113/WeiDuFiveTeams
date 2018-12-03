@@ -5,6 +5,8 @@ import java.util.Map;
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
@@ -21,16 +23,22 @@ import retrofit2.http.Url;
  **/
 public interface BaseService {
     @GET
+    @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
     Observable<ResponseBody> get(@Url String url, @QueryMap Map<String, String> map);
 
     @POST
     Observable<ResponseBody> post(@Url String url, @QueryMap Map<String, String> map);
+    @POST
+    Observable<ResponseBody> postHead(@Url String url, @QueryMap Map<String, String> map,@HeaderMap Map<String,String> mapHead);
+    @FormUrlEncoded
+    @POST
+    @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
+    Observable<ResponseBody> postform(@Url String url, @FieldMap Map<String,String> mapfied, @HeaderMap Map<String,String> mapHead);
 
     @Multipart
     @POST
     Observable<ResponseBody> part(@Url String url, @HeaderMap Map<String, String> map, @Part MultipartBody.Part pay);
     @GET
-    Observable<ResponseBody> getheader(@Url String url,@HeaderMap Map<String,String> map);
-    @GET
-    Observable<ResponseBody> getrecord(@Url String url,@HeaderMap Map<String,String> map,@QueryMap Map<String,String> map1);
+    Observable<ResponseBody> getheader(@Url String url,@QueryMap Map<String, String> map,@HeaderMap Map<String,String> maphead);
+
 }

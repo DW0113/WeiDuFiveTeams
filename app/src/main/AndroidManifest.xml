@@ -47,12 +47,12 @@
             android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.ChooseActivity"/>
+        <activity android:name=".activity.VersionSuccessActivity"/>
         <activity android:name=".activity.CinemaShowActivity"/>
         <activity android:name=".activity.Sign_in_Activity"/>
         <activity android:name=".activity.MyLoveActivity"/>
         <activity android:name=".activity.RecordActivity"/>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="b0c3dcc1c07976dc0d570d1e18505ef9">
-
         </meta-data>
     </application>
 
