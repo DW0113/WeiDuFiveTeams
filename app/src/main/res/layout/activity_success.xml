@@ -6,29 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".activity.SuccessActivity">
     <TextView
+        android:textSize="@dimen/dimens_fragment_my_14sp"
         android:text="意见反馈"
-        android:layout_margin="@dimen/dimens_fragment_my_20dp"
+        android:layout_margin="@dimen/dimens_fragment_my_30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageView
+        android:id="@+id/iv_success_activity_img"
+        android:layout_marginTop="@dimen/dimens_cinema_140dp"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/ll_activity_success"
         android:src="@drawable/frament_my_success"
-        android:layout_width="@dimen/dimens_cinema_90dp"
-        android:layout_height="@dimen/dimens_cinema_90dp" />
+        android:layout_width="@dimen/dimens_fragmen_movie_70dp"
+        android:layout_height="@dimen/dimens_fragmen_movie_70dp" />
     <LinearLayout
         android:layout_margin="@dimen/dimens_fragment_my_10dp"
         android:id="@+id/ll_activity_success"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/iv_success_activity_img"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:text="反馈成功"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:textSize="@dimen/dimens_fragmen_movie_12dp"
             android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
             android:text="感谢您对维度影院的关注与支持,我们会认真处理您的反馈,尽快修复和完善相关功能."
             android:layout_gravity="center_horizontal"
@@ -36,9 +40,10 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
     <ImageView
+        android:id="@+id/iv_success_activity_result"
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/dimens_cinema_20dp"
         android:src="@drawable/idea_activity_back"
-        android:layout_width="@dimen/dimens_cinema_90dp"
-        android:layout_height="@dimen/dimens_cinema_90dp" />
+        android:layout_width="@dimen/dimens_cinema_60dp"
+        android:layout_height="@dimen/dimens_cinema_60dp" />
 </RelativeLayout>

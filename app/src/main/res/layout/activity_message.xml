@@ -7,21 +7,22 @@
     android:orientation="vertical"
     tools:context=".activity.MessageActivity">
     <RelativeLayout
+        android:id="@+id/ll_activity_message"
         android:layout_weight="1"
-        android:padding="10dp"
+        android:padding="@dimen/dimens_fragment_my_6dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_fragment_my_0dp">
         <TextView
-            android:layout_alignParentBottom="true"
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:id="@+id/tv_activity_message_messages"
             android:text="系统消息"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tv_activity_message_unread"
-            android:layout_alignParentBottom="true"
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:layout_marginLeft="@dimen/dimens_fragment_my_6dp"
             android:layout_toRightOf="@+id/tv_activity_message_messages"
             android:text="(3条未读）"
@@ -34,13 +35,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_fragment_my_0dp">
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_16dp"
+            android:textSize="@dimen/dimens_fragment_my_22dp"
             android:id="@+id/tv_activity_message_buyticket"
             android:text="购票信息"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:id="@+id/tv_activity_message_buyticket2"
             android:layout_marginTop="@dimen/dimens_fragment_my_6dp"
             android:layout_below="@+id/tv_activity_message_buyticket"
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dimens_fragment_my_6dp"/>
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_cinema_14sp"
             android:layout_alignParentRight="true"
             android:id="@+id/tv_activity_message_time"
             android:text="13:01"
@@ -68,13 +69,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_fragment_my_0dp">
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_16dp"
+            android:textSize="@dimen/dimens_fragment_my_22dp"
             android:id="@+id/tv_activity_message_movie"
             android:text="电影信息"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:id="@+id/tv_activity_message_movie2"
             android:layout_marginTop="@dimen/dimens_fragment_my_6dp"
             android:layout_below="@+id/tv_activity_message_movie"
@@ -83,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_cinema_14sp"
             android:layout_alignParentRight="true"
             android:text="08:00"
             android:layout_width="wrap_content"
@@ -102,14 +103,14 @@
         android:padding="@dimen/dimens_fragment_my_6dp">
 
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_16dp"
+            android:textSize="@dimen/dimens_fragment_my_22dp"
             android:id="@+id/tv_activity_message_remind1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="提醒信息" />
 
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:layout_marginBottom="@dimen/dimens_fragment_my_6dp"
             android:id="@+id/tv_activity_message_remind3"
             android:layout_width="wrap_content"
@@ -120,7 +121,7 @@
 
         <TextView
             android:id="@+id/tv_activity_message_timeyear"
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_cinema_14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -137,13 +138,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_fragment_my_0dp">
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_16dp"
+            android:textSize="@dimen/dimens_fragment_my_22dp"
             android:id="@+id/tv_activity_message_Videos"
             android:text="电影信息"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:layout_marginBottom="@dimen/dimens_fragment_my_6dp"
             android:id="@+id/tv_activity_message_Videos2"
             android:layout_marginTop="@dimen/dimens_fragment_my_6dp"
@@ -152,7 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_cinema_14sp"
             android:layout_alignParentRight="true"
             android:text="08:00"
             android:layout_width="wrap_content"
@@ -169,13 +170,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_fragment_my_0dp">
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_16dp"
+            android:textSize="@dimen/dimens_fragment_my_22dp"
             android:id="@+id/tv_activity_message_remind2"
             android:text="提醒信息"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:layout_marginBottom="@dimen/dimens_fragment_my_6dp"
             android:id="@+id/tv_activity_message_remind5"
             android:layout_marginTop="@dimen/dimens_fragment_my_6dp"
@@ -185,7 +186,7 @@
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tv_activity_message_yeardaytime"
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_cinema_14sp"
             android:layout_alignParentRight="true"
             android:text="10-11 14:20"
             android:layout_width="wrap_content"
@@ -203,13 +204,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_fragment_my_0dp">
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_16dp"
+            android:textSize="@dimen/dimens_fragment_my_22dp"
             android:id="@+id/tv_activity_message_buyticket3"
             android:text="购票信息"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:id="@+id/tv_activity_message_buyticket4"
             android:layout_marginTop="@dimen/dimens_fragment_my_6dp"
             android:layout_below="@+id/tv_activity_message_buyticket3"
@@ -218,7 +219,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_cinema_14sp"
             android:layout_alignParentRight="true"
             android:text="13:01"
             android:layout_width="wrap_content"
@@ -235,13 +236,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_fragment_my_0dp">
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_16dp"
+            android:textSize="@dimen/dimens_fragment_my_22dp"
             android:id="@+id/tv_activity_message_Videos3"
             android:text="电影信息"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_fragment_my_16dp"
             android:layout_marginBottom="@dimen/dimens_fragment_my_6dp"
             android:id="@+id/tv_activity_message_Videos4"
             android:layout_marginTop="@dimen/dimens_fragment_my_6dp"
@@ -250,7 +251,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textSize="@dimen/dimens_fragment_my_12dp"
+            android:textSize="@dimen/dimens_cinema_14sp"
             android:layout_alignParentRight="true"
             android:text="08:00"
             android:layout_width="wrap_content"
@@ -266,6 +267,6 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/dimens_fragment_my_10dp"
         android:src="@drawable/idea_activity_back"
-        android:layout_width="@dimen/dimens_fragment_my_80dp"
-        android:layout_height="@dimen/dimens_fragment_my_80dp" />
+        android:layout_width="@dimen/dimens_fragment_my_60dp"
+        android:layout_height="@dimen/dimens_fragment_my_60dp" />
 </LinearLayout>

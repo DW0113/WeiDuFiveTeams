@@ -16,10 +16,15 @@ import com.bw.movie.activity.SuccessActivity;
 import com.bw.movie.model.IdeaBean;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.Http;
-import com.bw.movie.utils.HttpHelper;
+import com.bw.movie.utils.HttpListener;
+import com.bw.movie.utils.Utility;
 import com.google.gson.Gson;
 
-import okhttp3.FormBody;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.MultipartBody;
+
 
 /**
  * 作者：马利亚
@@ -30,7 +35,7 @@ public class IdeaActivityPresenter extends AppDelegate implements View.OnClickLi
     private Context context;
     private EditText ed_activity_idea_edtxt;
     private Button bt_idea_activity_btn;
-
+    private SharedPreferences login;
 
 
     @Override
@@ -53,17 +58,20 @@ public class IdeaActivityPresenter extends AppDelegate implements View.OnClickLi
 
     }
 
-    private void doHttpIdea(String userId, String sessionId, String content) {
-        FormBody build = new FormBody.Builder()
-                .add("userId",userId)
-                .add("sessionId",sessionId)
-                .add("content",content).build();
-        new HttpHelper().post(Http.ACTIVITY_FEEDBACK,build).result(new HttpHelper.Httplistenner() {
+
+    private void doHttpIdea(String userId, String sessionId,String content){
+        Map<String,String> formmap = new HashMap<>();
+        formmap.put("content",content);
+        Map<String,String> maphead = new HashMap<>();
+        maphead.put("userId",userId);
+        maphead.put("sessionId",sessionId);
+
+        new Utility().postform("movieApi/tool/v1/verify/recordFeedBack",formmap,maphead).result(new HttpListener() {
             @Override
             public void success(String data) {
                 IdeaBean ideaBean = new Gson().fromJson(data, IdeaBean.class);
-                String message = ideaBean.getMessage();
-                if (message.equals("注册成功")){
+                String message = ideaBean.getStatus();
+                if (message.equals("0000")){
                     Intent intent = new Intent(((IdeaActivity)context), SuccessActivity.class);
                     context.startActivity(intent);
                 }else {
@@ -72,10 +80,13 @@ public class IdeaActivityPresenter extends AppDelegate implements View.OnClickLi
             }
 
             @Override
-            public void error(String error) {
+            public void fail(String error) {
+                Toast.makeText(context,error,Toast.LENGTH_LONG).show();
+
 
             }
         });
+
     }
 
     private void init() {
@@ -95,13 +106,13 @@ public class IdeaActivityPresenter extends AppDelegate implements View.OnClickLi
                 //判断是否为空
                 if (TextUtils.isEmpty(content)){
                     Toast.makeText(context,"您还没有输入哦",Toast.LENGTH_LONG).show();
-                    return;
+
+                }else {
+                    login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+                    String userld = login.getString("userld", "");
+                    String sessionId = login.getString("sessionId", "");
+                    doHttpIdea(userld, sessionId, content);
                 }
-                SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
-                String  userld = login.getString("userld","");
-                String sessionId = login.getString("sessionId", "");
-                Log.i("aa",userld+sessionId+content);
-                doHttpIdea(userld,sessionId,content);
                 break;
         }
     }

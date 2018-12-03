@@ -71,6 +71,48 @@ public class Utility {
                 .subscribe(observer);
         return this;
     }
+    //postform请求
+    public Utility postform(String url, Map<String,String> mapform,Map<String,String> maphead){
+        if(mapform==null){
+            mapform=new HashMap<>();
+        }
+        if(maphead==null){
+            maphead=new HashMap<>();
+        }
+        mBaseService.postform(url,mapform,maphead)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+    //posthead请求
+    public Utility posthead(String url, Map<String,String> map,Map<String,String> maphead){
+        if(map==null){
+            map=new HashMap<>();
+        }
+        if(maphead==null){
+            maphead=new HashMap<>();
+        }
+        mBaseService.postHead(url,map,maphead)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+    //gethead请求
+    public Utility gethead(String url, Map<String,String> map,Map<String,String> maphead){
+        if(map==null){
+            map=new HashMap<>();
+        }
+        if(maphead==null){
+            maphead=new HashMap<>();
+        }
+        mBaseService.getheader(url,map,maphead)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
     //part
     public Utility part(String url, Map<String,String> map, MultipartBody.Part part){
         if(map==null){
