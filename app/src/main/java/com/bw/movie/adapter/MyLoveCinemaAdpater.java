@@ -17,11 +17,11 @@ import java.util.List;
 /*
  * 作者：秦永聪
  *日期：2018/12/1
- * */public class MyLoveMoveAdpater extends RecyclerView.Adapter<MyLoveMoveAdpater.MyViewhodel> {
+ * */public class MyLoveCinemaAdpater extends RecyclerView.Adapter<MyLoveCinemaAdpater.MyViewhodel> {
     private Context context;
-    private List<MyLove.ResultBean.MovieListBean> moveList;
+    private List<MyLove.ResultBean.CinemasListBean> moveList;
 
-    public MyLoveMoveAdpater(Context context, List<MyLove.ResultBean.MovieListBean> moveList) {
+    public MyLoveCinemaAdpater(Context context,List<MyLove.ResultBean.CinemasListBean> moveList) {
         this.context = context;
         this.moveList = moveList;
     }
@@ -36,7 +36,7 @@ import java.util.List;
 
     @Override
     public void onBindViewHolder(@NonNull MyViewhodel myViewhodel, int i) {
-         myViewhodel.tv_cinema_address.setText(moveList.get(i).getSummary());
+         myViewhodel.tv_cinema_address.setText(moveList.get(i).getAddress());
          myViewhodel.tv_cinema_name.setText(moveList.get(i).getName());
          Glide.with(context).load(moveList.get(i).toString()).into(myViewhodel.iv_cinema_logo);
     }

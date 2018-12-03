@@ -31,5 +31,6 @@ public interface BaseService {
     Observable<ResponseBody> part(@Url String url, @HeaderMap Map<String, String> map, @Part MultipartBody.Part pay);
     @GET
     Observable<ResponseBody> getheader(@Url String url,@HeaderMap Map<String,String> map);
-
+    @GET
+    Observable<ResponseBody> getrecord(@Url String url,@HeaderMap Map<String,String> map,@QueryMap Map<String,String> map1);
 }

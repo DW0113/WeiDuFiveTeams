@@ -72,6 +72,7 @@
         android:layout_height="@dimen/dimens_fragment_my_40dp">
 
         <CheckBox
+            android:id="@+id/cb_remember_the_password"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -83,10 +84,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <CheckBox
+            android:id="@+id/cb_Automatic_login"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+
             android:layout_weight="1"
             android:layout_marginLeft="@dimen/dimens_fragment_my_2dp"
             android:textColor="@color/color_fragment_my_FFFFFF"

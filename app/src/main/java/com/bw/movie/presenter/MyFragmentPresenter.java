@@ -81,7 +81,6 @@ import com.makeramen.roundedimageview.RoundedImageView;
         switch (view.getId()){
             //点击登录
             case R.id.tv_fragment_my_login:
-                Toast.makeText(context,"姓名："+username,Toast.LENGTH_LONG).show();
                 //判断是否登录
                 if(TextUtils.isEmpty(username)){
 

@@ -49,6 +49,16 @@ public class Utility {
                 .subscribe(observer);
         return this;
     }
+    public Utility getrecord(String url, Map<String,String> map,Map<String,String> map1){
+        if(map==null){
+            map=new HashMap<>();
+        }
+        mBaseService.get(url,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
 
     //post请求
     public Utility post(String url, Map<String,String> map){

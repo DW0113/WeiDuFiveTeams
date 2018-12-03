@@ -126,7 +126,7 @@ import static android.app.Activity.RESULT_OK;
         switch (view.getId()){
             case R.id.tv_login_exit:
                 login.edit().putString("phone","")
-                        .putString("pwd","")
+                        .putString("login_pwd_get","")
                         .putString("sex","")
                         .putString("email","")
                         .putString("birthday","")

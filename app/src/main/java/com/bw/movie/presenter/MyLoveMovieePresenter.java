@@ -2,12 +2,14 @@ package com.bw.movie.presenter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.adapter.MyLoveMoveAdpater;
 import com.bw.movie.model.MyLove;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.HttpHelper;
@@ -25,6 +27,8 @@ import java.util.Map;
  *日期：2018/11/30
  * */public class MyLoveMovieePresenter extends AppDelegate {
      private    List<MyLove.ResultBean.MovieListBean> moveList=new ArrayList<>();
+    private MyLoveMoveAdpater myLoveMoveAdpater;
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_mylove_move;
@@ -41,7 +45,6 @@ import java.util.Map;
 
         SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         String userld = login.getString("userld", "");
-        Toast.makeText(context,""+userld,Toast.LENGTH_LONG).show();
         String sessionId = login.getString("sessionId", "");
        if(TextUtils.isEmpty(userld)){
            Toast.makeText(context,"请先登录",Toast.LENGTH_LONG).show();
@@ -49,6 +52,15 @@ import java.util.Map;
        }
        else{
            dohttp(userld,sessionId);
+       }
+       if(moveList.size()==0&&moveList==null){
+           Toast.makeText(context,"目前还没有关注的电影",Toast.LENGTH_LONG).show();
+       }
+       else{
+           myLoveMoveAdpater = new MyLoveMoveAdpater(context, moveList);
+           rv_love_move.setAdapter(myLoveMoveAdpater);
+           LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+           rv_love_move.setLayoutManager(linearLayoutManager);
        }
 
     }
@@ -61,9 +73,16 @@ import java.util.Map;
                @Override
                public void success(String data) {
                    MyLove myLove = new Gson().fromJson(data, MyLove.class);
-                   List<MyLove.ResultBean.MovieListBean> moveListt = myLove.getResult().getMovieList();
-                    moveList.addAll(moveListt);
+                   MyLove.ResultBean result = myLove.getResult();
+                  if(result==null){
+                      Toast.makeText(context,"目前还没有关注的",Toast.LENGTH_LONG).show();
+                      return;
+                  }
+                   List<MyLove.ResultBean.MovieListBean> movieListt = result.getMovieList();
+                   //   List<MyLove.ResultBean.MovieListBean> moveListt = myLove.getResult().getMovieList();
 
+                   moveList.addAll(movieListt);
+                   myLoveMoveAdpater.notifyDataSetChanged();
                }
 
                @Override
