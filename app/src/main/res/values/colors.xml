@@ -33,6 +33,7 @@
     <color name="color_fragment_movie_999999">#999999</color>
     <color name="color_fragment_movie_b11450">#b11450</color>
     <color name="color_fragment_movie_000000">#000000</color>
+    <color name="color_fragment_movie_60FFFFFF">#40ffffff</color>
     <!--影院页面-->
     <color name="color_cinema_ffffff">#ffffff</color>
     <color name="color_cinema_333333">#333333</color>

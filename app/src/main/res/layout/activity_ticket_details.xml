@@ -1,31 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <RelativeLayout
-        android:layout_marginTop="@dimen/dimens_fragmen_movie_30dp"
-        android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv_ticket_details_cinemaname"
-            android:textSize="@dimen/dimens_fragmen_movie_18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
+        android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_30dp">
+
+        <RelativeLayout
+            android:id="@+id/ll_ticket_details_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_ticket_details_cinemaname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dimens_fragmen_movie_24sp" />
+
+            <TextView
+                android:textSize="@dimen/dimens_fragmen_movie_18sp"
+                android:id="@+id/tv_ticket_details_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_ticket_details_cinemaname"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+               />
+
+            <ImageView
+                android:id="@+id/iv_ticket_details_location"
+                android:layout_width="@dimen/dimens_fragmen_movie_24dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ticket_details_navigation" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
-            android:layout_below="@+id/tv_ticket_details_cinemaname"
-            android:id="@+id/tv_ticket_details_location"
-            android:textSize="@dimen/dimens_fragmen_movie_18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/rl_ticket_details_movie_details"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_fragmen_movie_164dp"
+            android:layout_below="@+id/ll_ticket_details_top"
+            android:background="@drawable/ticekt_details_background">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_centerVertical="true"
+                fresco:roundedCornerRadius="@dimen/dimens_fragmen_movie_5dp"
+                android:layout_marginLeft="@dimen/dimens_fragmen_movie_10dp"
+                android:id="@+id/sdv_ticket_details_movieimage"
+                android:layout_width="@dimen/dimens_fragmen_movie_100dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_130dp"
+                android:layout_marginRight="@dimen/dimens_fragmen_movie_20dp"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp" />
+            <LinearLayout
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_20dp"
+                android:layout_toRightOf="@+id/sdv_ticket_details_movieimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/color_fragment_movie_FFFFFF"
+                    android:id="@+id/tv_ticket_details_movie_name"
+                    android:textSize="@dimen/dimens_fragmen_movie_20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+                    android:textColor="@color/color_fragment_movie_FFFFFF"
+                    android:id="@+id/tv_ticket_details_movie_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+                    android:textColor="@color/color_fragment_movie_FFFFFF"
+                    android:id="@+id/tv_ticket_details_movie_director"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+                    android:textColor="@color/color_fragment_movie_FFFFFF"
+                    android:id="@+id/tv_ticket_details_movie_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+                    android:textColor="@color/color_fragment_movie_FFFFFF"
+                    android:id="@+id/tv_ticket_details_movie_placeOrigin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_ticket_details_movie"
+            android:layout_below="@+id/rl_ticket_details_movie_details"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
         <ImageView
-            android:layout_width="@dimen/dimens_fragmen_movie_24dp"
-            android:layout_height="@dimen/dimens_fragmen_movie_24dp" />
-    </RelativeLayout>
+            android:id="@+id/iv_ticket_details_movie_back"
+            android:layout_marginBottom="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/moviesearch_back"
+            android:layout_width="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_60dp" />
     </RelativeLayout>
 </RelativeLayout>

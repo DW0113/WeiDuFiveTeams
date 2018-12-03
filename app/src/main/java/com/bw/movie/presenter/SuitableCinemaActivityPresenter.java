@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
@@ -32,6 +33,7 @@ public class SuitableCinemaActivityPresenter extends AppDelegate {
     private int movieId;
     private SuitableCinemaAdapter cinemaAdapter;
     private String movieName;
+    private ImageView iv_suitable_cinema_movie_back;
 
     @Override
     public int getLayoutId() {
@@ -52,12 +54,19 @@ public class SuitableCinemaActivityPresenter extends AppDelegate {
         //初始化控件
         tv_suitable_cinema_movie_name = get(R.id.tv_suitable_cinema_movie_name);
         rv_suitable_cinema_movie = get(R.id.rv_suitable_cinema_movie);
+        iv_suitable_cinema_movie_back = get(R.id.iv_suitable_cinema_movie_back);
         //设置布局管理器
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         rv_suitable_cinema_movie.setLayoutManager(linearLayoutManager);
         cinemaAdapter = new SuitableCinemaAdapter(context);
         rv_suitable_cinema_movie.setAdapter(cinemaAdapter);
         tv_suitable_cinema_movie_name.setText(movieName);
+        iv_suitable_cinema_movie_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((SuitableCinemaActivity) context).finish();
+            }
+        });
         //请求网络数据
         doHttp(movieId);
     }
@@ -70,7 +79,7 @@ public class SuitableCinemaActivityPresenter extends AppDelegate {
                 SuitableCinemaBean suitableCinemaBean = gson.fromJson(data, SuitableCinemaBean.class);
                 List<SuitableCinemaBean.ResultBean> result = suitableCinemaBean.getResult();
                 Log.i("aaa",suitableCinemaBean+"");
-                cinemaAdapter.setList(result);
+                cinemaAdapter.setList(result,movieId,movieName);
             }
 
             @Override

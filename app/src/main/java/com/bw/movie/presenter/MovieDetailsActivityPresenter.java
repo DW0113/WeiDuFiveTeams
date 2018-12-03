@@ -8,6 +8,7 @@ import android.graphics.Movie;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -90,6 +91,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
         //获取电影Id
         Intent intent = ((MovieDetailsActivity) context).getIntent();
         movieId = intent.getIntExtra("movieId", 1);
+
         //获取用户信息
         sp = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         userld = sp.getString("userld", "");
@@ -197,8 +199,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
 
     //请求电影详情数据
     private void doHttpDetails(int id) {
-        new HttpHelper().get(Http.MOVIE_DETAILS+id).result(new HttpHelper.Httplistenner() {
-
+        new HttpHelper().get(Http.MOVIE_DETAILS+"userId="+userld+"&sessionId="+sessionId+"&movieId="+movieId).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
                 Gson gson = new Gson();
