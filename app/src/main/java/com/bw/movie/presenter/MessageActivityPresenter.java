@@ -100,6 +100,9 @@ public class MessageActivityPresenter extends AppDelegate implements View.OnClic
 
     }
     //查询系统消息列表
+
+
+    //hynuu
     private void doHttpMesssageLists(String userld, String sessionId) {
         Map<String,String> map=new HashMap<>();
         map.put("userId",userld);
