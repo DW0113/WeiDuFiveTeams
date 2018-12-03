@@ -140,7 +140,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
     }
     //影片评论列表请求网络数据
     private void doHttpFilMrevie(int page) {
-        new HttpHelper().get(Http.MOVIE_FILMREVIE+"&userld="+userld+"&sessionId="+sessionId+"&movieId="+movieId+"&page="+page).result(new HttpHelper.Httplistenner() {
+        new HttpHelper().get(Http.MOVIE_FILMREVIE+"&userId="+userld+"&sessionId="+sessionId+"&movieId="+movieId+"&page="+page).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
                 Gson gson = new Gson();
@@ -149,7 +149,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
                 if (page == 1){
                     resultBeanList.clear();
                 }
-                if (movieFilmrevieBean.getMessage().equals("查询成功")){
+                if (movieFilmrevieBean.getMessage().equals("查询成功")&&!movieFilmrevieBean.getResult().isEmpty()){
                     resultBeanList.addAll(movieFilmrevieBean.getResult());
                 }
                 filMrevieAdapter.setList(resultBeanList);

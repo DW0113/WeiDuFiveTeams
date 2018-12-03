@@ -63,7 +63,7 @@ public class SuitableCinemaActivityPresenter extends AppDelegate {
     }
 
     private void doHttp(int movieId) {
-        new HttpHelper().get(Http.SUITABLE_CINEMA+"movieId="+movieId).result(new HttpHelper.Httplistenner() {
+        new HttpHelper().get(Http.SUITABLE_CINEMA+"&movieId="+movieId).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
                 Gson gson = new Gson();
