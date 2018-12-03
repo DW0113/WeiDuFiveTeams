@@ -62,7 +62,7 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/sdv_movie_details_image"
             android:layout_width="@dimen/dimens_fragmen_movie_450dp"
-            android:layout_height="@dimen/dimens_fragmen_movie_700dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_600dp"
             android:layout_below="@+id/tv_movie_details_moviename"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimens_fragmen_movie_30dp" />

@@ -39,9 +39,9 @@ public class MovieDetailsForemShowAdapter extends RecyclerView.Adapter<MovieDeta
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.videoplayer.setUp(movieDetailsBean.getResult()
-                .getShortFilmList()
-                .get(position)
-                .getVideoUrl(),
+                        .getShortFilmList()
+                        .get(position)
+                        .getVideoUrl(),
                 movieDetailsBean
                 .getResult()
                 .getName(),

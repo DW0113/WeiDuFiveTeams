@@ -70,7 +70,7 @@ public class MovieFragmentPresenter extends AppDelegate {
             @Override
             public void Click(int id) {
                 Intent intent = new Intent(((MainActivity)context), MovieDetailsActivity.class);
-                intent.putExtra("id",id);
+                intent.putExtra("movieId",id);
                 context.startActivity(intent);
             }
         });
