@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bw.movie">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!--允许程序打开网络套接字-->
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--允许程序设置内置sd卡的写权限-->
+    <!-- 允许程序打开网络套接字 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 允许程序设置内置sd卡的写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--允许程序获取网络状态-->
+    <!-- 允许程序获取网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--允许程序访问WiFi网络信息-->
+    <!-- 允许程序访问WiFi网络信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--允许程序读写手机状态和身份-->
+    <!-- 允许程序读写手机状态和身份 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -22,9 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
-
-        </activity>
+        <activity android:name=".activity.MainActivity"></activity>
         <activity android:name=".activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,28 +32,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WelcomeActivity"></activity>
-        <activity android:name=".activity.MessageActivity"></activity>
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.RegisterActivity"/>
-        <activity android:name=".activity.CinemaSearchActivity"/>
-        <activity android:name=".activity.CinemaMapActivity"/>
-        <activity android:name=".activity.IdeaActivity"></activity>
-        <activity android:name=".activity.SuccessActivity"></activity>
-        <activity android:name=".activity.MovieSearchActivity"></activity>
-        <activity android:name=".adapter.Personal_confidence_Activity"/>
-        <activity android:name=".activity.MovieDetailsActivity"
+        <activity android:name=".activity.WelcomeActivity" />
+        <activity android:name=".activity.MessageActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.CinemaSearchActivity" />
+        <activity android:name=".activity.IdeaActivity" />
+        <activity android:name=".activity.SuccessActivity" />
+        <activity android:name=".activity.MovieSearchActivity" />
+        <activity android:name=".adapter.Personal_confidence_Activity" />
+        <activity
+            android:name=".activity.MovieDetailsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"
-            ></activity>
-        <activity android:name=".activity.ChooseActivity"/>
-        <activity android:name=".activity.VersionSuccessActivity"/>
-        <activity android:name=".activity.CinemaShowActivity"/>
-        <activity android:name=".activity.TicketDetailsActivity"></activity>
-        <activity android:name=".activity.SuitableCinemaActivity"></activity>
-        <activity android:name=".activity.TicketDetailsActivity"></activity>
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="b0c3dcc1c07976dc0d570d1e18505ef9">
-        </meta-data>
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.ChooseActivity" />
+        <activity android:name=".activity.CinemaShowActivity" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="b0c3dcc1c07976dc0d570d1e18505ef9"></meta-data>
+
+        <activity android:name=".activity.MapActivity"></activity>
     </application>
 
 </manifest>

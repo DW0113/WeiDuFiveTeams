@@ -128,6 +128,7 @@
     <dimen name="dimens_cinema_20dp">20dp</dimen>
     <dimen name="dimens_cinema_48dp">48dp</dimen>
     <dimen name="dimens_cinema_14sp">14sp</dimen>
+    <dimen name="dimens_cinema_340dp">340dp</dimen>
 
     <!--个人信息页面-->
     <dimen name="dimens_personal_45dp">45dp</dimen>

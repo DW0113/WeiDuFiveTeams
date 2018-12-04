@@ -125,6 +125,8 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
         //初始化控件详情和评价
         mComment = get(R.id.comment);
         mDateils = get(R.id.details);
+        mComment.setOnClickListener(this);
+        mDateils.setOnClickListener(this);
         mList = new ArrayList<>();
         mList.add(new CinemaDetails());
         mList.add(new CinemaComment());
@@ -223,6 +225,12 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
         switch (view.getId()){
             case R.id.iv_hide:
                 hintShopCar();
+                break;
+            case R.id.comment:
+                mViewPager.setCurrentItem(1);
+                break;
+            case R.id.details:
+                mViewPager.setCurrentItem(0);
                 break;
         }
     }
