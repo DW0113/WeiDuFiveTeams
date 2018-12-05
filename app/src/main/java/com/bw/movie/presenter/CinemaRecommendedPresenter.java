@@ -19,7 +19,7 @@ import java.util.List;
  *作者：刘进
  *日期：2018/11/28
  **/
-public class Cinema_Recommended_Presenter extends AppDelegate {
+public class CinemaRecommendedPresenter extends AppDelegate {
 
     private XRecyclerView recommendedRecyclerView;
     private RecommendedAdapter adapter;

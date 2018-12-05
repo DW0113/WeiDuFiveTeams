@@ -21,7 +21,9 @@ import java.util.List;
 
 public class SuitableCinemaAdapter extends RecyclerView.Adapter<SuitableCinemaAdapter.MyViewHolder> {
     private Context context;
+    private int movieId;
     private List<SuitableCinemaBean.ResultBean> list = new ArrayList<>();
+    private String movieName;
 
     public SuitableCinemaAdapter(Context context) {
         this.context = context;
@@ -51,9 +53,11 @@ public class SuitableCinemaAdapter extends RecyclerView.Adapter<SuitableCinemaAd
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(((SuitableCinemaActivity)context), TicketDetailsActivity.class);
-                intent.putExtra("imageUrl",list.get(position).getLogo());
                 intent.putExtra("cinemaName",list.get(position).getName());
                 intent.putExtra("location",list.get(position).getAddress());
+                intent.putExtra("movieId",movieId);
+                intent.putExtra("cinemasId",list.get(position).getId());
+                intent.putExtra("movieName",movieName);
                 context.startActivity(intent);
             }
         });
@@ -64,8 +68,10 @@ public class SuitableCinemaAdapter extends RecyclerView.Adapter<SuitableCinemaAd
         return list.size();
     }
 
-    public void setList(List<SuitableCinemaBean.ResultBean> list) {
+    public void setList(List<SuitableCinemaBean.ResultBean> list, int movieId, String movieName) {
         this.list = list;
+        this.movieId = movieId;
+        this.movieName=movieName;
         notifyDataSetChanged();
     }
 

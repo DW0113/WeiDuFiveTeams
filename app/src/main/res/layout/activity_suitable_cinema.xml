@@ -12,7 +12,7 @@
     <TextView
         android:textColor="@color/color_fragment_movie_000000"
         android:id="@+id/tv_suitable_cinema_movie_name"
-        android:textSize="@dimen/dimens_fragmen_movie_18sp"
+        android:textSize="@dimen/dimens_fragmen_movie_24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
         <TextView
@@ -22,7 +22,7 @@
             android:layout_below="@+id/tv_suitable_cinema_movie_name"
             android:textColor="@color/color_fragment_movie_b11450"
             android:text="选择合适的影院"
-            android:textSize="@dimen/dimens_fragmen_movie_10sp"
+            android:textSize="@dimen/dimens_fragmen_movie_15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <android.support.v7.widget.RecyclerView
@@ -32,5 +32,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </RelativeLayout>
-
+    <ImageView
+        android:id="@+id/iv_suitable_cinema_movie_back"
+        android:src="@drawable/moviesearch_back"
+        android:layout_margin="@dimen/dimens_fragmen_movie_20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="@dimen/dimens_fragmen_movie_60dp"
+        android:layout_height="@dimen/dimens_fragmen_movie_60dp" />
 </RelativeLayout>

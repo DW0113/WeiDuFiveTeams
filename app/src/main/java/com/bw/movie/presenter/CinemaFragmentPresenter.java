@@ -11,13 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.bw.movie.R;
-import com.bw.movie.activity.CinemaMapActivity;
 import com.bw.movie.activity.MainActivity;
-import com.bw.movie.fragment.Cinema_Near;
-import com.bw.movie.fragment.Cinema_Recommended;
+import com.bw.movie.activity.MapActivity;
+import com.bw.movie.fragment.CinemaNear;
+import com.bw.movie.fragment.CinemaRecommended;
 import com.bw.movie.mvp.view.AppDelegate;
 
 import java.util.ArrayList;
@@ -71,8 +70,8 @@ public class CinemaFragmentPresenter extends AppDelegate implements View.OnClick
         );
         hide = get(R.id.relativeLayout_hide);
 
-        cinemaList.add(new Cinema_Recommended());
-        cinemaList.add(new Cinema_Near());
+        cinemaList.add(new CinemaRecommended());
+        cinemaList.add(new CinemaNear());
        // showNear.setOnClickListener(this);
         setClick(0);
         MyAdpater myAdpater =new MyAdpater(((MainActivity)context).getSupportFragmentManager());
@@ -143,7 +142,7 @@ public class CinemaFragmentPresenter extends AppDelegate implements View.OnClick
                 vp_cinema_viewpager.setCurrentItem(1);
                 break;
             case R.id.iv_cinema_position:
-                context.startActivity(new Intent(context, CinemaMapActivity.class));
+                context.startActivity(new Intent(context, MapActivity.class));
                 break;
 
         }
