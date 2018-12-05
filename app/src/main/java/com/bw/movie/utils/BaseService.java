@@ -29,16 +29,34 @@ public interface BaseService {
     @POST
     Observable<ResponseBody> post(@Url String url, @QueryMap Map<String, String> map);
     @POST
-    Observable<ResponseBody> postHead(@Url String url, @QueryMap Map<String, String> map,@HeaderMap Map<String,String> mapHead);
+    Observable<ResponseBody> postHead(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String, String> mapHead);
     @FormUrlEncoded
     @POST
     @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
-    Observable<ResponseBody> postform(@Url String url, @FieldMap Map<String,String> mapfied, @HeaderMap Map<String,String> mapHead);
+    Observable<ResponseBody> postform(@Url String url, @FieldMap Map<String, String> mapfied, @HeaderMap Map<String, String> mapHead);
 
     @Multipart
     @POST
     Observable<ResponseBody> part(@Url String url, @HeaderMap Map<String, String> map, @Part MultipartBody.Part pay);
     @GET
-    Observable<ResponseBody> getheader(@Url String url,@QueryMap Map<String, String> map,@HeaderMap Map<String,String> maphead);
+    @Headers({"ak:0110010010000","Content-Type:application/x-www-form-urlencoded"})
+    Observable<ResponseBody> getheader(@Url String url, @QueryMap Map<String, String> map, @HeaderMap Map<String, String> maphead);
+
+	
+	
+	@FormUrlEncoded
+    @POST
+    @Headers({
+            "ak:0110010010000",
+            "Content-Type:application/x-www-form-urlencoded"
+    })
+    Observable<ResponseBody> give(@HeaderMap Map<String, String> m, @Url String url, @FieldMap Map<String, String> map);
+    @FormUrlEncoded
+    @POST
+    Observable<ResponseBody> postupdate(@HeaderMap Map<String, String> m, @Url String url, @FieldMap Map<String, String> map);
+    @FormUrlEncoded
+    @GET
+    Observable<ResponseBody> getcinema(@HeaderMap Map<String, String> m, @Url String url, @FieldMap Map<String, String> map);
+
 
 }

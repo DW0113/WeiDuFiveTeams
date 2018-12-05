@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
+import com.bw.movie.model.LoveCinemaBean;
 import com.bw.movie.model.MyLove;
 
 import java.util.List;
@@ -19,9 +20,9 @@ import java.util.List;
  *日期：2018/12/1
  * */public class MyLoveCinemaAdpater extends RecyclerView.Adapter<MyLoveCinemaAdpater.MyViewhodel> {
     private Context context;
-    private List<MyLove.ResultBean.CinemasListBean> moveList;
+    private  List<LoveCinemaBean.ResultBean>  moveList;
 
-    public MyLoveCinemaAdpater(Context context,List<MyLove.ResultBean.CinemasListBean> moveList) {
+    public MyLoveCinemaAdpater(Context context, List<LoveCinemaBean.ResultBean>  moveList) {
         this.context = context;
         this.moveList = moveList;
     }
@@ -38,7 +39,7 @@ import java.util.List;
     public void onBindViewHolder(@NonNull MyViewhodel myViewhodel, int i) {
          myViewhodel.tv_cinema_address.setText(moveList.get(i).getAddress());
          myViewhodel.tv_cinema_name.setText(moveList.get(i).getName());
-         Glide.with(context).load(moveList.get(i).toString()).into(myViewhodel.iv_cinema_logo);
+         Glide.with(context).load(moveList.get(i).getLogo()).into(myViewhodel.iv_cinema_logo);
     }
 
     @Override

@@ -159,6 +159,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
                 LoginBean loginBean = new Gson().fromJson(data, LoginBean.class);
                 if(loginBean.getStatus().equals("0000")){
                     LoginBean.ResultBean.UserInfoBean userInfo = loginBean.getResult().getUserInfo();
+                   Toast.makeText(context,""+userInfo.getNickName()+""+userInfo.getPhone()+""+userInfo.getBirthday(),Toast.LENGTH_LONG).show();
                     login.edit().putString("nickName",userInfo.getNickName())
                             .putString("phone",userInfo.getPhone())
                             .putString("sex",userInfo.getSex()+"")

@@ -10,17 +10,17 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.bw.movie.R;
-import com.bw.movie.adapter.Personal_confidence_Activity;
+import com.bw.movie.activity.Personal_confidence_Activity;
+import com.bw.movie.activity.Sign_in_Activity;
 import com.bw.movie.model.Upload_picture;
 import com.bw.movie.mvp.view.AppDelegate;
-import com.bw.movie.utils.HttpHelper;
 import com.bw.movie.utils.HttpListener;
 import com.bw.movie.utils.Utility;
 import com.google.gson.Gson;
@@ -65,6 +65,17 @@ import static android.app.Activity.RESULT_OK;
     private ImageView im_persenter_heand;
     private static String path = "/sdcard/myHead/";// sd路径
     private Bitmap head;
+    private TextView tv_personal_username;
+    private View tv_personal_sex;
+    private EditText et_personal_sex;
+    private EditText et_personal_username;
+    private String username;
+    private String sex1;
+    private String sessionId;
+    private String userld;
+    private String sex2;
+    private String email;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_personal_confidence;
@@ -77,6 +88,9 @@ import static android.app.Activity.RESULT_OK;
 
     @Override
     public void initData() {
+        SharedPreferences register = context.getSharedPreferences("register", Context.MODE_PRIVATE);
+        email = register.getString("et_register_email_get", "");
+
         //存值
         login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
       //找控件
@@ -89,11 +103,19 @@ import static android.app.Activity.RESULT_OK;
         tv_persenter_username = get(R.id.tv_personal_username);
         im_persenter_sex = get(R.id.im_persenter_sex);
         tv_persenter_sex = get(R.id.tv_personal_sex);
-
+        et_personal_sex = get(R.id.et_personal_sex);
+        et_personal_username = get(R.id.et_personal_username);
         im_persenter_phone = get(R.id.im_persenter_phone);
         tv_persenter_phone = get(R.id.tv_personal_phone);
         im_persenter_birthday = get(R.id.im_persenter_birthday);
         tv_persenter_birthday = get(R.id.tv_personal_birthday);
+        ImageView im_persenter_banck= get(R.id.im_persenter_banck);
+        im_persenter_banck.setOnClickListener(this);
+        //编辑
+        tv_personal_username = get(R.id.tv_personal_username);
+        tv_personal_sex = get(R.id.tv_personal_sex);
+        im_persenter_username.setOnClickListener(this);
+        im_persenter_sex.setOnClickListener(this);
         //点击事件
         tv_login_exit.setOnClickListener(this);
         tv_login_the_complete.setOnClickListener(this);
@@ -104,6 +126,8 @@ import static android.app.Activity.RESULT_OK;
         sex = login.getString("sex", "");
         birthday = login.getString("birthday", "");
         headpic = login.getString("headpic", "");
+        sessionId =login.getString("sessionId", "");
+        userld =login.getString("userld", "");
         im_persenter_heand.setOnClickListener(this);
         Assignment();
     }
@@ -111,19 +135,25 @@ import static android.app.Activity.RESULT_OK;
     private void Assignment() {
         if(sex.contains("1")){
             tv_persenter_sex.setText("男");
+            et_personal_sex.setText("男");
         }
         else if(sex.contains("2")){
             tv_persenter_sex.setText("女");
+            et_personal_sex.setText("女");
         }
         tv_persenter_birthday.setText(birthday+"");
 
         tv_persenter_phone.setText(phone+"");
         tv_persenter_username.setText(nickName);
+        et_personal_username.setText(nickName);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.im_persenter_banck:
+                ((Personal_confidence_Activity)context).finish();
+                break;
             case R.id.tv_login_exit:
                 login.edit().putString("phone","")
                         .putString("login_pwd_get","")
@@ -151,13 +181,57 @@ import static android.app.Activity.RESULT_OK;
                 im_persenter_sex.setVisibility(View.GONE);
                 im_persenter_username.setVisibility(View.GONE);
                 im_persenter_heand1.setVisibility(View.GONE);
-
+                username = et_personal_username.getText().toString().trim();
+                sex1 = et_personal_sex.getText().toString().trim();
+                dohttp();
                 break;
             case R.id.im_persenter_heand:
                 setPhoto();
                 break;
+            case R.id.im_persenter_username:
+                tv_personal_username.setText("");
+                tv_personal_username.setVisibility(View.GONE);
+                et_personal_username.setVisibility(View.VISIBLE);
+
+                break;
+            case R.id.im_persenter_sex:
+                tv_persenter_sex.setText("");
+                tv_persenter_sex.setVisibility(View.GONE);
+                et_personal_sex.setVisibility(View.VISIBLE);
+
+                break;
 
         }
+    }
+
+    private void dohttp() {
+        Map m=new HashMap<>();
+        m.put("userId",userld);
+        m.put("sessionId",sessionId);
+        Map map=new HashMap<>();
+        if(sex1.equals("男")){
+            sex2="1";
+        }else{
+            sex2="2";
+        }
+        map.put("nickName",username);
+        map.put("sex",sex2);
+        map.put("email",email);
+        new Utility().postupdate(m,"movieApi/user/v1/verify/modifyUserInfo",map).result(new HttpListener() {
+         @Override
+         public void success(String data) {
+             Toast.makeText(context,"修改成功",Toast.LENGTH_LONG).show();
+             login.edit().putString("nickName",username)
+                     .putString("sex",sex1)
+                     .commit();
+         }
+
+         @Override
+         public void fail(String error) {
+
+         }
+     });
+
     }
 
     private void setPhoto() {
@@ -235,12 +309,12 @@ import static android.app.Activity.RESULT_OK;
         Toast.makeText(context,userld+"jj"+sessionId,Toast.LENGTH_LONG).show();
         Map<String,String> map = new HashMap<>();
         // map.put("uid",s.getString("uid",""));
-        map.put("userld",userld);
+        map.put("userId",userld);
         map.put("sessionId",sessionId);
-        new Utility().part("/verify/uploadHeadPic",map,part).result(new HttpListener() {
+        new Utility().part("/movieApi/user/v1/verify/uploadHeadPic",map,part).result(new HttpListener() {
             @Override
             public void success(String data) {
-              Toast.makeText(context,"jj",Toast.LENGTH_LONG).show();
+                Toast.makeText(context, data+"", Toast.LENGTH_SHORT).show();
                 Gson gson = new Gson();
                 Upload_picture upload_picture = gson.fromJson(data, Upload_picture.class);
 
@@ -252,6 +326,7 @@ import static android.app.Activity.RESULT_OK;
 
             @Override
             public void fail(String error) {
+
             }
         });
 
@@ -320,5 +395,16 @@ import static android.app.Activity.RESULT_OK;
                 e.printStackTrace();
             }
         }
+    }
+
+    public void onResume() {
+        nickName = login.getString("nickName", "");
+        phone = login.getString("phone", "");
+        sex = login.getString("sex", "");
+        birthday = login.getString("birthday", "");
+        headpic = login.getString("headpic", "");
+        sessionId =login.getString("sessionId", "");
+        userld =login.getString("userld", "");
+        Assignment();
     }
 }

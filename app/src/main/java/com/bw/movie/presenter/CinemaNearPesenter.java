@@ -19,7 +19,7 @@ import java.util.List;
  *作者：刘进
  *日期：2018/11/28
  **/
-public class Cinema_Near_Pesenter extends AppDelegate {
+public class CinemaNearPesenter extends AppDelegate {
 
     private XRecyclerView mRecyclerView;
     private String url = "movieApi/cinema/v1/findRecommendCinemas";

@@ -39,6 +39,34 @@ public class Utility {
                 .subscribe(observer);
         return this;
     }
+
+    public Utility postupdate(Map<String,String> m,String url, Map<String,String> map){
+        if(map==null){
+            map=new HashMap<>();
+        }
+        if(m==null){
+            m=new HashMap<>();
+        }
+        mBaseService.postupdate(m,url,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+    public Utility getcinema(Map<String,String> m,String url, Map<String,String> map){
+        if(map==null){
+            map=new HashMap<>();
+        }
+        if(m==null){
+            m=new HashMap<>();
+        }
+        mBaseService.postupdate(m,url,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+
     public Utility getheader(String url, Map<String,String> map){
         if(map==null){
             map=new HashMap<>();
@@ -71,6 +99,21 @@ public class Utility {
                 .subscribe(observer);
         return this;
     }
+	
+	public Utility give(Map<String,String> map,String url,Map<String,String> str){
+        if(map==null){
+            map=new HashMap<>();
+        }
+        if (str==null){
+            str=new HashMap<>();
+        }
+        mBaseService.give(map,url,str)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+	
     //postform请求
     public Utility postform(String url, Map<String,String> mapform,Map<String,String> maphead){
         if(mapform==null){

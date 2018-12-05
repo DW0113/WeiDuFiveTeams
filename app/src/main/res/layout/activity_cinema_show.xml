@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <RelativeLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/relativeLayout"
         android:layout_alignParentBottom="true"
         android:background="@drawable/shape_show_animation"
@@ -83,23 +83,40 @@
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <View
+                android:layout_marginTop="@dimen/dimens_welcome_5dp"
+                android:layout_marginLeft="@dimen/dimens_cinema_80dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_cinema_near"
+                android:layout_below="@+id/details"
+                android:layout_width="@dimen/dimens_cinema_40dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_1dp"/>
             <TextView
                 android:id="@+id/comment"
                 android:textSize="@dimen/dimens_cinema_20dp"
                 android:layout_centerVertical="true"
-                android:text="评价"
+                android:text="评论"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/dimens_cinema_80dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <View
+                android:layout_marginTop="@dimen/dimens_welcome_5dp"
+                android:background="@drawable/shape_cinema_near"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dimens_cinema_80dp"
+                android:layout_below="@+id/comment"
+                android:layout_width="@dimen/dimens_cinema_40dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_1dp"/>
         </RelativeLayout>
         <ImageView
             android:id="@+id/iv_hide"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/com_icon_down_default"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/dimens_cinema_24dp"
-            android:layout_width="@dimen/dimens_cinema_24dp"
-            android:layout_height="@dimen/dimens_cinema_24dp" />
+            android:layout_marginRight="@dimen/dimens_cinema_10dp"
+            android:layout_marginTop="@dimen/dimens_cinema_10dp"
+            android:layout_width="@dimen/dimens_cinema_30dp"
+            android:layout_height="@dimen/dimens_cinema_30dp" />
         <android.support.v4.view.ViewPager
             android:layout_marginTop="@dimen/dimens_cinema_16dp"
             android:layout_below="@+id/relativeLayou"

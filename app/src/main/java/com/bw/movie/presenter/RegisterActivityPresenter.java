@@ -39,6 +39,7 @@ import okhttp3.RequestBody;
     private String et_register_sex_get;
     private String decrypt;
     private SharedPreferences register;
+    private String et_register_sex_get1;
 
     @Override
     public int getLayoutId() {
@@ -75,7 +76,13 @@ import okhttp3.RequestBody;
                 et_register_name_get = et_register_name.getText().toString().trim();
                 et_register_phone_get = et_register_phone.getText().toString().trim();
                 et_register_pwd_get = et_register_pwd.getText().toString().trim();
-                et_register_sex_get = et_register_sex.getText().toString().trim();
+                et_register_sex_get1 = et_register_sex.getText().toString().trim();
+                 if(et_register_sex_get1.contains("男")){
+                     et_register_sex_get="1";
+                 }
+                 else if(et_register_sex_get1.contains("女")){
+                     et_register_sex_get="2";
+                 }
                  decrypt = EncryptUtil.encrypt(et_register_pwd_get);
                 //Toast.makeText(context,"成功吗？"+et_register_sex,Toast.LENGTH_LONG).show();
                 dohttp();
@@ -100,7 +107,9 @@ import okhttp3.RequestBody;
                         RegisteredBean registeredBean = new Gson().fromJson(data, RegisteredBean.class);
                         Toast.makeText(context,""+data,Toast.LENGTH_LONG).show();
                         if(registeredBean.getStatus().equals("0000")){
-                            register.edit().putString("et_register_phone_get",et_register_phone_get).putString("et_register_pwd_get",et_register_pwd_get).commit();
+                            register.edit().putString("et_register_phone_get",et_register_phone_get).putString("et_register_pwd_get",et_register_pwd_get)
+                                    .putString("et_register_email_get",et_register_email_get)
+                                    .commit();
                             context.startActivity(new Intent(context, LoginActivity.class));
                             ((RegisterActivity)context).finish();
                         }

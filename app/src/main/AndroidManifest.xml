@@ -41,7 +41,7 @@
         <activity android:name=".activity.IdeaActivity"></activity>
         <activity android:name=".activity.SuccessActivity"></activity>
         <activity android:name=".activity.MovieSearchActivity"></activity>
-        <activity android:name=".adapter.Personal_confidence_Activity"/>
+        <activity android:name=".activity.Personal_confidence_Activity"/>
         <activity android:name=".activity.MovieDetailsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"
@@ -49,9 +49,9 @@
         <activity android:name=".activity.ChooseActivity"/>
         <activity android:name=".activity.VersionSuccessActivity"/>
         <activity android:name=".activity.CinemaShowActivity"/>
-        <activity android:name=".activity.TicketDetailsActivity"></activity>
-        <activity android:name=".activity.SuitableCinemaActivity"></activity>
-        <activity android:name=".activity.TicketDetailsActivity"></activity>
+        <activity android:name=".activity.Sign_in_Activity"/>
+        <activity android:name=".activity.MyLoveActivity"/>
+        <activity android:name=".activity.RecordActivity"/>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="b0c3dcc1c07976dc0d570d1e18505ef9">
         </meta-data>
     </application>

@@ -16,6 +16,15 @@
             android:layout_width="@dimen/dimens_fragment_my_30dp"
             android:layout_height="@dimen/dimens_fragment_my_30dp"
             />
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:id="@+id/iv_fragment_my_Sign_in"
+            android:layout_marginTop="@dimen/dimens_fragment_my_30dp"
+            android:layout_marginRight="@dimen/dimens_fragment_my_24dp"
+            android:src="@drawable/qiandao"
+            android:layout_width="@dimen/dimens_fragment_my_40dp"
+            android:layout_height="@dimen/dimens_fragment_my_40dp"
+            />
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/tv_fragment_my_login"
             android:src="@drawable/fragment_my_head_portrait"
