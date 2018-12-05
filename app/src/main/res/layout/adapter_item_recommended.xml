@@ -42,11 +42,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
+            android:id="@+id/focus"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/dimens_cinema_16dp"
             android:layout_marginRight="@dimen/dimens_cinema_24dp"
-            android:src="@drawable/com_icon_collection_selected"
+            android:src="@drawable/com_icon_collection_default"
             android:layout_width="@dimen/dimens_cinema_16dp"
             android:layout_height="@dimen/dimens_cinema_16dp" />
     </RelativeLayout>

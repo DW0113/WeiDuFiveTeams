@@ -51,6 +51,7 @@
                 android:layout_width="@dimen/dimens_cinema_20dp"
                 android:layout_height="@dimen/dimens_cinema_20dp" />
             <TextView
+                android:id="@+id/tv_num"
                 android:text="0"
                 android:paddingRight="@dimen/dimens_cinema_24dp"
                 android:layout_alignParentRight="true"

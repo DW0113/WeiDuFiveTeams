@@ -114,7 +114,8 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
         //Intent
         Intent intent = ((CinemaShowActivity) context).getIntent();
          id = intent.getStringExtra("id");
-
+         //影院id
+        Toast.makeText(context, "id===="+id, Toast.LENGTH_SHORT).show();
         bannerHttp(id);
         //Toast.makeText(context, ""+id, Toast.LENGTH_SHORT).show();
         //取数据
@@ -196,9 +197,11 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
     //网络请求数据
     private void Http() {
         Map<String,String> map = new HashMap<>();
+        String userId = login.getString("userld", "");
+        String sessionId = login.getString("sessionId", "");
         map.put("cinemaId",id);
-        map.put("userId","userId");
-        map.put("sessionId","sessionId");
+        map.put("userId",userId);
+        map.put("sessionId",sessionId);
         new Utility().get("http://172.17.8.100/movieApi/cinema/v1/findCinemaInfo",map).result(new HttpListener() {
             @Override
             public void success(String data) {

@@ -28,7 +28,7 @@ import java.util.List;
  * */
 public class CinemaFragmentPresenter extends AppDelegate implements View.OnClickListener {
     private RelativeLayout show;
-    private EditText hide;
+    private RelativeLayout hide;
     private List<Fragment> cinemaList=new ArrayList<>();
     private Button showNear,tv_cinima_color,tv_cinima_near,tv_cinima,tv_cinima_near_color;
     private ViewPager vp_cinema_viewpager;

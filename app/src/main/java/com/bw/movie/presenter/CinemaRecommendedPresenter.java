@@ -1,10 +1,12 @@
 package com.bw.movie.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 
 
 import com.bw.movie.R;
+import com.bw.movie.activity.CinemaShowActivity;
 import com.bw.movie.adapter.RecommendedAdapter;
 import com.bw.movie.model.RecommendedBean;
 import com.bw.movie.mvp.view.AppDelegate;
@@ -23,6 +25,7 @@ public class CinemaRecommendedPresenter extends AppDelegate {
 
     private XRecyclerView recommendedRecyclerView;
     private RecommendedAdapter adapter;
+    private String id;
 
     @Override
     public int getLayoutId() {
@@ -41,6 +44,7 @@ public class CinemaRecommendedPresenter extends AppDelegate {
         recommendedRecyclerView = get(R.id.recommendedRecyclerView);
         //推荐影院请求数据
         recommendedHttp();
+
         //适配器
          adapter = new RecommendedAdapter(context);
         LinearLayoutManager manager = new LinearLayoutManager(context);
