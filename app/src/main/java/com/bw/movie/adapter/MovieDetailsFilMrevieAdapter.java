@@ -1,25 +1,37 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.model.MovieAttentionBean;
 import com.bw.movie.model.MovieFilmrevieBean;
+import com.bw.movie.utils.Http;
+import com.bw.movie.utils.HttpHelper;
+import com.bw.movie.utils.HttpListener;
 import com.bw.movie.utils.ScreenUtil;
 import com.bw.movie.utils.UitlsToos;
+import com.bw.movie.utils.Utility;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDetailsFilMrevieAdapter.MyViewHolder> {
     private Context context;
     private List<MovieFilmrevieBean.ResultBean> list = new ArrayList<>();
+    private Map<String, String> mapHead;
+    private Map<String, String> map;
 
     public MovieDetailsFilMrevieAdapter(Context context) {
         this.context = context;
@@ -49,8 +61,47 @@ public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDeta
         holder.text_desc.setText(list.get(position).getCommentContent());
         holder.text_comment.setText(list.get(position).getHotComment()+"");
         holder.text_like.setText(list.get(position).getGreatNum()+"");
-    }
 
+
+        SharedPreferences sp = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        String userld = sp.getString("userld", "");
+        String sessionId = sp.getString("sessionId", "");
+
+        mapHead = new HashMap<>();
+        mapHead.put("userId",userld);
+        mapHead.put("sessionId",sessionId);
+        map = new HashMap<>();
+        map.put("commentId",list.get(position).getCommentId()+"");
+
+        holder.image_like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doHttp(holder.image_like,holder.text_like,position);
+                notifyItemChanged(position+1);
+            }
+        });
+    }
+    private void doHttp(ImageView image_like, TextView text_like, int position) {
+        new Utility().postform(Http.MOVIE_GREATE,map,mapHead).result(new HttpListener() {
+            @Override
+            public void success(String data) {
+                Gson gson = new Gson();
+                MovieAttentionBean movieAttentionBean = gson.fromJson(data, MovieAttentionBean.class);
+                Toast.makeText(context,movieAttentionBean.getMessage(),Toast.LENGTH_SHORT).show();
+                if (movieAttentionBean.getMessage().equals("点赞成功")){
+                    image_like.setImageResource(R.drawable.movie_details_filmrevie_like_select);
+                    int i = list.get(position).getGreatNum();
+                    i++;
+                    text_like.setText(""+i);
+                }
+            }
+
+            @Override
+            public void fail(String error) {
+
+            }
+        });
+    }
     @Override
     public int getItemCount() {
         return list.size();

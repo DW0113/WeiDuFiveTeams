@@ -68,6 +68,13 @@ public class MovieDetailsBean {
         private String summary;
         private List<String> posterList;
         private List<ShortFilmListBean> shortFilmList;
+        private boolean isAttention;
+        public boolean isAttention() {
+            return isAttention;
+        }
+        public void setAttention(boolean attention) {
+            isAttention = attention;
+        }
 
         public String getDirector() {
             return director;

@@ -18,5 +18,8 @@ public class Http {
     public final static String SUITABLE_CINEMA="movieApi/movie/v1/findCinemasListByMovieId?";
     public final static String MOVIE_BUY="movieApi/movie/v1/findMovieScheduleList?";
     public final static String CINEMA_DETAILS = "movieApi/cinema1/findCinemaInfo";
+    public final static String MOVIE_ATTENTION="movieApi/movie/v1/verify/followMovie";
+    public final static String MOVIE_UNFOLLOW="movieApi/movie/v1/verify/cancelFollowMovie";
+    public final static String MOVIE_GREATE="movieApi/movie/v1/verify/movieCommentGreat";
 
 }

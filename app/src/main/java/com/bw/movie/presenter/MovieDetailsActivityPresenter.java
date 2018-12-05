@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.MovieDetailsActivity;
@@ -21,18 +22,23 @@ import com.bw.movie.activity.SuitableCinemaActivity;
 import com.bw.movie.adapter.MovieDetailsFilMrevieAdapter;
 import com.bw.movie.adapter.MovieDetailsForemShowAdapter;
 import com.bw.movie.adapter.MovieDetailsStageShowAdapter;
+import com.bw.movie.model.MovieAttentionBean;
 import com.bw.movie.model.MovieDetailsBean;
 import com.bw.movie.model.MovieFilmrevieBean;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.Http;
 import com.bw.movie.utils.HttpHelper;
+import com.bw.movie.utils.HttpListener;
 import com.bw.movie.utils.SimpDrawViewUtils;
+import com.bw.movie.utils.Utility;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.jzvd.Jzvd;
 
@@ -73,6 +79,8 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
     private int page = 1;
     private String movieName;
     private MovieDetailsFilMrevieAdapter filMrevieAdapter;
+    private ImageView iv_movie_details_like;
+    private MovieDetailsBean movieDetailsBean;
 
     @Override
     public int getLayoutId() {
@@ -90,6 +98,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
         initView();
         //获取电影Id
         Intent intent = ((MovieDetailsActivity) context).getIntent();
+        int position = intent.getIntExtra("position", 1);
         movieId = intent.getIntExtra("movieId", 1);
 
         //获取用户信息
@@ -109,11 +118,13 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
         setOnClick(this,R.id.iv_movie_details_foreshow_down);
         setOnClick(this,R.id.iv_movie_details_stageshow_down);
         setOnClick(this,R.id.iv_movie_details_buy);
+        setOnClick(this,R.id.iv_movie_details_like);
         //设置预告片布局管理器
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         rv_movie_details_foreshow.setLayoutManager(linearLayoutManager);
         foremShowAdapter = new MovieDetailsForemShowAdapter(context);
         rv_movie_details_foreshow.setAdapter(foremShowAdapter);
+
         //设置剧照布局管理器
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         rv_movie_details_stageshow.setLayoutManager(staggeredGridLayoutManager);
@@ -180,6 +191,7 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
         iv_movie_details_back = get(R.id.iv_movie_details_back);
         iv_movie_details_buy = get(R.id.iv_movie_details_buy);
         tv_movie_details_details_movie_type = get(R.id.tv_movie_details_details_movie_type);
+        iv_movie_details_like = get(R.id.iv_movie_details_like);
         //预告
         btn_movie_details_foreshow = get(R.id.btn_movie_details_foreshow);
         iv_movie_details_foreshow_down = get(R.id.iv_movie_details_foreshow_down);
@@ -203,30 +215,34 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
             @Override
             public void success(String data) {
                 Gson gson = new Gson();
-                MovieDetailsBean movieDetailsBean = gson.fromJson(data, MovieDetailsBean.class);
-                SimpDrawViewUtils.showUrlBlur(sdv_movie_details_background,movieDetailsBean.getResult().getImageUrl(),5,5);
+                movieDetailsBean = gson.fromJson(data, MovieDetailsBean.class);
+                SimpDrawViewUtils.showUrlBlur(sdv_movie_details_background, movieDetailsBean.getResult().getImageUrl(),5,5);
                 //sdv_movie_details_background.setImageURI(movieDetailsBean.getResult().getImageUrl());
                 sdv_movie_details_image.setImageURI(movieDetailsBean.getResult().getImageUrl());
                 sdv_movie_details_details_image.setImageURI(movieDetailsBean.getResult().getImageUrl());
                 tv_movie_details_moviename.setText(movieDetailsBean.getResult().getName());
-                tv_movie_details_details_movie_type.setText("类型："+movieDetailsBean.getResult().getMovieTypes());
+                tv_movie_details_details_movie_type.setText("类型："+ movieDetailsBean.getResult().getMovieTypes());
                 tv_movie_details_details_actor_name.setText(movieDetailsBean.getResult().getStarring());
                 tv_movie_details_details_movie_desc.setText(movieDetailsBean.getResult().getSummary());
-                tv_movie_details_details_movie_director.setText("导演："+movieDetailsBean.getResult().getDirector());
-                tv_movie_details_details_movie_duration.setText("时长："+movieDetailsBean.getResult().getDuration());
-                tv_movie_details_details_movie_placeOrigin.setText("产地："+movieDetailsBean.getResult().getPlaceOrigin());
+                tv_movie_details_details_movie_director.setText("导演："+ movieDetailsBean.getResult().getDirector());
+                tv_movie_details_details_movie_duration.setText("时长："+ movieDetailsBean.getResult().getDuration());
+                tv_movie_details_details_movie_placeOrigin.setText("产地："+ movieDetailsBean.getResult().getPlaceOrigin());
                 foremShowAdapter.setList(movieDetailsBean);
                 stageShowAdapter.setList(movieDetailsBean.getResult().getPosterList());
                 movieName = movieDetailsBean.getResult().getName();
+                if (movieDetailsBean.getResult().isAttention()){
+                    iv_movie_details_like.setImageResource(R.drawable.movie_search_like_select);
+                }else{
+                    iv_movie_details_like.setImageResource(R.drawable.like);
+                }
             }
-
             @Override
             public void error(String error) {
 
             }
         });
     }
-
+    //点击事件
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -283,7 +299,62 @@ public class MovieDetailsActivityPresenter extends AppDelegate implements View.O
                 intent.putExtra("movieName",movieName);
                 context.startActivity(intent);
                 break;
+            case R.id.iv_movie_details_like:
+                if (movieDetailsBean.getResult().isAttention()){
+                    doHttpAttention();
+                    movieDetailsBean.getResult().setAttention(false);
+                    iv_movie_details_like.setImageResource(R.drawable.movie_search_like_select);
+                }else{
+                    doHttpUnFollow();
+                    movieDetailsBean.getResult().setAttention(true);
+                    iv_movie_details_like.setImageResource(R.drawable.like);
+                }
+                break;
+
         }
+    }
+
+    //关注电影
+    private void doHttpAttention() {
+        Map <String,String> userMap = new HashMap<>();
+        userMap.put("userId",userld);
+        userMap.put("sessionId",sessionId);
+        Map <String,String> contentMap = new HashMap<>();
+        contentMap.put("movieId",movieId+"");
+        new Utility().gethead(Http.MOVIE_ATTENTION,contentMap,userMap).result(new HttpListener() {
+            @Override
+            public void success(String data) {
+                Gson gson = new Gson();
+                MovieAttentionBean movieAttentionBean = gson.fromJson(data, MovieAttentionBean.class);
+                Toast.makeText(context,movieAttentionBean.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void fail(String error) {
+
+            }
+        });
+    }
+    //取消关注
+    private void doHttpUnFollow(){
+        Map <String,String> userMap = new HashMap<>();
+        userMap.put("userId",userld);
+        userMap.put("sessionId",sessionId);
+        Map <String,String> contentMap = new HashMap<>();
+        contentMap.put("movieId",movieId+"");
+        new Utility().gethead(Http.MOVIE_UNFOLLOW,contentMap,userMap).result(new HttpListener() {
+            @Override
+            public void success(String data) {
+                Gson gson = new Gson();
+                MovieAttentionBean movieAttentionBean = gson.fromJson(data, MovieAttentionBean.class);
+                Toast.makeText(context,movieAttentionBean.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void fail(String error) {
+
+            }
+        });
     }
     public void setVieo() {
         Jzvd.releaseAllVideos();
