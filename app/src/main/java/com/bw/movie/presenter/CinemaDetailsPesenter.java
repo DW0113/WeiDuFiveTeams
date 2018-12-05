@@ -2,6 +2,7 @@ package com.bw.movie.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +28,8 @@ public class CinemaDetailsPesenter extends AppDelegate {
     private TextView mPhone,mDAddress,mCar;
     private String id;
     private TextView carRout;
-    private int id1;
+    private SharedPreferences login;
+    //private int id1;
 
     @Override
     public int getLayoutId() {
@@ -50,12 +52,24 @@ public class CinemaDetailsPesenter extends AppDelegate {
         mCar = get(R.id.tv_car);
         carRout = get(R.id.car_route);
         detailsHttp(id);
+
+
+        login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+
     }
 
     private void detailsHttp(String id) {
+
+
+        Map<String,String> mapHead = new HashMap<>();
+        //String userId = login.getString("userId", "");
+        //String sessionId = login.getString("sessionId", "");
+
+        mapHead.put("userId","1406");
+        mapHead.put("sessionId","15439882211661406");
         Map<String,String> map = new HashMap<>();
         map.put("cinemaId",id);
-        new Utility().get(Http.CINEMA_DETAILS,map).result(new HttpListener() {
+        new Utility().gethead("/movieApi/cinema/v1/findCinemaInfo",map,mapHead).result(new HttpListener() {
             @Override
             public void success(String data) {
                 DetailsBean detailsBean = new Gson().fromJson(data, DetailsBean.class);
@@ -64,7 +78,7 @@ public class CinemaDetailsPesenter extends AppDelegate {
                 mDAddress.setText(result.getName());
                 mPhone.setText(result.getPhone());
                 carRout.setText(result.getVehicleRoute());
-                id1 = result.getId();
+                //id1 = result.getId();
             }
 
             @Override
