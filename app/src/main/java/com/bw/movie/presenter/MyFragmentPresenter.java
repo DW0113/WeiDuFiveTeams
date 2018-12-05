@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.activity.IdeaActivity;
 import com.bw.movie.activity.MainActivity;
@@ -46,6 +47,8 @@ import java.util.Map;
     private LinearLayout ll_fragment_my_love;
     private LinearLayout ll_fragment_my_recordd;
     private SharedPreferences login;
+  //  private SharedPreferences update;
+    private String headPath;
 
     @Override
     public int getLayoutId() {
@@ -61,6 +64,8 @@ import java.util.Map;
 
     @Override
     public void initData() {
+      //  update = context.getSharedPreferences("update", Context.MODE_PRIVATE);
+
         //初始化控件
         setOnClick(this,R.id.ll_fragment_my_record);
         iv_fragment_my_news=(ImageView)get(R.id.iv_fragment_my_news);
@@ -78,6 +83,7 @@ import java.util.Map;
         ImageView iv_fragment_my_Sign_in= get(R.id.iv_fragment_my_Sign_in);
         iv_fragment_my_Sign_in.setOnClickListener(this);
         setOnClick(this,R.id.ll_fragment_my_version);
+      //  Glide.with(context).load(R.drawable.fragment_my_head_portrait).into(tv_fragment_my_login);
         //获取登录用户名
         login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         username = login.getString("nickName", "");
@@ -182,11 +188,19 @@ import java.util.Map;
     public void onResume() {
         SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         username = login.getString("nickName", "");
+        headPath = login.getString("headPath", "");
         if(TextUtils.isEmpty(username)) {
             tv_fragment_my_text.setText("未登录");
         }
         else{
             tv_fragment_my_text.setText(username+"");
         }
+        if(TextUtils.isEmpty(this.headPath)){
+            Glide.with(context).load(R.drawable.fragment_my_head_portrait).into(tv_fragment_my_login);
+        }
+        else{
+            Glide.with(context).load(this.headPath +"").into(tv_fragment_my_login);
+        }
+
     }
 }

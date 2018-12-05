@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.activity.Personal_confidence_Activity;
 import com.bw.movie.activity.Sign_in_Activity;
@@ -75,6 +77,8 @@ import static android.app.Activity.RESULT_OK;
     private String userld;
     private String sex2;
     private String email;
+    private SharedPreferences update;
+    private String headPath;
 
     @Override
     public int getLayoutId() {
@@ -90,7 +94,7 @@ import static android.app.Activity.RESULT_OK;
     public void initData() {
         SharedPreferences register = context.getSharedPreferences("register", Context.MODE_PRIVATE);
         email = register.getString("et_register_email_get", "");
-
+        update = context.getSharedPreferences("update", Context.MODE_PRIVATE);
         //存值
         login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
       //找控件
@@ -129,6 +133,13 @@ import static android.app.Activity.RESULT_OK;
         sessionId =login.getString("sessionId", "");
         userld =login.getString("userld", "");
         im_persenter_heand.setOnClickListener(this);
+        String headPath = login.getString("headPath", "");
+        if(TextUtils.isEmpty(headPath)){
+            Glide.with(context).load(R.drawable.fragment_my_head_portrait).into(im_persenter_heand);
+        }
+        else{
+            Glide.with(context).load(headPath +"").into(im_persenter_heand);
+        }
         Assignment();
     }
 
@@ -160,6 +171,7 @@ import static android.app.Activity.RESULT_OK;
                         .putString("sex","")
                         .putString("email","")
                         .putString("birthday","")
+                        .putString("headPath","")
                         .putString("nickName","").commit();
                 Toast.makeText(context, "注销成功", Toast.LENGTH_SHORT).show();
                 ((Personal_confidence_Activity)context).finish();
@@ -303,7 +315,7 @@ import static android.app.Activity.RESULT_OK;
     }
     private void uploadPic(File file1) {
         RequestBody file = RequestBody.create(MediaType.parse("multipart/form-data"),file1);
-        MultipartBody.Part part= MultipartBody.Part.createFormData("file","head.png",file);
+        MultipartBody.Part part= MultipartBody.Part.createFormData("image","head.png",file);
         String userld = login.getString("userld", "");
         String sessionId = login.getString("sessionId", "");
         Toast.makeText(context,userld+"jj"+sessionId,Toast.LENGTH_LONG).show();
@@ -314,12 +326,16 @@ import static android.app.Activity.RESULT_OK;
         new Utility().part("/movieApi/user/v1/verify/uploadHeadPic",map,part).result(new HttpListener() {
             @Override
             public void success(String data) {
-                Toast.makeText(context, data+"", Toast.LENGTH_SHORT).show();
                 Gson gson = new Gson();
                 Upload_picture upload_picture = gson.fromJson(data, Upload_picture.class);
 
                 if("0000".equals(upload_picture.getStatus())){
-                    Toast.makeText(context, data+"", Toast.LENGTH_SHORT).show();
+                    String headPath = upload_picture.getHeadPath();
+                    Toast.makeText(context, data+"上传成功", Toast.LENGTH_SHORT).show();
+                    //SharedPreferences update = context.getSharedPreferences("update", Context.MODE_PRIVATE);
+                    Glide.with(context).load(headPath +"").into(im_persenter_heand);
+                    login.edit().putString("headPath",headPath).commit();
+
                 }
 
             }
@@ -401,10 +417,17 @@ import static android.app.Activity.RESULT_OK;
         nickName = login.getString("nickName", "");
         phone = login.getString("phone", "");
         sex = login.getString("sex", "");
+         headPath = login.getString("headPath", "");
         birthday = login.getString("birthday", "");
         headpic = login.getString("headpic", "");
         sessionId =login.getString("sessionId", "");
         userld =login.getString("userld", "");
         Assignment();
+        if(TextUtils.isEmpty(this.headPath)){
+            Glide.with(context).load(R.drawable.fragment_my_head_portrait).into(im_persenter_heand);
+        }
+        else{
+            Glide.with(context).load(this.headPath +"").into(im_persenter_heand);
+        }
     }
 }

@@ -69,6 +69,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
 
     @Override
     public void initData() {
+
         //获取输入的东西和点击事件
         TextView tv_login_register = get(R.id.tv_login_register);
         tv_login_register.setOnClickListener(this);
