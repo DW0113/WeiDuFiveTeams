@@ -11,7 +11,7 @@ public class Http {
     //即将上映
     public final static String MOVIE_COMING_SOON = "movieApi/movie/v1/findComingSoonMovieList?userId=18&sessionId=15320748258726&count=10&page=";
     //影片评论列表
-    public final static String MOVIE_FILMREVIE = "movieApi/movie/v1/findAllMovieComment?count=10&";
+    public final static String MOVIE_FILMREVIE = "movieApi/movie/v1/findAllMovieComment";
     public final static String ACTIVITY_FEEDBACK="movieApi/tool/v1/verify/recordFeedBack?";
     public final static String ACTIVITY_RENEWAL="movieApi/tool/v1/findNewVersion?userId=2260&sessionId=15435612476682260&ak=01";
     public final static String ACTIVITY_MESSAGE="movieApi/tool/v1/verify/findUnreadMessageCount?userId=2260&sessionId=15435612476682260";
@@ -21,5 +21,5 @@ public class Http {
     public final static String MOVIE_ATTENTION="movieApi/movie/v1/verify/followMovie";
     public final static String MOVIE_UNFOLLOW="movieApi/movie/v1/verify/cancelFollowMovie";
     public final static String MOVIE_GREATE="movieApi/movie/v1/verify/movieCommentGreat";
-
+    public final static String MOVIE_REPLY=" movieApi/movie/v1/findCommentReply?";
 }

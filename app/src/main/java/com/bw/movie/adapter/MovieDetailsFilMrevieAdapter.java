@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDetailsFilMrevieAdapter.MyViewHolder> {
+    private  String userld,sessionId;
     private Context context;
     private List<MovieFilmrevieBean.ResultBean> list = new ArrayList<>();
     private Map<String, String> mapHead;
@@ -35,6 +37,12 @@ public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDeta
 
     public MovieDetailsFilMrevieAdapter(Context context) {
         this.context = context;
+        SharedPreferences sp = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+         userld = sp.getString("userld", "");
+         sessionId = sp.getString("sessionId", "");
+        mapHead = new HashMap<>();
+        mapHead.put("userId",userld);
+        mapHead.put("sessionId",sessionId);
     }
 
     @NonNull
@@ -62,22 +70,30 @@ public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDeta
         holder.text_comment.setText(list.get(position).getHotComment()+"");
         holder.text_like.setText(list.get(position).getGreatNum()+"");
 
+        int isGreat = list.get(position).getIsGreat();
+        if (isGreat == 0){
+            holder.image_like.setImageResource(R.drawable.movie_details_filmrevie_like);
+        }else{
+            holder.image_like.setImageResource(R.drawable.movie_details_filmrevie_like_select);
+        }
 
-        SharedPreferences sp = context.getSharedPreferences("login", Context.MODE_PRIVATE);
-        String userld = sp.getString("userld", "");
-        String sessionId = sp.getString("sessionId", "");
-
-        mapHead = new HashMap<>();
-        mapHead.put("userId",userld);
-        mapHead.put("sessionId",sessionId);
-        map = new HashMap<>();
-        map.put("commentId",list.get(position).getCommentId()+"");
 
         holder.image_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                map = new HashMap<>();
+                map.put("commentId",list.get(position).getCommentId()+"");
+
                 doHttp(holder.image_like,holder.text_like,position);
-                notifyItemChanged(position+1);
+                //notifyItemChanged(position+1);
+            }
+        });
+
+        holder.image_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
@@ -87,13 +103,14 @@ public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDeta
             public void success(String data) {
                 Gson gson = new Gson();
                 MovieAttentionBean movieAttentionBean = gson.fromJson(data, MovieAttentionBean.class);
-                Toast.makeText(context,movieAttentionBean.getMessage(),Toast.LENGTH_SHORT).show();
                 if (movieAttentionBean.getMessage().equals("点赞成功")){
                     image_like.setImageResource(R.drawable.movie_details_filmrevie_like_select);
                     int i = list.get(position).getGreatNum();
                     i++;
+                    list.get(position).setGreatNum(i);
                     text_like.setText(""+i);
                 }
+                Toast.makeText(context,movieAttentionBean.getMessage(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -108,8 +125,8 @@ public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDeta
     }
 
     public void setList(List<MovieFilmrevieBean.ResultBean> list) {
-        this.list = list;
         notifyDataSetChanged();
+        this.list = list;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
