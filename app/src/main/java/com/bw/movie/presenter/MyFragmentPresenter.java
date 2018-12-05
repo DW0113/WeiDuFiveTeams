@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -14,20 +13,17 @@ import com.bw.movie.activity.MainActivity;
 import com.bw.movie.activity.MessageActivity;
 
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bw.movie.R;
 import com.bw.movie.activity.LoginActivity;
 import com.bw.movie.activity.MyLoveActivity;
 import com.bw.movie.activity.RecordActivity;
+import com.bw.movie.activity.Sign_in_Activity;
 import com.bw.movie.activity.VersionSuccessActivity;
-import com.bw.movie.adapter.Personal_confidence_Activity;
+import com.bw.movie.activity.Personal_confidence_Activity;
 import com.bw.movie.model.VersionBean;
 import com.bw.movie.mvp.view.AppDelegate;
-import com.bw.movie.utils.Http;
-import com.bw.movie.utils.HttpHelper;
 import com.bw.movie.utils.HttpListener;
 import com.bw.movie.utils.Utility;
 import com.google.gson.Gson;
@@ -35,8 +31,6 @@ import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import retrofit2.http.HTTP;
 
 /*
  * 作者：秦永聪
@@ -81,6 +75,8 @@ import retrofit2.http.HTTP;
         tv_fragment_my_login.setOnClickListener(this);
         ll_fragment_my_love.setOnClickListener(this);
         ll_fragment_my_recordd.setOnClickListener(this);
+        ImageView iv_fragment_my_Sign_in= get(R.id.iv_fragment_my_Sign_in);
+        iv_fragment_my_Sign_in.setOnClickListener(this);
         setOnClick(this,R.id.ll_fragment_my_version);
         //获取登录用户名
         login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
@@ -98,6 +94,9 @@ import retrofit2.http.HTTP;
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.iv_fragment_my_Sign_in:
+                context.startActivity(new Intent(context, Sign_in_Activity.class));
+                break;
             //点击登录
             case R.id.tv_fragment_my_login:
                 //判断是否登录
@@ -112,7 +111,13 @@ import retrofit2.http.HTTP;
                 break;
             //我的信息
             case R.id.ll_fragment_my_information:
-                context.startActivity(new Intent(context, Personal_confidence_Activity.class));
+                if(TextUtils.isEmpty(username)) {
+                    context.startActivity(new Intent(context, LoginActivity.class));
+                }
+                else{
+                    context.startActivity(new Intent(context, Personal_confidence_Activity.class));
+                }
+
                 break;
             //意见反馈
             case R.id.ll_fragment_my_record:

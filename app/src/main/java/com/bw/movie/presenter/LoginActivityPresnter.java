@@ -16,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bw.movie.R;
 import com.bw.movie.activity.LoginActivity;
 import com.bw.movie.activity.MainActivity;
 import com.bw.movie.activity.RegisterActivity;
@@ -28,7 +26,7 @@ import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.HttpHelper;
 import com.google.gson.Gson;
-
+import com.bw.movie.R;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
@@ -88,22 +86,22 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
         register = context.getSharedPreferences("register", Context.MODE_PRIVATE);
         String et_register_pwd_get = register.getString("et_register_pwd_get", "");
         String et_register_phone_get = register.getString("et_register_phone_get", "");
-        login_phone.setText(et_register_phone_get);
-        login_pwd.setText(et_register_pwd_get);
+//        login_phone.setText(et_register_phone_get);
+//        login_pwd.setText(et_register_pwd_get);
         //存登录的值
         login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
-
         remember_password = login.getBoolean("remember_password", false);
         automatic_login = login.getBoolean("automatic_login", false);
         login_pwd_get2 = login.getString("login_pwd_get", "");
-
         phone1 = login.getString("phone", "");
         if (remember_password) {
             login_phone.setText(phone1);
             login_pwd.setText(login_pwd_get2);
             cb_remember_the_password.setChecked(true);
         } else {
+
             login_phone.setText(phone1);
+            cb_remember_the_password.setChecked(true);
         }
         if (TextUtils.isEmpty(login_pwd_get2)) {
             Toast.makeText(context, "哈哈哈，请先登录", Toast.LENGTH_LONG).show();
@@ -159,12 +157,9 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
         new HttpHelper().post("movieApi/user/v1/login", requestBody).result(new HttpHelper.Httplistenner() {
             @Override
             public void success(String data) {
-//                Toast.makeText(context,""+data,Toast.LENGTH_LONG).show();
-                Log.i("LoginActivity", data);
                 LoginBean loginBean = new Gson().fromJson(data, LoginBean.class);
                 if (loginBean.getStatus().equals("0000")) {
                     LoginBean.ResultBean.UserInfoBean userInfo = loginBean.getResult().getUserInfo();
-                    Toast.makeText(context, "" + userInfo.getNickName() + "" + userInfo.getPhone() + "" + userInfo.getBirthday(), Toast.LENGTH_LONG).show();
                     login.edit().putString("nickName", userInfo.getNickName())
                             .putString("phone", userInfo.getPhone())
                             .putString("sex", userInfo.getSex() + "")

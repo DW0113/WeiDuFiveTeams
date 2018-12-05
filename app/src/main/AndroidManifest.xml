@@ -41,7 +41,7 @@
         <activity android:name=".activity.IdeaActivity"></activity>
         <activity android:name=".activity.SuccessActivity"></activity>
         <activity android:name=".activity.MovieSearchActivity"></activity>
-        <activity android:name=".adapter.Personal_confidence_Activity"/>
+        <activity android:name=".activity.Personal_confidence_Activity"/>
         <activity android:name=".activity.MovieDetailsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"

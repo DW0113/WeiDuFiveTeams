@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.MyLoveMoveAdpater;
+import com.bw.movie.model.LoveMoveBean;
 import com.bw.movie.model.MyLove;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.HttpHelper;
@@ -26,7 +27,7 @@ import java.util.Map;
  * 作者：秦永聪
  *日期：2018/11/30
  * */public class MyLoveMovieePresenter extends AppDelegate {
-     private    List<MyLove.ResultBean.MovieListBean> moveList=new ArrayList<>();
+     private    List<LoveMoveBean.ResultBean> moveList=new ArrayList<>();
     private MyLoveMoveAdpater myLoveMoveAdpater;
 
     @Override
@@ -53,36 +54,42 @@ import java.util.Map;
        else{
            dohttp(userld,sessionId);
        }
-       if(moveList.size()==0&&moveList==null){
-           Toast.makeText(context,"目前还没有关注的电影",Toast.LENGTH_LONG).show();
-       }
-       else{
+
            myLoveMoveAdpater = new MyLoveMoveAdpater(context, moveList);
            rv_love_move.setAdapter(myLoveMoveAdpater);
            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
            rv_love_move.setLayoutManager(linearLayoutManager);
-       }
+
 
     }
 
     private void dohttp(String userld, String sessionId) {
         Map map = new HashMap<>();
-        map.put("userId",userld);
-        map.put("sessionId",sessionId);
-        new Utility().get("verify/findUserHomeInfo",map).result(new HttpListener() {
+        Map m = new HashMap<>();
+        m.put("userId",userld);
+        m.put("sessionId",sessionId);
+        map.put("page",1);
+        map.put("count",10);
+        new Utility().getcinema(m,"movieApi/movie/v1/verify/findMoviePageList",map).result(new HttpListener() {
                @Override
                public void success(String data) {
-                   MyLove myLove = new Gson().fromJson(data, MyLove.class);
-                   MyLove.ResultBean result = myLove.getResult();
-                  if(result==null){
-                      Toast.makeText(context,"目前还没有关注的",Toast.LENGTH_LONG).show();
-                      return;
-                  }
-                   List<MyLove.ResultBean.MovieListBean> movieListt = result.getMovieList();
-                   //   List<MyLove.ResultBean.MovieListBean> moveListt = myLove.getResult().getMovieList();
+                   Toast.makeText(context,"电影："+data,Toast.LENGTH_LONG).show();
+                   LoveMoveBean loveMoveBean = new Gson().fromJson(data, LoveMoveBean.class);
+                   if(loveMoveBean.getStatus().equals("0000")){
+                       List<LoveMoveBean.ResultBean> result = loveMoveBean.getResult();
+                       if(result==null){
+                           Toast.makeText(context,"目前还没有关注的",Toast.LENGTH_LONG).show();
+                           return;
+                       }
+                       // List<MyLove.ResultBean.MovieListBean> movieListt = result.getMovieList();
+                       //   List<MyLove.ResultBean.MovieListBean> moveListt = myLove.getResult().getMovieList();
 
-                   moveList.addAll(movieListt);
-                   myLoveMoveAdpater.notifyDataSetChanged();
+                       moveList.addAll(result);
+                       myLoveMoveAdpater.notifyDataSetChanged();
+                   }
+                   else{
+                       Toast.makeText(context,""+data,Toast.LENGTH_LONG).show();
+                   }
                }
 
                @Override

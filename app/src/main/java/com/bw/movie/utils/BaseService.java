@@ -51,8 +51,12 @@ public interface BaseService {
             "Content-Type:application/x-www-form-urlencoded"
     })
     Observable<ResponseBody> give(@HeaderMap Map<String, String> m, @Url String url, @FieldMap Map<String, String> map);
-	
-	
+    @FormUrlEncoded
+    @POST
+    Observable<ResponseBody> postupdate(@HeaderMap Map<String, String> m, @Url String url, @FieldMap Map<String, String> map);
+    @FormUrlEncoded
+    @GET
+    Observable<ResponseBody> getcinema(@HeaderMap Map<String, String> m, @Url String url, @FieldMap Map<String, String> map);
 
 
 }

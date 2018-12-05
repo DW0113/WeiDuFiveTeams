@@ -11,6 +11,7 @@
       android:layout_height="@dimen/dimens_personal_28dp">
 
       <ImageView
+
          android:layout_marginLeft="@dimen/dimens_cinema_16dp"
           android:layout_width="@dimen/dimens_personal_28dp"
           android:layout_height="wrap_content"
@@ -117,6 +118,17 @@
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <EditText
+                android:visibility="gone"
+                android:layout_marginRight="@dimen/dimens_fragment_my_16dp"
+                android:layout_alignParentRight="true"
+                android:text="用户名"
+                android:id="@+id/et_personal_username"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <View
                 android:layout_marginLeft="@dimen/dimens_personal_28dp"
                 android:layout_marginRight="@dimen/dimens_cinema_20dp"
@@ -153,6 +165,17 @@
                 android:layout_alignParentRight="true"
                 android:text="用户名"
                 android:id="@+id/tv_personal_sex"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:visibility="gone"
+                android:layout_marginRight="@dimen/dimens_fragment_my_16dp"
+                android:layout_alignParentRight="true"
+                android:text="用户名"
+                android:id="@+id/et_personal_sex"
                 android:textSize="@dimen/dimens_cinema_16dp"
                 android:layout_marginLeft="@dimen/dimens_personal_55dp"
                 android:layout_centerVertical="true"

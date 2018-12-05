@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
+import com.bw.movie.model.LoveMoveBean;
 import com.bw.movie.model.MyLove;
 
 import java.util.List;
@@ -19,9 +20,9 @@ import java.util.List;
  *日期：2018/12/1
  * */public class MyLoveMoveAdpater extends RecyclerView.Adapter<MyLoveMoveAdpater.MyViewhodel> {
     private Context context;
-    private List<MyLove.ResultBean.MovieListBean> moveList;
+    private List<LoveMoveBean.ResultBean> moveList;
 
-    public MyLoveMoveAdpater(Context context, List<MyLove.ResultBean.MovieListBean> moveList) {
+    public MyLoveMoveAdpater(Context context,List<LoveMoveBean.ResultBean> moveList) {
         this.context = context;
         this.moveList = moveList;
     }

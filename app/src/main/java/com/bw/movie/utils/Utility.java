@@ -40,6 +40,33 @@ public class Utility {
         return this;
     }
 
+    public Utility postupdate(Map<String,String> m,String url, Map<String,String> map){
+        if(map==null){
+            map=new HashMap<>();
+        }
+        if(m==null){
+            m=new HashMap<>();
+        }
+        mBaseService.postupdate(m,url,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+    public Utility getcinema(Map<String,String> m,String url, Map<String,String> map){
+        if(map==null){
+            map=new HashMap<>();
+        }
+        if(m==null){
+            m=new HashMap<>();
+        }
+        mBaseService.postupdate(m,url,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        return this;
+    }
+
     public Utility getheader(String url, Map<String,String> map){
         if(map==null){
             map=new HashMap<>();

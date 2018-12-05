@@ -107,7 +107,9 @@ import okhttp3.RequestBody;
                         RegisteredBean registeredBean = new Gson().fromJson(data, RegisteredBean.class);
                         Toast.makeText(context,""+data,Toast.LENGTH_LONG).show();
                         if(registeredBean.getStatus().equals("0000")){
-                            register.edit().putString("et_register_phone_get",et_register_phone_get).putString("et_register_pwd_get",et_register_pwd_get).commit();
+                            register.edit().putString("et_register_phone_get",et_register_phone_get).putString("et_register_pwd_get",et_register_pwd_get)
+                                    .putString("et_register_email_get",et_register_email_get)
+                                    .commit();
                             context.startActivity(new Intent(context, LoginActivity.class));
                             ((RegisterActivity)context).finish();
                         }

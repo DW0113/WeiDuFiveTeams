@@ -13,4 +13,5 @@ public class LoginActivity extends BaseActivityPresenter<LoginActivityPresnter> 
         return LoginActivityPresnter.class;
     }
 
+
 }
