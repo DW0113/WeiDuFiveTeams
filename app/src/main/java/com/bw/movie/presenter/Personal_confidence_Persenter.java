@@ -113,6 +113,8 @@ import static android.app.Activity.RESULT_OK;
         tv_persenter_phone = get(R.id.tv_personal_phone);
         im_persenter_birthday = get(R.id.im_persenter_birthday);
         tv_persenter_birthday = get(R.id.tv_personal_birthday);
+       ImageView persenter_into= get(R.id.persenter_into);
+        persenter_into.setOnClickListener(this);
         ImageView im_persenter_banck= get(R.id.im_persenter_banck);
         im_persenter_banck.setOnClickListener(this);
         //编辑
@@ -172,6 +174,7 @@ import static android.app.Activity.RESULT_OK;
                         .putString("email","")
                         .putString("birthday","")
                         .putString("headPath","")
+                        .putString("headpic","")
                         .putString("nickName","").commit();
                 Toast.makeText(context, "注销成功", Toast.LENGTH_SHORT).show();
                 ((Personal_confidence_Activity)context).finish();
@@ -211,6 +214,9 @@ import static android.app.Activity.RESULT_OK;
                 tv_persenter_sex.setVisibility(View.GONE);
                 et_personal_sex.setVisibility(View.VISIBLE);
 
+                break;
+            case R.id.persenter_into:
+                //  context.startActivity(new Intent(context));
                 break;
 
         }
@@ -423,11 +429,11 @@ import static android.app.Activity.RESULT_OK;
         sessionId =login.getString("sessionId", "");
         userld =login.getString("userld", "");
         Assignment();
-        if(TextUtils.isEmpty(this.headPath)){
+        if(TextUtils.isEmpty(headpic)){
             Glide.with(context).load(R.drawable.fragment_my_head_portrait).into(im_persenter_heand);
         }
         else{
-            Glide.with(context).load(this.headPath +"").into(im_persenter_heand);
+            Glide.with(context).load(headpic +"").into(im_persenter_heand);
         }
     }
 }
