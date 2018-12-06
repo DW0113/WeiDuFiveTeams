@@ -134,7 +134,6 @@ public class MessageActivityPresenter extends AppDelegate implements View.OnClic
         tv_activity_message_unread=(TextView)get(R.id.tv_activity_message_unread);
         rv_activity_message_recycle=(RecyclerView)get(R.id.rv_activity_message_recycle);
     }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()){
