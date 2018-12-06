@@ -216,7 +216,7 @@ import static android.app.Activity.RESULT_OK;
 
                 break;
             case R.id.persenter_into:
-                //  context.startActivity(new Intent(context));
+                  context.startActivity(new Intent(context,Personal_confidence_Activity.class));
                 break;
 
         }
@@ -353,28 +353,6 @@ import static android.app.Activity.RESULT_OK;
         });
 
     }
-//    private void doHttp() {
-//        Map<String,String> map = new HashMap<>();
-//        map.put("uid",s.getString("uid",""));
-//        new Utility().get("/user/getUserInfo",map).result(new HttpListener() {
-//            @Override
-//            public void success(String data) {
-//                Gson gson = new Gson();
-//                LoginBean loginBean = gson.fromJson(data, LoginBean.class);
-//                String code = loginBean.getCode();
-//                if("0".equals(code)){
-//                    String icon = (String) loginBean.getData().getIcon();
-//                    s.edit().putString("icon",icon).commit();
-//                }
-//            }
-//
-//            @Override
-//            public void fail(String error) {
-//
-//            }
-//        });
-//    }
-
     /**
      * 调用系统的裁剪功能
      *
