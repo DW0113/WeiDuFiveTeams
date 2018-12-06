@@ -32,6 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.VersionSuccessActivity"/>
         <activity android:name=".activity.WelcomeActivity"></activity>
         <activity android:name=".activity.MessageActivity"></activity>
         <activity android:name=".activity.LoginActivity"/>

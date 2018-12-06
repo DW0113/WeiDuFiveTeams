@@ -167,7 +167,6 @@ import java.util.Map;
                  login.edit().putString("url",versionBean.getDownloadUrl()).commit();
                 //判断flag是否==1，等于则跳转页面
                 if (flag == 1) {
-                    Toast.makeText(context, flag+"", Toast.LENGTH_LONG).show();
                     Intent intent2 = new Intent(context, VersionSuccessActivity.class);
                     context.startActivity(intent2);
                 } else {
