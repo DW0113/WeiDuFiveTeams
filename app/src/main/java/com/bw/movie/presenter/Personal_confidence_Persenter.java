@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.activity.Personal_confidence_Activity;
 import com.bw.movie.activity.Sign_in_Activity;
+import com.bw.movie.activity.UpdatePassword;
 import com.bw.movie.model.Upload_picture;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.HttpListener;
@@ -216,7 +217,7 @@ import static android.app.Activity.RESULT_OK;
 
                 break;
             case R.id.persenter_into:
-                  context.startActivity(new Intent(context,Personal_confidence_Activity.class));
+                  context.startActivity(new Intent(context, UpdatePassword.class));
                 break;
 
         }
