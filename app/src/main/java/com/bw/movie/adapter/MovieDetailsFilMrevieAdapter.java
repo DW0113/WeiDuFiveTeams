@@ -70,6 +70,7 @@ public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDeta
         holder.text_comment.setText(list.get(position).getHotComment()+"");
         holder.text_like.setText(list.get(position).getGreatNum()+"");
 
+
         int isGreat = list.get(position).getIsGreat();
         if (isGreat == 0){
             holder.image_like.setImageResource(R.drawable.movie_details_filmrevie_like);
@@ -93,7 +94,7 @@ public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDeta
         holder.image_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setOnClick.onClick(position);
             }
         });
     }
@@ -136,5 +137,14 @@ public class MovieDetailsFilMrevieAdapter extends RecyclerView.Adapter<MovieDeta
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
         }
+    }
+    private SetOnClick setOnClick;
+
+    public void setSetOnClick(SetOnClick setOnClick) {
+        this.setOnClick = setOnClick;
+    }
+
+    public interface SetOnClick{
+        void onClick(int position);
     }
 }

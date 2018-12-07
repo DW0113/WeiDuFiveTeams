@@ -2,17 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <RelativeLayout
-        android:background="@drawable/movie_details_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></RelativeLayout>
+        android:layout_height="match_parent"
+        android:background="@drawable/movie_details_background"></RelativeLayout>
+
     <com.facebook.drawee.view.SimpleDraweeView
-        android:alpha="0.2"
         android:id="@+id/sdv_movie_details_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:alpha="0.2" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -136,12 +138,15 @@
             android:layout_height="@dimen/dimens_fragmen_movie_60dp"
             android:src="@drawable/moviesearch_back" />
 
-        <ImageView
-            android:id="@+id/iv_movie_details_buy"
+        <TextView
+            android:id="@+id/tv_movie_details_buy"
             android:layout_width="@dimen/dimens_fragmen_movie_60dp"
             android:layout_height="@dimen/dimens_fragmen_movie_60dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/movie_details_publish" />
+            android:background="@drawable/shape_details_buy"
+            android:gravity="center"
+            android:text="购买"
+            android:textColor="@color/color_fragment_movie_FFFFFF" />
     </RelativeLayout>
     <!--剧情简介-->
     <RelativeLayout
@@ -274,20 +279,20 @@
 
     <!--预告-->
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/rl_movie_details_foreshow"
         android:layout_width="match_parent"
         android:layout_height="850dp"
-        android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/shape_movie_details_background">
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
+        android:background="@drawable/shape_movie_details_background"
+        android:visibility="gone">
 
         <LinearLayout
-            android:layout_marginTop="@dimen/dimens_fragmen_movie_24dp"
-            android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
-            android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_24dp"
             android:orientation="vertical">
 
             <TextView
@@ -301,12 +306,14 @@
                 android:layout_height="@dimen/dimens_fragmen_movie_3dp"
                 android:layout_marginTop="@dimen/dimens_fragmen_movie_6dp"
                 android:background="@drawable/shape_cinema_near" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_movie_details_foreshow"
-                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp" />
         </LinearLayout>
+
         <ImageView
             android:id="@+id/iv_movie_details_foreshow_down"
             android:layout_width="@dimen/dimens_fragmen_movie_24dp"
@@ -317,20 +324,20 @@
     </RelativeLayout>
     <!--剧照-->
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/rl_movie_details_stageshow"
         android:layout_width="match_parent"
         android:layout_height="850dp"
-        android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/shape_movie_details_background">
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
+        android:background="@drawable/shape_movie_details_background"
+        android:visibility="gone">
 
         <LinearLayout
-            android:layout_marginTop="@dimen/dimens_fragmen_movie_24dp"
-            android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
-            android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_24dp"
             android:orientation="vertical">
 
             <TextView
@@ -344,13 +351,15 @@
                 android:layout_height="@dimen/dimens_fragmen_movie_3dp"
                 android:layout_marginTop="@dimen/dimens_fragmen_movie_6dp"
                 android:background="@drawable/shape_cinema_near" />
+
             <android.support.v7.widget.RecyclerView
-                android:layout_gravity="center"
                 android:id="@+id/rv_movie_details_stageshow"
-                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp" />
         </LinearLayout>
+
         <ImageView
             android:id="@+id/iv_movie_details_stageshow_down"
             android:layout_width="@dimen/dimens_fragmen_movie_24dp"
@@ -360,23 +369,22 @@
             android:src="@drawable/movie_details_dow" />
     </RelativeLayout>
 
-
     <!--影评-->
     <RelativeLayout
         android:visibility="gone"
-        android:paddingLeft="@dimen/dimens_fragmen_movie_24dp"
-        android:paddingRight="@dimen/dimens_fragmen_movie_24dp"
         android:id="@+id/rl_movie_details_filmrevie"
         android:layout_width="match_parent"
         android:layout_height="850dp"
-        android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
         android:background="@drawable/shape_movie_details_background">
 
         <LinearLayout
-            android:layout_marginTop="@dimen/dimens_fragmen_movie_24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_24dp"
             android:orientation="vertical">
 
             <TextView
@@ -390,13 +398,15 @@
                 android:layout_height="@dimen/dimens_fragmen_movie_3dp"
                 android:layout_marginTop="@dimen/dimens_fragmen_movie_6dp"
                 android:background="@drawable/shape_cinema_near" />
-           <com.jcodecraeer.xrecyclerview.XRecyclerView
-               android:layout_gravity="center"
-               android:id="@+id/xrv_movie_details_filmrevie"
-               android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+            <com.jcodecraeer.xrecyclerview.XRecyclerView
+                android:id="@+id/xrv_movie_details_filmrevie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"></com.jcodecraeer.xrecyclerview.XRecyclerView>
         </LinearLayout>
+
         <ImageView
             android:id="@+id/iv_movie_details_filmrevie_down"
             android:layout_width="@dimen/dimens_fragmen_movie_24dp"
@@ -406,31 +416,240 @@
             android:src="@drawable/movie_details_dow" />
 
         <RelativeLayout
-            android:visibility="gone"
-            android:layout_alignParentBottom="true"
+            android:id="@+id/rl_movie_details_reyet"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimens_cinema_80dp">
+            android:layout_height="@dimen/dimens_cinema_80dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_fragment_movie_999999"
+            android:visibility="gone">
+
             <EditText
-                android:paddingLeft="@dimen/dimens_fragmen_movie_5dp"
-                android:paddingBottom="@dimen/dimens_fragmen_movie_24dp"
-                android:hint="骚年，来一发评论吧"
                 android:id="@+id/et_movie_details_filmrevie"
-                android:layout_marginRight="@dimen/dimens_fragmen_movie_70dp"
-                android:layout_marginLeft="@dimen/dimens_fragmen_movie_10dp"
-                android:background="@drawable/shape_movie_edit_background"
-                android:layout_centerVertical="true"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimens_fragmen_movie_60dp" />
+                android:layout_height="@dimen/dimens_fragmen_movie_60dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dimens_fragmen_movie_10dp"
+                android:layout_marginRight="@dimen/dimens_fragmen_movie_70dp"
+                android:background="@drawable/shape_movie_edit_background"
+                android:hint="骚年，来一发评论吧"
+                android:paddingBottom="@dimen/dimens_fragmen_movie_24dp"
+                android:paddingLeft="@dimen/dimens_fragmen_movie_5dp" />
+
             <TextView
                 android:id="@+id/tv_movie_details_filmrevie"
-                android:textSize="@dimen/dimens_fragmen_movie_18sp"
-                android:layout_marginRight="@dimen/dimens_fragmen_movie_20dp"
-                android:layout_alignBottom="@+id/et_movie_details_filmrevie"
-                android:textColor="@color/color_fragment_movie_000000"
-                android:layout_alignParentRight="true"
-                android:text="发送"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/et_movie_details_filmrevie"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dimens_fragmen_movie_20dp"
+                android:text="发送"
+                android:textColor="@color/color_fragment_movie_000000"
+                android:textSize="@dimen/dimens_fragmen_movie_18sp" />
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/movie_details_publish"
+            android:layout_width="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+            android:src="@drawable/movie_details_publish" />
+
+        <TextView
+            android:id="@+id/tv_movie_details_publish"
+            android:layout_width="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+            android:background="@drawable/shape_details_buy"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/color_fragment_movie_FFFFFF"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+    <!--影评评论-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rl_filmrevie_comment"
+        android:layout_width="match_parent"
+        android:layout_height="850dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/dimens_fragmen_movie_50dp"
+        android:background="@drawable/shape_movie_details_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_24dp"
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_24dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="影评"
+                android:textSize="@dimen/dimens_fragmen_movie_16sp" />
+
+            <View
+                android:layout_width="@dimen/dimens_fragmen_movie_30dp"
+                android:layout_height="@dimen/dimens_fragmen_movie_3dp"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_6dp"
+                android:background="@drawable/shape_cinema_near" />
+
+            <RelativeLayout
+                android:id="@+id/rl_fil_mrevie_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/sdv_fil_mrevie"
+                    android:layout_width="@dimen/dimens_fragmen_movie_50dp"
+                    android:layout_height="@dimen/dimens_fragmen_movie_50dp"
+                    fresco:roundAsCircle="true" />
+
+                <TextView
+                    android:id="@+id/tv_fil_mrevie_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimens_fragmen_movie_16dp"
+                    android:layout_toRightOf="@+id/sdv_fil_mrevie"
+                    android:textSize="@dimen/dimens_fragmen_movie_16sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_fil_mrevie_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_fil_mrevie_top"
+                android:layout_marginBottom="@dimen/dimens_fragmen_movie_10dp"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"
+                android:ellipsize="end"
+                android:lines="4" />
+
+            <RelativeLayout
+                android:id="@+id/rl_fil_mrevie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_fil_mrevie_desc">
+
+                <TextView
+                    android:id="@+id/tv_fil_mrevie_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_fil_mrevie_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dimens_fragmen_movie_16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_fil_mrevie_like"
+                        android:layout_width="@dimen/dimens_fragmen_movie_30dp"
+                        android:layout_height="@dimen/dimens_fragmen_movie_30dp"
+                        android:src="@drawable/movie_details_filmrevie_like" />
+
+                    <TextView
+                        android:id="@+id/tv_fil_mrevie_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dimens_fragmen_movie_5dp"
+                        android:layout_toRightOf="@+id/iv_fil_mrevie_like"
+                        android:text="0"
+                        android:textSize="@dimen/dimens_fragmen_movie_12sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <com.jcodecraeer.xrecyclerview.XRecyclerView
+                android:id="@+id/xrv_filmrevie_comment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimens_fragmen_movie_10dp"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/rl_reyet_comment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_cinema_80dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_fragment_movie_999999">
+
+            <EditText
+                android:id="@+id/et_filmrevie_comment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_fragmen_movie_60dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dimens_fragmen_movie_10dp"
+                android:layout_marginRight="@dimen/dimens_fragmen_movie_70dp"
+                android:background="@drawable/shape_movie_edit_background"
+                android:hint="骚年，来一发评论吧"
+                android:paddingBottom="@dimen/dimens_fragmen_movie_24dp"
+                android:paddingLeft="@dimen/dimens_fragmen_movie_5dp" />
+
+            <TextView
+                android:id="@+id/tv_filmrevie_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/et_filmrevie_comment"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dimens_fragmen_movie_20dp"
+                android:text="发送"
+                android:textColor="@color/color_fragment_movie_000000"
+                android:textSize="@dimen/dimens_fragmen_movie_18sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_movie_publish_comment"
+            android:layout_width="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+            android:src="@drawable/movie_details_publish" />
+
+        <TextView
+            android:id="@+id/tv_publish_comment"
+            android:layout_width="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_marginRight="@dimen/dimens_fragmen_movie_10dp"
+            android:background="@drawable/shape_details_buy"
+            android:gravity="center"
+            android:text="完成"
+            android:textColor="@color/color_fragment_movie_FFFFFF"
+            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_marginLeft="@dimen/dimens_fragmen_movie_10dp"
+            android:layout_marginBottom="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/moviesearch_back"
+            android:layout_width="@dimen/dimens_fragmen_movie_60dp"
+            android:layout_height="@dimen/dimens_fragmen_movie_60dp" />
     </RelativeLayout>
 </RelativeLayout>
