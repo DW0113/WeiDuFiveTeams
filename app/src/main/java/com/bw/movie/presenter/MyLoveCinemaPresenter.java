@@ -22,10 +22,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/*
+/**
+ * 内容：我关注的影院
  * 作者：秦永聪
  *日期：2018/11/30
- * */public class MyLoveCinemaPresenter extends AppDelegate {
+  */public class MyLoveCinemaPresenter extends AppDelegate {
     private    List<LoveCinemaBean.ResultBean> moveList=new ArrayList<>();
     private MyLoveCinemaAdpater MyLoveCinemaAdpater;
     @Override
@@ -40,11 +41,13 @@ import java.util.Map;
 
     @Override
     public void initData() {
+        //找控件
         RecyclerView rv_love_move=get(R.id.rv_love_move);
-
+        //从登陆里边获取值
         SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         String userld = login.getString("userld", "");
         String sessionId = login.getString("sessionId", "");
+       //判断有没有登陆
         if(TextUtils.isEmpty(userld)){
             Toast.makeText(context,"请先登录",Toast.LENGTH_LONG).show();
             return;
@@ -52,7 +55,7 @@ import java.util.Map;
         else{
             dohttp(userld,sessionId);
         }
-
+           //瀑布流
             MyLoveCinemaAdpater = new MyLoveCinemaAdpater(context, moveList);
             rv_love_move.setAdapter(MyLoveCinemaAdpater);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
@@ -60,7 +63,7 @@ import java.util.Map;
 
 
     }
-
+//网络请求
     private void dohttp(String userld, String sessionId) {
         Map map = new HashMap<>();
         Map m= new HashMap<>();

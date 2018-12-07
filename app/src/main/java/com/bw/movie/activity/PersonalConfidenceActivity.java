@@ -4,15 +4,15 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 
 import com.bw.movie.mvp.basepresenter.BaseActivityPresenter;
-import com.bw.movie.presenter.Personal_confidence_Persenter;
+import com.bw.movie.presenter.PersonalconfidencePersenter;
 
 /*
  * 作者：秦永聪
  *日期：2018/11/29
- * */public class Personal_confidence_Activity extends BaseActivityPresenter<Personal_confidence_Persenter> {
+ * */public class PersonalConfidenceActivity extends BaseActivityPresenter<PersonalconfidencePersenter> {
     @Override
-    public Class<Personal_confidence_Persenter> getClassDelegate() {
-        return Personal_confidence_Persenter.class;
+    public Class<PersonalconfidencePersenter> getClassDelegate() {
+        return PersonalconfidencePersenter.class;
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

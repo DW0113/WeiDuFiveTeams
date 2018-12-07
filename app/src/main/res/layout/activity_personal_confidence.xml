@@ -235,6 +235,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/layout_5"
             android:layout_marginTop="@dimen/dimens_fragmen_movie_8dp"
             android:layout_below="@+id/layout_4"
             android:layout_width="match_parent"
@@ -293,6 +294,36 @@
                 android:textColor="@color/color_fragment_my_FFFFFF"
                 android:textSize="@dimen/dimens_fragment_my_20sp" />
 
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="@dimen/dimens_fragmen_movie_8dp"
+            android:layout_below="@+id/layout_5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_personal_45dp">
+            <TextView
+                android:text="重置密码"
+                android:textSize="@dimen/dimens_cinema_16dp"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginRight="@dimen/dimens_fragment_my_16dp"
+                android:layout_alignParentRight="true"
+                android:id="@+id/persenter_into"
+                android:src="@drawable/movie_next"
+                android:layout_marginLeft="@dimen/dimens_personal_55dp"
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/dimens_cinema_20dp"
+                android:layout_height="@dimen/dimens_cinema_20dp" />
+            <View
+                android:layout_marginLeft="@dimen/dimens_personal_28dp"
+                android:layout_marginRight="@dimen/dimens_cinema_20dp"
+                android:layout_alignParentBottom="true"
+                android:background="#A9A9A9"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_fragmen_movie_1dp"></View>
         </RelativeLayout>
     </RelativeLayout>
 

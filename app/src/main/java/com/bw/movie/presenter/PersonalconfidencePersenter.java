@@ -19,18 +19,21 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
-import com.bw.movie.activity.Personal_confidence_Activity;
-import com.bw.movie.activity.Sign_in_Activity;
+import com.bw.movie.activity.PersonalConfidenceActivity;
+import com.bw.movie.activity.UpdatePassword;
 import com.bw.movie.model.Upload_picture;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.HttpListener;
 import com.bw.movie.utils.Utility;
 import com.google.gson.Gson;
+import com.yanzhenjie.permission.PermissionActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +46,7 @@ import static android.app.Activity.RESULT_OK;
 /*
  * 作者：秦永聪
  *日期：2018/11/29
- * */public class Personal_confidence_Persenter extends AppDelegate implements View.OnClickListener {
+ * */public class PersonalconfidencePersenter extends AppDelegate implements View.OnClickListener {
     private RelativeLayout tv_login_exit;
     private SharedPreferences login;
     private ImageView im_persenter_username;
@@ -51,9 +54,10 @@ import static android.app.Activity.RESULT_OK;
     private ImageView im_persenter_emila;
     private ImageView im_persenter_phone;
     private ImageView im_persenter_birthday;
+    private ImageView im_persenter_heand1;
+    private ImageView im_persenter_heand;
     private TextView tv_login_the_complete;
     private TextView tv_login_the_editor;
-    private ImageView im_persenter_heand1;
     private TextView tv_persenter_username;
     private TextView tv_persenter_sex;
     private TextView tv_persenter_emila;
@@ -64,7 +68,6 @@ import static android.app.Activity.RESULT_OK;
     private String sex;
     private String birthday;
     private String headpic;
-    private ImageView im_persenter_heand;
     private static String path = "/sdcard/myHead/";// sd路径
     private Bitmap head;
     private TextView tv_personal_username;
@@ -79,6 +82,7 @@ import static android.app.Activity.RESULT_OK;
     private String email;
     private SharedPreferences update;
     private String headPath;
+    private Date parse;
 
     @Override
     public int getLayoutId() {
@@ -92,6 +96,7 @@ import static android.app.Activity.RESULT_OK;
 
     @Override
     public void initData() {
+        //注册的存取
         SharedPreferences register = context.getSharedPreferences("register", Context.MODE_PRIVATE);
         email = register.getString("et_register_email_get", "");
         update = context.getSharedPreferences("update", Context.MODE_PRIVATE);
@@ -113,14 +118,15 @@ import static android.app.Activity.RESULT_OK;
         tv_persenter_phone = get(R.id.tv_personal_phone);
         im_persenter_birthday = get(R.id.im_persenter_birthday);
         tv_persenter_birthday = get(R.id.tv_personal_birthday);
+        ImageView persenter_into= get(R.id.persenter_into);
         ImageView im_persenter_banck= get(R.id.im_persenter_banck);
-        im_persenter_banck.setOnClickListener(this);
-        //编辑
         tv_personal_username = get(R.id.tv_personal_username);
         tv_personal_sex = get(R.id.tv_personal_sex);
+       //点击事件
+        persenter_into.setOnClickListener(this);
+        im_persenter_banck.setOnClickListener(this);
         im_persenter_username.setOnClickListener(this);
         im_persenter_sex.setOnClickListener(this);
-        //点击事件
         tv_login_exit.setOnClickListener(this);
         tv_login_the_complete.setOnClickListener(this);
         tv_login_the_editor.setOnClickListener(this);
@@ -134,15 +140,17 @@ import static android.app.Activity.RESULT_OK;
         userld =login.getString("userld", "");
         im_persenter_heand.setOnClickListener(this);
         String headPath = login.getString("headPath", "");
+        //判断头像是否为空
         if(TextUtils.isEmpty(headPath)){
             Glide.with(context).load(R.drawable.fragment_my_head_portrait).into(im_persenter_heand);
         }
         else{
             Glide.with(context).load(headPath +"").into(im_persenter_heand);
         }
+        //赋值的方法
         Assignment();
     }
-
+//赋值的方法
     private void Assignment() {
         if(sex.contains("1")){
             tv_persenter_sex.setText("男");
@@ -152,8 +160,14 @@ import static android.app.Activity.RESULT_OK;
             tv_persenter_sex.setText("女");
             et_personal_sex.setText("女");
         }
-        tv_persenter_birthday.setText(birthday+"");
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        try{
+            parse = sdf.parse(birthday);
 
+        }
+        catch(Exception e){
+        }
+        tv_persenter_birthday.setText(parse+"");
         tv_persenter_phone.setText(phone+"");
         tv_persenter_username.setText(nickName);
         et_personal_username.setText(nickName);
@@ -162,10 +176,13 @@ import static android.app.Activity.RESULT_OK;
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            //返回
             case R.id.im_persenter_banck:
-                ((Personal_confidence_Activity)context).finish();
+                ((PersonalConfidenceActivity)context).finish();
                 break;
+                //退出
             case R.id.tv_login_exit:
+                //清空所有的东西
                 login.edit().putString("phone","")
                         .putString("login_pwd_get","")
                         .putString("sex","")
@@ -174,8 +191,9 @@ import static android.app.Activity.RESULT_OK;
                         .putString("headPath","")
                         .putString("nickName","").commit();
                 Toast.makeText(context, "注销成功", Toast.LENGTH_SHORT).show();
-                ((Personal_confidence_Activity)context).finish();
+                ((PersonalConfidenceActivity)context).finish();
                 break;
+                //编辑
             case R.id.tv_login_The_editor:
                   tv_login_the_complete.setVisibility(View.VISIBLE);
                   tv_login_the_editor.setVisibility(View.GONE);
@@ -185,6 +203,7 @@ import static android.app.Activity.RESULT_OK;
                   im_persenter_username.setVisibility(View.VISIBLE);
                   im_persenter_heand1.setVisibility(View.VISIBLE);
                 break;
+                //完成
             case R.id.tv_login_The_complete:
                 tv_login_the_editor.setVisibility(View.VISIBLE);
                 tv_login_the_complete.setVisibility(View.GONE);
@@ -197,25 +216,32 @@ import static android.app.Activity.RESULT_OK;
                 sex1 = et_personal_sex.getText().toString().trim();
                 dohttp();
                 break;
+                //上传头像
             case R.id.im_persenter_heand:
                 setPhoto();
                 break;
+                //修改用户名
             case R.id.im_persenter_username:
                 tv_personal_username.setText("");
                 tv_personal_username.setVisibility(View.GONE);
                 et_personal_username.setVisibility(View.VISIBLE);
 
                 break;
+                //修改性别
             case R.id.im_persenter_sex:
                 tv_persenter_sex.setText("");
                 tv_persenter_sex.setVisibility(View.GONE);
                 et_personal_sex.setVisibility(View.VISIBLE);
 
                 break;
+                //修改进入密码
+            case R.id.persenter_into:
+                  context.startActivity(new Intent(context, UpdatePassword.class));
+                break;
 
         }
     }
-
+     //修改的网络
     private void dohttp() {
         Map m=new HashMap<>();
         m.put("userId",userld);
@@ -245,7 +271,7 @@ import static android.app.Activity.RESULT_OK;
      });
 
     }
-
+//上传头像
     private void setPhoto() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view = View.inflate(context, R.layout.activity_alert, null);
@@ -257,7 +283,7 @@ import static android.app.Activity.RESULT_OK;
                 Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent2.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory(),
                         "head.png")));
-                ((Personal_confidence_Activity) context).startActivityForResult(intent2, 2);//采用ForResult打开
+                ((PersonalConfidenceActivity) context).startActivityForResult(intent2, 2);//采用ForResult打开
                 alertDialog.dismiss();
             }
         });
@@ -266,7 +292,7 @@ import static android.app.Activity.RESULT_OK;
             public void onClick(View view) {
                 Intent intent1 = new Intent(Intent.ACTION_PICK, null);
                 intent1.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                ((Personal_confidence_Activity) context).startActivityForResult(intent1, 1);//采用ForResult打开
+                ((PersonalConfidenceActivity) context).startActivityForResult(intent1, 1);//采用ForResult打开
                 alertDialog.dismiss();
             }
         });
@@ -334,8 +360,8 @@ import static android.app.Activity.RESULT_OK;
                     Toast.makeText(context, data+"上传成功", Toast.LENGTH_SHORT).show();
                     //SharedPreferences update = context.getSharedPreferences("update", Context.MODE_PRIVATE);
                     Glide.with(context).load(headPath +"").into(im_persenter_heand);
-                    login.edit().putString("headPath",headPath).commit();
-
+                    login.edit().putString("headpic",headPath).commit();
+                    onResume();
                 }
 
             }
@@ -347,28 +373,6 @@ import static android.app.Activity.RESULT_OK;
         });
 
     }
-//    private void doHttp() {
-//        Map<String,String> map = new HashMap<>();
-//        map.put("uid",s.getString("uid",""));
-//        new Utility().get("/user/getUserInfo",map).result(new HttpListener() {
-//            @Override
-//            public void success(String data) {
-//                Gson gson = new Gson();
-//                LoginBean loginBean = gson.fromJson(data, LoginBean.class);
-//                String code = loginBean.getCode();
-//                if("0".equals(code)){
-//                    String icon = (String) loginBean.getData().getIcon();
-//                    s.edit().putString("icon",icon).commit();
-//                }
-//            }
-//
-//            @Override
-//            public void fail(String error) {
-//
-//            }
-//        });
-//    }
-
     /**
      * 调用系统的裁剪功能
      *
@@ -385,7 +389,7 @@ import static android.app.Activity.RESULT_OK;
         intent.putExtra("outputX", 150);
         intent.putExtra("outputY", 150);
         intent.putExtra("return-data", true);
-        ((Personal_confidence_Activity) context).startActivityForResult(intent, 3);
+        ((PersonalConfidenceActivity) context).startActivityForResult(intent, 3);
     }
 
     private void setPicToView(Bitmap mBitmap) {
@@ -414,20 +418,22 @@ import static android.app.Activity.RESULT_OK;
     }
 
     public void onResume() {
-        nickName = login.getString("nickName", "");
-        phone = login.getString("phone", "");
-        sex = login.getString("sex", "");
+         nickName = login.getString("nickName", "");
+         phone = login.getString("phone", "");
+         sex = login.getString("sex", "");
          headPath = login.getString("headPath", "");
-        birthday = login.getString("birthday", "");
-        headpic = login.getString("headpic", "");
-        sessionId =login.getString("sessionId", "");
-        userld =login.getString("userld", "");
-        Assignment();
-        if(TextUtils.isEmpty(this.headPath)){
+         birthday = login.getString("birthday", "");
+         headpic = login.getString("headpic", "");
+         sessionId =login.getString("sessionId", "");
+         userld =login.getString("userld", "");
+
+        if(TextUtils.isEmpty(headpic)){
             Glide.with(context).load(R.drawable.fragment_my_head_portrait).into(im_persenter_heand);
+
         }
         else{
-            Glide.with(context).load(this.headPath +"").into(im_persenter_heand);
+            Glide.with(context).load(headpic +"").into(im_persenter_heand);
         }
+        Assignment();
     }
 }

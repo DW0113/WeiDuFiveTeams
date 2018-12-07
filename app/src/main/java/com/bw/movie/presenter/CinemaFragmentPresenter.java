@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * 作者：刘进
  *日期：2018/11/27
- * */
+ */
 public class CinemaFragmentPresenter extends AppDelegate implements View.OnClickListener {
     private RelativeLayout show;
     private RelativeLayout hide;

@@ -20,9 +20,9 @@ import android.widget.Toast;
 import com.bw.movie.activity.LoginActivity;
 import com.bw.movie.activity.MyLoveActivity;
 import com.bw.movie.activity.RecordActivity;
-import com.bw.movie.activity.Sign_in_Activity;
+import com.bw.movie.activity.SigninActivity;
 import com.bw.movie.activity.VersionSuccessActivity;
-import com.bw.movie.activity.Personal_confidence_Activity;
+import com.bw.movie.activity.PersonalConfidenceActivity;
 import com.bw.movie.model.VersionBean;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.HttpListener;
@@ -101,7 +101,7 @@ import java.util.Map;
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.iv_fragment_my_Sign_in:
-                context.startActivity(new Intent(context, Sign_in_Activity.class));
+                context.startActivity(new Intent(context, SigninActivity.class));
                 break;
             //点击登录
             case R.id.tv_fragment_my_login:
@@ -121,7 +121,7 @@ import java.util.Map;
                     context.startActivity(new Intent(context, LoginActivity.class));
                 }
                 else{
-                    context.startActivity(new Intent(context, Personal_confidence_Activity.class));
+                    context.startActivity(new Intent(context, PersonalConfidenceActivity.class));
                 }
 
                 break;

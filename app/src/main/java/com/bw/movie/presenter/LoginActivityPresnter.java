@@ -3,6 +3,7 @@ package com.bw.movie.presenter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -27,6 +28,13 @@ import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.HttpHelper;
 import com.google.gson.Gson;
 import com.bw.movie.R;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 
@@ -42,19 +50,21 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
     private EditText login_pwd;
     private String login_phone_get;
     private String decrypt;
-    private boolean isCheckedd = true;
+    private String login_pwd_get;
+    private String login_pwd_get1;
+    private String phone;
+    private String login_pwd_get2;
+    private String phone1;
     private SharedPreferences register;
     private SharedPreferences login;
     private CheckBox cb_remember_the_password;
     private CheckBox cb_automatic_login;
-    private String login_pwd_get;
-    private String login_pwd_get1;
-    private String phone;
+    private boolean isCheckedd = true;
     private boolean remember_password;
     private boolean automatic_login;
-    private String login_pwd_get2;
-    private String phone1;
-
+    private IWXAPI api;
+    //微信登录的Appid
+    private final   String  APP_ID_WX ="wxb3852e6a6b7d9516";
     @Override
     public int getLayoutId() {
         return R.layout.activity_login;
@@ -69,32 +79,37 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
 
     @Override
     public void initData() {
-
-        //获取输入的东西和点击事件
+        api = WXAPIFactory.createWXAPI(context,APP_ID_WX,true);
+        //将应用的appid注册到微信
+        api.registerApp(APP_ID_WX);
+        //获取输入的东西
         TextView tv_login_register = get(R.id.tv_login_register);
-        tv_login_register.setOnClickListener(this);
         RelativeLayout tv_login = get(R.id.tv_login);
-        tv_login.setOnClickListener(this);
+        //获取控件
         login_phone = get(R.id.login_phone);
         login_pwd = get(R.id.login_pwd);
         ImageView im_login_eye = get(R.id.im_login_eye);
         cb_remember_the_password = get(R.id.cb_remember_the_password);
         cb_automatic_login = get(R.id.cb_Automatic_login);
+       ImageView im_WeChat_login= get(R.id.im_WeChat_login);
+       //点击事件
+        im_WeChat_login.setOnClickListener(this);
         cb_remember_the_password.setOnClickListener(this);
         cb_automatic_login.setOnClickListener(this);
         im_login_eye.setOnClickListener(this);
+        tv_login_register.setOnClickListener(this);
+        tv_login.setOnClickListener(this);
         //获得注册得到手机号与密码，直接展示
         register = context.getSharedPreferences("register", Context.MODE_PRIVATE);
         String et_register_pwd_get = register.getString("et_register_pwd_get", "");
         String et_register_phone_get = register.getString("et_register_phone_get", "");
-//        login_phone.setText(et_register_phone_get);
-//        login_pwd.setText(et_register_pwd_get);
         //存登录的值
         login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         remember_password = login.getBoolean("remember_password", false);
         automatic_login = login.getBoolean("automatic_login", false);
         login_pwd_get2 = login.getString("login_pwd_get", "");
         phone1 = login.getString("phone", "");
+        //判断登录的时候，是否点击记住密码
         if (remember_password) {
             login_phone.setText(phone1);
             login_pwd.setText(login_pwd_get2);
@@ -102,12 +117,14 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
         } else {
 
             login_phone.setText(phone1);
-            cb_remember_the_password.setChecked(true);
+            cb_remember_the_password.setChecked(false);
         }
+        //判断登录的时候，判断是否为空
         if (TextUtils.isEmpty(login_pwd_get2)) {
             Toast.makeText(context, "哈哈哈，请先登录", Toast.LENGTH_LONG).show();
             return;
         } else {
+            //判断是否点击自动登录
             if (automatic_login) {
                 cb_automatic_login.setChecked(true);
                 context.startActivity(new Intent(context, MainActivity.class));
@@ -122,18 +139,20 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            //注册
             case R.id.tv_login_register:
                 //点击注册，然后就跳转到注册页面
                 context.startActivity(new Intent(context, RegisterActivity.class));
-
                 break;
             case R.id.tv_login:
                 //点击登录的时候，
                 login_phone_get = login_phone.getText().toString().trim();
                 login_pwd_get = login_pwd.getText().toString().trim();
                 decrypt = EncryptUtil.encrypt(login_pwd_get + "");
+               //登录的网络请求
                 dohttp();
                 break;
+                //点击小眼睛
             case R.id.im_login_eye:
                 if (isCheckedd) {
                     //如果选中，显示密码
@@ -145,11 +164,20 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
                     isCheckedd = true;
                 }
                 break;
-
+                //微信登录
+            case R.id.im_WeChat_login:
+                SendAuth.Req req = new SendAuth.Req();
+                req.scope = "snsapi_userinfo";//
+                req.state = "wechat_sdk_微信登录";
+                api.sendReq(req);
+                Log.i("show", "onResp: " + "login");
+                break;
         }
     }
 
-    //网络请求
+
+
+    //登录网络请求
     private void dohttp() {
         FormBody requestBody = new FormBody.Builder()
                 .add("phone", login_phone_get)
@@ -161,6 +189,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
                 LoginBean loginBean = new Gson().fromJson(data, LoginBean.class);
                 if (loginBean.getStatus().equals("0000")) {
                     LoginBean.ResultBean.UserInfoBean userInfo = loginBean.getResult().getUserInfo();
+                    //成功之后，存值
                     login.edit().putString("nickName", userInfo.getNickName())
                             .putString("phone", userInfo.getPhone())
                             .putString("sex", userInfo.getSex() + "")

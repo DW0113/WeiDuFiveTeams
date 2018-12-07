@@ -23,12 +23,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/*
+/**
+ * 内容：我关注的电影
  * 作者：秦永聪
  *日期：2018/11/30
  * */public class MyLoveMovieePresenter extends AppDelegate {
      private    List<LoveMoveBean.ResultBean> moveList=new ArrayList<>();
     private MyLoveMoveAdpater myLoveMoveAdpater;
+    private String userld;
+    private String sessionId;
 
     @Override
     public int getLayoutId() {
@@ -42,9 +45,13 @@ import java.util.Map;
 
     @Override
     public void initData() {
+        //找控件
          RecyclerView  rv_love_move=get(R.id.rv_love_move);
-
+         //获取值
         SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        userld = login.getString("userld", "");
+        sessionId = login.getString("sessionId", "");
+        //判断有没有登陆
         String userld = login.getString("userld", "");
         String sessionId = login.getString("sessionId", "");
        if(TextUtils.isEmpty(userld)){
@@ -62,7 +69,7 @@ import java.util.Map;
 
 
     }
-
+//网络请求
     private void dohttp(String userld, String sessionId) {
         Map map = new HashMap<>();
         Map m = new HashMap<>();
@@ -81,9 +88,6 @@ import java.util.Map;
                            Toast.makeText(context,"目前还没有关注的",Toast.LENGTH_LONG).show();
                            return;
                        }
-                       // List<MyLove.ResultBean.MovieListBean> movieListt = result.getMovieList();
-                       //   List<MyLove.ResultBean.MovieListBean> moveListt = myLove.getResult().getMovieList();
-
                        moveList.addAll(result);
                        myLoveMoveAdpater.notifyDataSetChanged();
                    }

@@ -8,7 +8,7 @@
         android:paddingLeft="@dimen/dimens_fragment_my_40dp"
         android:paddingRight="@dimen/dimens_fragment_my_40dp"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dimens_fragment_my_220dp"
+        android:layout_marginTop="@dimen/dimens_fragment_my_160dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_fragment_my_54dp">
         <ImageView
@@ -125,6 +125,34 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_marginLeft="@dimen/dimens_fragment_my_12dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dimens_fragment_my_30dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_fragment_my_40dp">
 
+        <View
+            android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+            android:layout_width="@dimen/dimens_fragmen_movie_126dp"
+            android:layout_height="0.5dp"
+            android:background="#ffffff"></View>
+        <TextView
+            android:text="第三方账号登录"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+        <View
+            android:layout_marginTop="@dimen/dimens_fragment_my_10dp"
+            android:layout_width="@dimen/dimens_fragmen_movie_126dp"
+            android:layout_height="0.5dp"
+            android:background="#ffffff"></View>
+    </LinearLayout>
 
+ <ImageView
+     android:id="@+id/im_WeChat_login"
+     android:src="@drawable/weixin"
+     android:layout_width="@dimen/dimens_fragment_my_40dp"
+     android:layout_height="@dimen/dimens_fragment_my_40dp"
+     android:layout_gravity="center_horizontal"/>
 </LinearLayout>

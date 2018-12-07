@@ -16,7 +16,7 @@ import java.util.List;
 /*
  * 作者：秦永聪
  *日期：2018/12/3
- * */public class Sign_in_Pesent extends AppDelegate {
+ * */public class SigninPersenter extends AppDelegate {
     private SignCalendar calendar;
     private String date;
     private int years;
