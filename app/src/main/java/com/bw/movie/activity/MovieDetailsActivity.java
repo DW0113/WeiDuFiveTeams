@@ -13,7 +13,7 @@ public class MovieDetailsActivity extends BaseActivityPresenter<MovieDetailsActi
     @Override
     protected void onPause() {
         super.onPause();
-        presenter.setVieo();
+        Jzvd.releaseAllVideos();
     }
 
     @Override

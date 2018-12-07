@@ -37,6 +37,4 @@ public abstract class BaseActivityPresenter<T extends AppDelegate> extends AppCo
         presenter.initData();
     }
 
-//    public void initViews(){};
-
 }

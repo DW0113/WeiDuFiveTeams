@@ -59,11 +59,11 @@ public class IdeaActivityPresenter extends AppDelegate implements View.OnClickLi
     }
 
 
-    private void doHttpIdea(String userId, String sessionId,String content){
+    private void doHttpIdea(String userld, String sessionId,String content){
         Map<String,String> formmap = new HashMap<>();
         formmap.put("content",content);
         Map<String,String> maphead = new HashMap<>();
-        maphead.put("userId",userId);
+        maphead.put("userId",userld);
         maphead.put("sessionId",sessionId);
 
         new Utility().postform("movieApi/tool/v1/verify/recordFeedBack",formmap,maphead).result(new HttpListener() {

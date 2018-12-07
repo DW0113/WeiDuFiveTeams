@@ -42,7 +42,7 @@ public class MovieTypeChildeAdapter extends RecyclerView.Adapter<MovieTypeChilde
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClick.Click(list.get(i).getId());
+                onClick.Click(list.get(i).getId(),i);
             }
         });
     }
@@ -71,6 +71,6 @@ public class MovieTypeChildeAdapter extends RecyclerView.Adapter<MovieTypeChilde
     }
 
     public interface OnClick{
-        void Click(int id);
+        void Click(int id ,int position);
     }
 }

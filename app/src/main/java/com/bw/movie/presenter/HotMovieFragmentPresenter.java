@@ -17,7 +17,10 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 作者:杜威
+ * 热门电影展示
+ * */
 public class HotMovieFragmentPresenter extends AppDelegate {
     private Context context;
     private XRecyclerView rv_hotmovie_recyclerview;
@@ -67,6 +70,7 @@ public class HotMovieFragmentPresenter extends AppDelegate {
                 ((MovieSearchActivity)context).finish();
             }
         });
+        //热门电影请求数据
         doHttpHotMovie(1);
     }
 

@@ -167,7 +167,6 @@ import java.util.Map;
                  login.edit().putString("url",versionBean.getDownloadUrl()).commit();
                 //判断flag是否==1，等于则跳转页面
                 if (flag == 1) {
-                    Toast.makeText(context, flag+"", Toast.LENGTH_LONG).show();
                     Intent intent2 = new Intent(context, VersionSuccessActivity.class);
                     context.startActivity(intent2);
                 } else {
@@ -185,21 +184,22 @@ import java.util.Map;
     }
 
     //返回的一个方法，用来刷新的
-    public void onResume() {
+                                                                                                                                                                                                                        public void onResume() {
         SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         username = login.getString("nickName", "");
-        headPath = login.getString("headPath", "");
+        String headpic = login.getString("headpic", "");
+
         if(TextUtils.isEmpty(username)) {
             tv_fragment_my_text.setText("未登录");
         }
         else{
             tv_fragment_my_text.setText(username+"");
         }
-        if(TextUtils.isEmpty(this.headPath)){
+        if(TextUtils.isEmpty(headpic)){
             Glide.with(context).load(R.drawable.fragment_my_head_portrait).into(tv_fragment_my_login);
         }
         else{
-            Glide.with(context).load(this.headPath +"").into(tv_fragment_my_login);
+            Glide.with(context).load(headpic +"").into(tv_fragment_my_login);
         }
 
     }
