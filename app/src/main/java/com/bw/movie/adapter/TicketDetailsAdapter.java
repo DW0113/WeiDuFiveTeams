@@ -24,7 +24,7 @@ public class TicketDetailsAdapter extends RecyclerView.Adapter<TicketDetailsAdap
 
     @NonNull
     @Override
-    public TicketDetailsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = View.inflate(context, R.layout.ticket_details_adapter_item, null);
         MyViewHolder holder = new MyViewHolder(view);
         holder.image_next = view.findViewById(R.id.iv_ticket_details_item_next);
@@ -36,7 +36,7 @@ public class TicketDetailsAdapter extends RecyclerView.Adapter<TicketDetailsAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TicketDetailsAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.text_type.setText(list.get(position).getScreeningHall());
         holder.text_start.setText(list.get(position).getBeginTime());
         holder.text_end.setText(list.get(position).getEndTime());

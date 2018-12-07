@@ -15,13 +15,9 @@ android {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
-        lintOptions {
-            checkReleaseBuilds false
-            // Or, if you prefer, you can continue to check for errors in release builds,
-            // but continue the build even when errors are found:
-            abortOnError false
-        }
+
         manifestPlaceholders = [
+
                 XG_ACCESS_ID : "2100319700",
                 XG_ACCESS_KEY: "A35DCU8K88JC",
         ]
@@ -69,4 +65,5 @@ dependencies {
     implementation 'cn.jzvd:jiaozivideoplayer:6.4.0'
     //动态获取权限
     implementation 'com.yanzhenjie:permission:2.0.0-rc4'
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }

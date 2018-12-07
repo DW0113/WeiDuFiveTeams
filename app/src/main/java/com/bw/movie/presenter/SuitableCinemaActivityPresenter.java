@@ -71,7 +71,6 @@ public class SuitableCinemaActivityPresenter extends AppDelegate {
         doHttp(movieId);
     }
 
-    //查询电影对应的适合的影院列表
     private void doHttp(int movieId) {
         new HttpHelper().get(Http.SUITABLE_CINEMA+"&movieId="+movieId).result(new HttpHelper.Httplistenner() {
             @Override

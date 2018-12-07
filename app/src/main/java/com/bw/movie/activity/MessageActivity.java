@@ -10,10 +10,4 @@ public class MessageActivity extends BaseActivityPresenter<MessageActivityPresen
     public Class<MessageActivityPresenter> getClassDelegate() {
         return MessageActivityPresenter.class;
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.onResume();
-    }
 }

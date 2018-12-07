@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item>
-        <shape>
-        <corners android:radius="@dimen/dimens_fragmen_movie_8dp"></corners>
-        <solid android:color="@color/color_fragment_movie_000000"
-            android:width="@dimen/dimens_fragmen_movie_1dp"
-            ></solid>
-      </shape>
-    </item>
-
-    <item android:right="@dimen/dimens_fragmen_movie_5dp" android:bottom="@dimen/dimens_fragmen_movie_5dp"
-          android:top="@dimen/dimens_fragmen_movie_5dp"
-        android:left="@dimen/dimens_fragmen_movie_5dp"
-        >
-        <shape>
-            <solid android:color="@color/color_fragment_movie_FFFFFF">
-                </solid>
-
-        </shape>
-    </item>
-</layer-list>
+    <corners android:radius="@dimen/dimens_fragmen_movie_8dp"></corners>
+    <stroke android:color="@color/color_fragment_movie_333333"
+        android:width="@dimen/dimens_fragmen_movie_1dp"
+        ></stroke>
+</shape>

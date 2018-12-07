@@ -1,7 +1,6 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,9 +9,6 @@ import android.widget.TextView;
 
 
 import com.bw.movie.R;
-import com.bw.movie.activity.MainActivity;
-import com.bw.movie.activity.MovieDetailsActivity;
-import com.bw.movie.activity.MovieSearchActivity;
 import com.bw.movie.model.MovieBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -41,14 +37,6 @@ public class MovieBannerAdapter extends RecyclerView.Adapter<MovieBannerAdapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.simpleDraweeView.setImageURI(list.get(position).getImageUrl());
         holder.textView.setText(list.get(position).getName());
-        holder.simpleDraweeView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(((MainActivity)context),MovieDetailsActivity.class);
-                intent.putExtra("movieId",list.get(position).getId());
-                context.startActivity(intent);
-            }
-        });
     }
 
     @Override

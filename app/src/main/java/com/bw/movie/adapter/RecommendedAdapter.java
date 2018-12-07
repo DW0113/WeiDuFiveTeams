@@ -41,7 +41,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
 
     @NonNull
     @Override
-    public RecommendedAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         //找到layout文件
         View view = View.inflate(context, R.layout.adapter_item_recommended,null);
         MyViewHolder viewHolder = new MyViewHolder(view);
@@ -49,13 +49,16 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecommendedAdapter.MyViewHolder myViewHolder, final int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
         //获取影院里的Id
 
         //赋值
         myViewHolder.cinemaName.setText(mList.get(i).getName());
         myViewHolder.cinemaAddress.setText(mList.get(i).getAddress());
         Glide.with(context).load(mList.get(i).getLogo()).into(myViewHolder.cinemaLogo);
+        SharedPreferences valueOf = context.getSharedPreferences("valueOf", Context.MODE_PRIVATE);
+
+
         //影院点击事件
         myViewHolder.cinemaLogo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +66,13 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
                  id = mList.get(i).getId();
                 Intent intent = new Intent(context,CinemaShowActivity.class);
                 intent.putExtra("id",id+"");
+
+                int distance = mList.get(i).getDistance();
+                //double i1 = distance / 1000;
+                //Toast.makeText(context, "sdf"+distance,Toast.LENGTH_SHORT).show();
+                myViewHolder.position.setText(distance+"km");
+
+
                 context.startActivity(intent);
                 //context.startActivity(new Intent(context, CinemaShowActivity.class));
 
@@ -109,6 +119,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView position;
         RelativeLayout comMendedItem;
         ImageView cinemaLogo,mFocus;
         TextView cinemaName,cinemaAddress;
@@ -118,6 +129,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
             cinemaName = itemView.findViewById(R.id.tv_cinema_name);
             cinemaAddress = itemView.findViewById(R.id.tv_cinema_address);
             cinemaLogo = itemView.findViewById(R.id.iv_cinema_logo);
+            position = itemView.findViewById(R.id.tv_cinema_position);
             comMendedItem = itemView.findViewById(R.id.commended_item);
             mFocus = itemView.findViewById(R.id.focus);
         }

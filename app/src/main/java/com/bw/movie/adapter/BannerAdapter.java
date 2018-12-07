@@ -53,6 +53,7 @@ public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.MyViewHold
     private List<BannerBean.ResultBean> list = new ArrayList<>();
     public void setList(List<BannerBean.ResultBean> list) {
         this.list = list;
+        notifyDataSetChanged();
     }
 
 

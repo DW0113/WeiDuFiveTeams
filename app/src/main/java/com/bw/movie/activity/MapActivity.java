@@ -1,8 +1,10 @@
 package com.bw.movie.activity;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -20,6 +22,8 @@ public class MapActivity extends AppCompatActivity  implements LocationSource, A
 
     private MapView mMapView;
     private AMap aMap;
+    private SharedPreferences distance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,9 @@ public class MapActivity extends AppCompatActivity  implements LocationSource, A
         if (aMap == null) {
             aMap = mMapView.getMap();
         }
+
+         distance = getSharedPreferences("distance", MODE_PRIVATE);
+
         MyLocationStyle myLocationStyle;
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
         myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
@@ -79,11 +86,11 @@ public class MapActivity extends AppCompatActivity  implements LocationSource, A
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
         mMapView.onSaveInstanceState(outState);
     }
-    LocationSource.OnLocationChangedListener mListener;
+    OnLocationChangedListener mListener;
     AMapLocationClient mlocationClient;
     AMapLocationClientOption mLocationOption;
     @Override
-    public void activate(LocationSource.OnLocationChangedListener onLocationChangedListener) {
+    public void activate(OnLocationChangedListener onLocationChangedListener) {
         mListener = onLocationChangedListener;
         if (mlocationClient == null) {
             //初始化定位
@@ -121,6 +128,10 @@ public class MapActivity extends AppCompatActivity  implements LocationSource, A
                 double latitude = amapLocation.getLatitude();
                 //获取经度
                 double altitude = amapLocation.getAltitude();
+                Toast.makeText(this, "获取纬度"+latitude, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "获取经度"+altitude, Toast.LENGTH_SHORT).show();
+                distance.edit().putString("latitude","").putString("altitude","").commit();
+
                 //获取城市编号
                 String adCode = amapLocation.getAdCode();
             } else {

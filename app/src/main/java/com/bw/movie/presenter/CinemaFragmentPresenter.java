@@ -142,7 +142,7 @@ public class CinemaFragmentPresenter extends AppDelegate implements View.OnClick
                 vp_cinema_viewpager.setCurrentItem(1);
                 break;
             case R.id.iv_cinema_position:
-                //context.startActivity(new Intent(context, MapActivity.class));
+                context.startActivity(new Intent(context, MapActivity.class));
                 break;
 
         }

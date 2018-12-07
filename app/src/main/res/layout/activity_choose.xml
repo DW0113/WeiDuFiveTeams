@@ -99,11 +99,64 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout"
         android:background="#ffffff" />
-    <ImageView
+    <!--
+        <ImageView
         android:id="@+id/iv_choose_back"
         android:layout_margin="@dimen/dimens_fragmen_movie_20dp"
         android:layout_alignParentBottom="true"
         android:src="@drawable/moviesearch_back"
         android:layout_width="@dimen/dimens_fragmen_movie_60dp"
         android:layout_height="@dimen/dimens_fragmen_movie_60dp" />
+    -->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_fragmen_movie_100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dimens_cinema_20dp"
+        android:layout_marginRight="@dimen/dimens_cinema_20dp"
+        android:background="@drawable/shape_cinema_pay"
+        android:clickable="true">
+
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="@dimen/dimens_cinema_110dp"
+            android:layout_height="@dimen/dimens_cinema_40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dimens_cinema_24dp"
+            android:text="合计:  ￥"
+            android:textColor="@color/color_cinema_ffffff"
+            android:textSize="@dimen/dimens_cinema_24dp" />
+
+        <TextView
+            android:id="@+id/iv_price"
+            android:layout_width="@dimen/dimens_cinema_80dp"
+            android:layout_height="@dimen/dimens_cinema_80dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_num"
+            android:gravity="center"
+            android:text="价格"
+            android:textColor="@color/color_cinema_D43C3C"
+            android:textSize="@dimen/dimens_cinema_40dp" />
+
+        <ImageView
+            android:id="@+id/yes"
+            android:layout_width="@dimen/dimens_cinema_40dp"
+            android:layout_height="@dimen/dimens_cinema_40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_price"
+            android:src="@mipmap/ic_launcher" />
+
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -68,10 +68,9 @@ public class MovieFragmentPresenter extends AppDelegate {
         //进入电影详情页面
         movieTypeAdapter.setOnClick(new MovieTypeAdapter.OnClick() {
             @Override
-            public void Click(int id, int position) {
+            public void Click(int id) {
                 Intent intent = new Intent(((MainActivity)context), MovieDetailsActivity.class);
                 intent.putExtra("movieId",id);
-                intent.putExtra("position",position);
                 context.startActivity(intent);
             }
         });

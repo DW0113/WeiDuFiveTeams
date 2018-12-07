@@ -102,7 +102,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
         } else {
 
             login_phone.setText(phone1);
-            cb_remember_the_password.setChecked(false);
+            cb_remember_the_password.setChecked(true);
         }
         if (TextUtils.isEmpty(login_pwd_get2)) {
             Toast.makeText(context, "哈哈哈，请先登录", Toast.LENGTH_LONG).show();
@@ -197,6 +197,24 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
     }
 
     public void onResume() {
+//        remember_password = login.getBoolean("remember_password", false);
+//        automatic_login = login.getBoolean("automatic_login", false);
+//        login_pwd_get2 = login.getString("login_pwd_get", "");
+//
+//        phone1 = login.getString("phone", "");
+//        if(remember_password){
+//            login_phone.setText(phone1);
+//            login_pwd.setText(login_pwd_get2);
+//            cb_remember_the_password.setChecked(true);
+//        }else{
+//            login_phone.setText(phone1);
+//        }
+//        if(automatic_login){
+//            cb_automatic_login.setChecked(true);
+//            context.startActivity(new Intent(context,MainActivity.class));
+//            ((LoginActivity)context).finish();
+//
+//        }
 
     }
 }

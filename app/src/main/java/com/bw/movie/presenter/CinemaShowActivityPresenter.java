@@ -68,8 +68,9 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
     private BannerAdapter bannerAdapter;
     private RecyclerView mMovieRecyclerView;
     private QueryMovieAdapter movieAdapter;
-    private String url = "http://172.17.8.100/movieApi/movie/v1/findMovieScheduleList";
+    private String url = "/movieApi/movie/v1/findMovieScheduleList";
     private SharedPreferences preferences;
+    private SharedPreferences va;
 
     @Override
     public int getLayoutId() {
@@ -111,11 +112,14 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
          bannerAdapter = new BannerAdapter(context);
          rc_movie_banner.setAdapter(bannerAdapter);
 
+        //SharedPreferences
+         va = context.getSharedPreferences("va", Context.MODE_PRIVATE);
+
         //Intent
         Intent intent = ((CinemaShowActivity) context).getIntent();
          id = intent.getStringExtra("id");
          //影院id
-        Toast.makeText(context, "id===="+id, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "id===="+id, Toast.LENGTH_SHORT).show();
         bannerHttp(id);
         //Toast.makeText(context, ""+id, Toast.LENGTH_SHORT).show();
         //取数据
@@ -152,7 +156,7 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
         movieHttp(id,1);
 
     }
-
+    //电影的id和影院的id   展示电影的档期
     private void movieHttp(String id,int movieId) {
 
         Map<String,String> map = new HashMap<>();
@@ -202,13 +206,19 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
         map.put("cinemaId",id);
         map.put("userId",userId);
         map.put("sessionId",sessionId);
-        new Utility().get("http://172.17.8.100/movieApi/cinema/v1/findCinemaInfo",map).result(new HttpListener() {
+        new Utility().get("movieApi/cinema/v1/findCinemaInfo",map).result(new HttpListener() {
             @Override
             public void success(String data) {
                 //Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show();
                 CinemaItemBean cinemaItemBean = new Gson().fromJson(data, CinemaItemBean.class);
                 CinemaItemBean.ResultBean result = cinemaItemBean.getResult();
                 //mImage.setImageURI(result.getLogo()+"");
+                //影院地址
+                String address = result.getAddress();
+                //影院名字
+                String name = result.getName();
+                va.edit().putString("address",address).putString("name",name).commit();
+                //Toast.makeText(context, "address"+address, Toast.LENGTH_SHORT).show();
                 mName.setText(result.getName());
                 mAddress.setText(result.getAddress());
                 Glide.with(context).load(result.getLogo()).into(mImage);
@@ -260,6 +270,9 @@ public class CinemaShowActivityPresenter extends AppDelegate implements View.OnC
         }, 1000);
 
     }
+
+    //点数跌幅
+
     //
     class MyAdapter extends FragmentPagerAdapter{
 

@@ -72,8 +72,8 @@ public class MovieTypeAdapter extends RecyclerView.Adapter<MovieTypeAdapter.MyVi
         });
         adapter.setOnClick(new MovieTypeChildeAdapter.OnClick() {
             @Override
-            public void Click(int id, int position) {
-                onClick.Click(id,position);
+            public void Click(int id) {
+                onClick.Click(id);
             }
         });
     }
@@ -119,6 +119,6 @@ public class MovieTypeAdapter extends RecyclerView.Adapter<MovieTypeAdapter.MyVi
     }
 
     public interface OnClick{
-        void Click(int id, int position);
+        void Click(int id);
     }
 }

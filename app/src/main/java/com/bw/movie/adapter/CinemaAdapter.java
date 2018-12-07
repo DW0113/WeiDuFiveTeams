@@ -20,7 +20,7 @@ import com.bw.movie.model.CinemaBean;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/**
  *作者：刘进
  *日期：2018/11/28
  **/
@@ -33,7 +33,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.MyViewHold
 
     @NonNull
     @Override
-    public CinemaAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         //找到layout文件
         View view = View.inflate(context, R.layout.adapter_item_cinema,null);
         MyViewHolder viewHolder = new MyViewHolder(view);
@@ -41,7 +41,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CinemaAdapter.MyViewHolder myViewHolder, final int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
         //赋值
         myViewHolder.cinemaName.setText(cinemaList.get(i).getName());
         myViewHolder.cinemaAddress.setText(cinemaList.get(i).getAddress());

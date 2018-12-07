@@ -67,14 +67,13 @@ import java.util.Map;
         m.put("userId",userld);
         m.put("sessionId",sessionId);
         map.put("page",1);
-        map.put("count",20);
-        new Utility().gethead("/movieApi/cinema/v1/verify/findCinemaPageList",map,m).result(new HttpListener() {
+        map.put("count",10);
+        new Utility().getcinema(m,"movieApi/cinema/v1/verify/findCinemaPageList",map).result(new HttpListener() {
             @Override
             public void success(String data) {
                 Toast.makeText(context,"电影院："+data,Toast.LENGTH_LONG).show();
                 LoveCinemaBean loveCinemaBean = new Gson().fromJson(data, LoveCinemaBean.class);
                 List<LoveCinemaBean.ResultBean> result = loveCinemaBean.getResult();
-                Toast.makeText(context,result.size()+"ggg",Toast.LENGTH_LONG).show();
                 if(result==null){
                     Toast.makeText(context,"目前还没有关注的影院",Toast.LENGTH_LONG).show();
                     return;

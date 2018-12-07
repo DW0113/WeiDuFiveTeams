@@ -21,7 +21,6 @@ import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.activity.Personal_confidence_Activity;
 import com.bw.movie.activity.Sign_in_Activity;
-import com.bw.movie.activity.UpdatePassword;
 import com.bw.movie.model.Upload_picture;
 import com.bw.movie.mvp.view.AppDelegate;
 import com.bw.movie.utils.HttpListener;
@@ -114,8 +113,6 @@ import static android.app.Activity.RESULT_OK;
         tv_persenter_phone = get(R.id.tv_personal_phone);
         im_persenter_birthday = get(R.id.im_persenter_birthday);
         tv_persenter_birthday = get(R.id.tv_personal_birthday);
-       ImageView persenter_into= get(R.id.persenter_into);
-        persenter_into.setOnClickListener(this);
         ImageView im_persenter_banck= get(R.id.im_persenter_banck);
         im_persenter_banck.setOnClickListener(this);
         //编辑
@@ -175,7 +172,6 @@ import static android.app.Activity.RESULT_OK;
                         .putString("email","")
                         .putString("birthday","")
                         .putString("headPath","")
-                        .putString("headpic","")
                         .putString("nickName","").commit();
                 Toast.makeText(context, "注销成功", Toast.LENGTH_SHORT).show();
                 ((Personal_confidence_Activity)context).finish();
@@ -215,9 +211,6 @@ import static android.app.Activity.RESULT_OK;
                 tv_persenter_sex.setVisibility(View.GONE);
                 et_personal_sex.setVisibility(View.VISIBLE);
 
-                break;
-            case R.id.persenter_into:
-                  context.startActivity(new Intent(context, UpdatePassword.class));
                 break;
 
         }
@@ -341,8 +334,8 @@ import static android.app.Activity.RESULT_OK;
                     Toast.makeText(context, data+"上传成功", Toast.LENGTH_SHORT).show();
                     //SharedPreferences update = context.getSharedPreferences("update", Context.MODE_PRIVATE);
                     Glide.with(context).load(headPath +"").into(im_persenter_heand);
-                    login.edit().putString("headpic",headPath).commit();
-                    onResume();
+                    login.edit().putString("headPath",headPath).commit();
+
                 }
 
             }
@@ -354,6 +347,28 @@ import static android.app.Activity.RESULT_OK;
         });
 
     }
+//    private void doHttp() {
+//        Map<String,String> map = new HashMap<>();
+//        map.put("uid",s.getString("uid",""));
+//        new Utility().get("/user/getUserInfo",map).result(new HttpListener() {
+//            @Override
+//            public void success(String data) {
+//                Gson gson = new Gson();
+//                LoginBean loginBean = gson.fromJson(data, LoginBean.class);
+//                String code = loginBean.getCode();
+//                if("0".equals(code)){
+//                    String icon = (String) loginBean.getData().getIcon();
+//                    s.edit().putString("icon",icon).commit();
+//                }
+//            }
+//
+//            @Override
+//            public void fail(String error) {
+//
+//            }
+//        });
+//    }
+
     /**
      * 调用系统的裁剪功能
      *
@@ -399,22 +414,20 @@ import static android.app.Activity.RESULT_OK;
     }
 
     public void onResume() {
-         nickName = login.getString("nickName", "");
-         phone = login.getString("phone", "");
-         sex = login.getString("sex", "");
+        nickName = login.getString("nickName", "");
+        phone = login.getString("phone", "");
+        sex = login.getString("sex", "");
          headPath = login.getString("headPath", "");
-         birthday = login.getString("birthday", "");
-         headpic = login.getString("headpic", "");
-         sessionId =login.getString("sessionId", "");
-         userld =login.getString("userld", "");
-
-        if(TextUtils.isEmpty(headpic)){
+        birthday = login.getString("birthday", "");
+        headpic = login.getString("headpic", "");
+        sessionId =login.getString("sessionId", "");
+        userld =login.getString("userld", "");
+        Assignment();
+        if(TextUtils.isEmpty(this.headPath)){
             Glide.with(context).load(R.drawable.fragment_my_head_portrait).into(im_persenter_heand);
-
         }
         else{
-            Glide.with(context).load(headpic +"").into(im_persenter_heand);
+            Glide.with(context).load(this.headPath +"").into(im_persenter_heand);
         }
-        Assignment();
     }
 }

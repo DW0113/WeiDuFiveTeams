@@ -1,7 +1,6 @@
 package com.bw.movie.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
-import com.bw.movie.activity.MovieDetailsActivity;
-import com.bw.movie.activity.MovieSearchActivity;
 import com.bw.movie.model.MovieBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -48,14 +45,6 @@ public class IsHotAdapter extends RecyclerView.Adapter<IsHotAdapter.MyViewHolder
         }else{
             holder.image_like.setImageResource(R.drawable.movie_search_like);
         }
-        holder.simpleDraweeView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(((MovieSearchActivity)context), MovieDetailsActivity.class);
-                intent.putExtra("movieId",list.get(i).getId());
-                context.startActivity(intent);
-            }
-        });
         holder.image_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

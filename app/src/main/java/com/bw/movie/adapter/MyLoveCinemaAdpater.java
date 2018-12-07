@@ -30,7 +30,7 @@ import java.util.List;
     @NonNull
     @Override
     public MyViewhodel onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-           View view=View.inflate(context,R.layout.mylovecinema,null);
+           View view=View.inflate(context,R.layout.mylovemove,null);
           MyViewhodel myViewhodel = new MyViewhodel(view);
           return myViewhodel;
     }

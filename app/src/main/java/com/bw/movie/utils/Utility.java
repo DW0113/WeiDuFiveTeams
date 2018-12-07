@@ -60,7 +60,7 @@ public class Utility {
         if(m==null){
             m=new HashMap<>();
         }
-        mBaseService.getcinema(m,url,map)
+        mBaseService.postupdate(m,url,map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);

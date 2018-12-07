@@ -11,7 +11,7 @@
         android:layout_marginBottom="@dimen/dimens_cinema_10dp"
         android:background="@drawable/shap_my_border"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/dimens_cinema_90dp">
 
         <ImageView
             android:layout_margin="@dimen/dimens_cinema_10dp"
