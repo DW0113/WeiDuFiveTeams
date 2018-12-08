@@ -47,39 +47,39 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MessageListAdapter.MyViewHolder myViewHolder, int i) {
+        //赋值
         myViewHolder.tv_activity_message_title.setText(list.get(i).getTitle());
         myViewHolder.tv_activity_message_content.setText(list.get(i).getContent());
 
-
+        //获取getSharedPreferences里的id,userid,sessionid
+        SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        String id = login.getString("id", "");
+        String userld=login.getString("userld","");
+        String sessionId=login.getString("sessionId","");
+        if (list.get(i).getStatus()==0){
+            myViewHolder.tv_activity_message_sum.setVisibility(View.VISIBLE);
+        }else {
+            myViewHolder.tv_activity_message_sum.setVisibility(View.GONE);
+        }
         //点击判断是否有文件
         myViewHolder.tv_activity_message_content.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
-                String id = login.getString("id", "");
-                String userld=login.getString("userld","");
-                String sessionId=login.getString("sessionId","");
-
-
+                //把获取到的内容存入map
                 Map<String,String> formmap = new HashMap<>();
                 formmap.put("id",id);
-
                 Map<String,String> maphead=new HashMap<>();
                 maphead.put("userId",userld);
                 maphead.put("sessionId",sessionId);
+                //解析状态修改的接口
                 new Utility().gethead("movieApi/tool/v1/verify/changeSysMsgStatus",formmap,maphead).result(new HttpListener() {
                     @Override
                     public void success(String data) {
                         MessageChangesTatusBean messageChangesTatusBean = new Gson().fromJson(data, MessageChangesTatusBean.class);
                         String status = messageChangesTatusBean.getStatus();
-                        if (status.equals("0000")){
-                            if (list.get(i).getStatus()==0){
-                                myViewHolder.tv_activity_message_sum.setVisibility(View.GONE);
-                            }else {
-                                myViewHolder.tv_activity_message_sum.setVisibility(View.VISIBLE);
-                            }
-                            lister.success();
-                        }
+                        //如果解析成功的话，就可以让小图标消失
+                        myViewHolder.tv_activity_message_sum.setVisibility(View.GONE);
+                        lister.success();
                     }
 
                     @Override
@@ -87,14 +87,19 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
                     }
                 });
+
+
             }
         });
 
-
         Calendar calendar = Calendar.getInstance();
-        //获取日期的月
+        /**
+        * 获取日期的月
+        * */
         mMonth = String.valueOf(calendar.get(Calendar.MONTH) + 1);
-        //获取日期的天
+        /**
+        *获取日期的天
+        * */
         mDay = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
         /**
          * 如果小时是个位数
@@ -138,6 +143,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            //获取id
             tv_activity_message_title=(TextView)itemView.findViewById(R.id.tv_activity_message_title);
             tv_activity_message_time=(TextView)itemView.findViewById(R.id.tv_activity_message_time);
             tv_activity_message_content=(TextView)itemView.findViewById(R.id.tv_activity_message_content);

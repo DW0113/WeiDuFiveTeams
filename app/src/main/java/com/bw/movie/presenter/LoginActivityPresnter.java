@@ -195,6 +195,7 @@ public class LoginActivityPresnter extends AppDelegate implements View.OnClickLi
                             .putString("sex", userInfo.getSex() + "")
                             .putString("birthday", userInfo.getBirthday() + "")
                             .putString("headpic", userInfo.getHeadPic())
+                            .putString("id",userInfo.getId()+"")
                             .putString("userld", loginBean.getResult().getUserId() + "")
                             .putString("sessionId", loginBean.getResult().getSessionId())
                             .putString("login_pwd_get", login_pwd_get)

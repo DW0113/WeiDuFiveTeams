@@ -29,7 +29,7 @@ import okhttp3.MultipartBody;
 /**
  * 作者：马利亚
  * 日期：2018/11/28
- * 内容：
+ * 内容：意见反馈页面
  */
 public class IdeaActivityPresenter extends AppDelegate implements View.OnClickListener {
     private Context context;
@@ -50,27 +50,29 @@ public class IdeaActivityPresenter extends AppDelegate implements View.OnClickLi
 
     @Override
     public void initData() {
-        //初始化
+        //初始化控件
         init();
-        //点击事件
+        //点击反馈的提交，返回按钮
         setOnClick(this,R.id.bt_idea_activity_btn);
         setOnClick(this,R.id.iv_idea_activity_img);
 
     }
 
 
-    private void doHttpIdea(String userId, String sessionId,String content){
+    private void doHttpIdea(String userld, String sessionId,String content){
+        //把内容保存到map集合中
         Map<String,String> formmap = new HashMap<>();
         formmap.put("content",content);
         Map<String,String> maphead = new HashMap<>();
-        maphead.put("userId",userId);
+        maphead.put("userId",userld);
         maphead.put("sessionId",sessionId);
-
+        //解析反馈数据
         new Utility().postform("movieApi/tool/v1/verify/recordFeedBack",formmap,maphead).result(new HttpListener() {
             @Override
             public void success(String data) {
                 IdeaBean ideaBean = new Gson().fromJson(data, IdeaBean.class);
                 String message = ideaBean.getStatus();
+                //如果成功的话就跳转页面
                 if (message.equals("0000")){
                     Intent intent = new Intent(((IdeaActivity)context), SuccessActivity.class);
                     context.startActivity(intent);
@@ -98,16 +100,18 @@ public class IdeaActivityPresenter extends AppDelegate implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.iv_idea_activity_img:
+                //返回按钮
                 ((IdeaActivity)context).finish();
                 break;
             case R.id.bt_idea_activity_btn:
                 //获取输入框内的字
                 String content= ed_activity_idea_edtxt.getText().toString().trim();
-                //判断是否为空
+                //判断输入内容是否为空
                 if (TextUtils.isEmpty(content)){
                     Toast.makeText(context,"您还没有输入哦",Toast.LENGTH_LONG).show();
 
                 }else {
+                    //获取getSharedPreferences中存储的数据
                     login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
                     String userld = login.getString("userld", "");
                     String sessionId = login.getString("sessionId", "");

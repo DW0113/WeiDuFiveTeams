@@ -42,7 +42,7 @@ public class WelcomeActivityPresenter extends AppDelegate {
         vp_welcome_viewpager = get(R.id.vp_welcome_viewpager);
         ll_welcome_dot = get(R.id.ll_welcome_dot);
         bt_welcome_jump = get(R.id.bt_welcome_jump);
-        //获取SharedPreferences
+        //获取SharedPrefereces
         sp = context.getSharedPreferences("user", Context.MODE_PRIVATE);
         flag = sp.getBoolean("flag", false);
         //判断是否是首次登录，非首次登录直接跳转

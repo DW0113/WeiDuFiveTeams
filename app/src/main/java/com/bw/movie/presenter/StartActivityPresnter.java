@@ -14,7 +14,7 @@ import com.bw.movie.mvp.view.AppDelegate;
 /**
  * 作者：马利亚
  * 日期：2018/11/27
- * 内容：
+ * 内容：三秒倒计时
  */
 public class StartActivityPresnter extends AppDelegate{
     private Context context;

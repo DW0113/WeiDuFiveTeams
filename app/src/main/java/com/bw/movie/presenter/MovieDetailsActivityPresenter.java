@@ -36,7 +36,7 @@ import java.util.List;
 
 import cn.jzvd.Jzvd;
 
-public class MovieDetailsActivityPresenter extends AppDelegate implements View.OnClickListener {
+public class  MovieDetailsActivityPresenter extends AppDelegate implements View.OnClickListener {
     private Context context;
     private SimpleDraweeView sdv_movie_details_image;
     private Button btn_movie_details_details;

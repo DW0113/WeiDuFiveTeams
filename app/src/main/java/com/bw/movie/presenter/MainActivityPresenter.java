@@ -1,24 +1,39 @@
 package com.bw.movie.presenter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.MainActivity;
+import com.bw.movie.activity.VersionSuccessActivity;
 import com.bw.movie.fragment.CinemaFragment;
 import com.bw.movie.fragment.MovieFragment;
 import com.bw.movie.fragment.MyFragment;
+import com.bw.movie.model.VersionBean;
 import com.bw.movie.mvp.view.AppDelegate;
+import com.bw.movie.utils.HttpListener;
+import com.bw.movie.utils.Utility;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivityPresenter  extends AppDelegate implements View.OnClickListener{
     //全局控件
@@ -27,6 +42,8 @@ public class MainActivityPresenter  extends AppDelegate implements View.OnClickL
     private ImageView im_move_fragment;
     private ImageView im_cinema_fragment;
     private ImageView im_my_fragment;
+    private AlertDialog.Builder builder;
+    private SharedPreferences login;
 
     @Override
     public int getLayoutId() {
@@ -76,6 +93,13 @@ public class MainActivityPresenter  extends AppDelegate implements View.OnClickL
 
             }
         });
+
+        //获取getSharedPreferences中存储的数据
+        login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
+        String userld = login.getString("userld", "");
+        String sessionId = login.getString("sessionId", "");
+        //解析版本更新
+        doHttpVersion(userld,sessionId);
     }
     //点击事件
     @Override
@@ -114,6 +138,11 @@ public class MainActivityPresenter  extends AppDelegate implements View.OnClickL
                 break;
         }
 
+
+
+
+
+
     }
 
 //适配器
@@ -132,6 +161,65 @@ public class MainActivityPresenter  extends AppDelegate implements View.OnClickL
         public int getCount() {
             return fragmentlist.size();
         }
+    }
+
+
+
+    //查询新版本
+    private void doHttpVersion(String userld, String sessionId) {
+        //创建一个map
+        Map<String, String> map = new HashMap<>();
+        //保存信息
+        map.put("userId", userld);
+        map.put("sessionId", sessionId);
+        map.put("ak", "0110010010000");
+        //解析版本更新接口的数据
+        new Utility().get("movieApi/tool/v1/findNewVersion", map).result(new HttpListener() {
+            @Override
+            public void success(String data) {
+                //获取版本更新的对象
+                VersionBean versionBean = new Gson().fromJson(data, VersionBean.class);
+                String downloadUrl = versionBean.getDownloadUrl();
+                //获取flag的值
+                int flag = versionBean.getFlag();
+                //保存url
+                login.edit().putString("url", versionBean.getDownloadUrl()).commit();
+                //判断flag是否==1，则去下载
+                if (flag == 1) {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //提示更新
+                            builder = new AlertDialog.Builder(context);
+                            builder.setTitle("发现新版本")
+                                    .setMessage("发现新版本2.0.3,是否更新?")
+                                    .setNegativeButton("暂不更新", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        }
+                                    }).setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Uri uri = Uri.parse(downloadUrl.trim());
+                                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                    ((MainActivity) context).startActivity(intent);
+
+                                }
+                            });
+                            builder.create().show();
+                        }
+                    }, 1000);//3秒后执行Runnable中的run方法
+                } else {
+                    Toast.makeText(context, "暂时没有新版本", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void fail(String error) {
+
+            }
+        });
     }
 
 }
