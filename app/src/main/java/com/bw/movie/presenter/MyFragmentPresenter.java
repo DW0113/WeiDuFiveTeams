@@ -188,7 +188,7 @@ import java.util.Map;
     public void onResume() {
         SharedPreferences login = context.getSharedPreferences("login", Context.MODE_PRIVATE);
         username = login.getString("nickName", "");
-        headPath = login.getString("headPath", "");
+        headPath = login.getString("headpic", "");
         if(TextUtils.isEmpty(username)) {
             tv_fragment_my_text.setText("未登录");
         }

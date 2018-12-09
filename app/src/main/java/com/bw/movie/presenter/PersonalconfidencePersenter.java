@@ -189,6 +189,7 @@ import static android.app.Activity.RESULT_OK;
                         .putString("email","")
                         .putString("birthday","")
                         .putString("headPath","")
+                        .putString("headpic","")
                         .putString("nickName","").commit();
                 Toast.makeText(context, "注销成功", Toast.LENGTH_SHORT).show();
                 ((PersonalConfidenceActivity)context).finish();

@@ -8,7 +8,7 @@ import java.util.List;
  * */public class RecordBean {
 
     /**
-     * result : [{"amount":3,"beginTime":40800000,"cinemaName":"青春光线电影院","createTime":1533805513000,"endTime":47880000,"id":52,"movieName":"西虹市首富","orderId":"20180809170513183","price":66.5,"screeningHall":"2号厅","status":1,"userId":5},{"amount":3,"beginTime":40800000,"cinemaName":"青春光线电影院","createTime":1533805499000,"endTime":47880000,"id":51,"movieName":"西虹市首富","orderId":"20180809170459908","price":66.5,"screeningHall":"2号厅","status":1,"userId":5}]
+     * result : [{"amount":1,"beginTime":"20:00:00","cinemaName":"CGV影城（清河店）","createTime":1544183934000,"endTime":"21:48:00","id":4726,"movieName":"碟中谍6：全面瓦解","orderId":"20181207195854134","price":0.2,"screeningHall":"7号厅","status":1,"userId":1390},{"amount":1,"beginTime":"20:00:00","cinemaName":"CGV影城（清河店）","createTime":1544172762000,"endTime":"21:48:00","id":4723,"movieName":"碟中谍6：全面瓦解","orderId":"20181207165242680","price":0.2,"screeningHall":"7号厅","status":1,"userId":1390},{"amount":1,"beginTime":"20:00:00","cinemaName":"东融国际影城西直河店","createTime":1544172449000,"endTime":"21:48:00","id":4722,"movieName":"碟中谍6：全面瓦解","orderId":"20181207164729981","price":0.2,"screeningHall":"8号厅","status":1,"userId":1390}]
      * message : 请求成功
      * status : 0000
      */
@@ -43,25 +43,25 @@ import java.util.List;
 
     public static class ResultBean {
         /**
-         * amount : 3
-         * beginTime : 40800000
-         * cinemaName : 青春光线电影院
-         * createTime : 1533805513000
-         * endTime : 47880000
-         * id : 52
-         * movieName : 西虹市首富
-         * orderId : 20180809170513183
-         * price : 66.5
-         * screeningHall : 2号厅
+         * amount : 1
+         * beginTime : 20:00:00
+         * cinemaName : CGV影城（清河店）
+         * createTime : 1544183934000
+         * endTime : 21:48:00
+         * id : 4726
+         * movieName : 碟中谍6：全面瓦解
+         * orderId : 20181207195854134
+         * price : 0.2
+         * screeningHall : 7号厅
          * status : 1
-         * userId : 5
+         * userId : 1390
          */
 
         private int amount;
-        private int beginTime;
+        private String beginTime;
         private String cinemaName;
         private long createTime;
-        private int endTime;
+        private String endTime;
         private int id;
         private String movieName;
         private String orderId;
@@ -78,11 +78,11 @@ import java.util.List;
             this.amount = amount;
         }
 
-        public int getBeginTime() {
+        public String getBeginTime() {
             return beginTime;
         }
 
-        public void setBeginTime(int beginTime) {
+        public void setBeginTime(String beginTime) {
             this.beginTime = beginTime;
         }
 
@@ -102,11 +102,11 @@ import java.util.List;
             this.createTime = createTime;
         }
 
-        public int getEndTime() {
+        public String getEndTime() {
             return endTime;
         }
 
-        public void setEndTime(int endTime) {
+        public void setEndTime(String endTime) {
             this.endTime = endTime;
         }
 

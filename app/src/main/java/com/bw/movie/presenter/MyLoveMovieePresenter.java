@@ -52,14 +52,12 @@ import java.util.Map;
         userld = login.getString("userld", "");
         sessionId = login.getString("sessionId", "");
         //判断有没有登陆
-        String userld = login.getString("userld", "");
-        String sessionId = login.getString("sessionId", "");
        if(TextUtils.isEmpty(userld)){
            Toast.makeText(context,"请先登录",Toast.LENGTH_LONG).show();
            return;
        }
        else{
-           dohttp(userld,sessionId);
+           dohttp();
        }
 
            myLoveMoveAdpater = new MyLoveMoveAdpater(context, moveList);
@@ -70,14 +68,14 @@ import java.util.Map;
 
     }
 //网络请求
-    private void dohttp(String userld, String sessionId) {
+    private void dohttp() {
         Map map = new HashMap<>();
         Map m = new HashMap<>();
         m.put("userId",userld);
         m.put("sessionId",sessionId);
         map.put("page",1);
         map.put("count",10);
-        new Utility().getcinema(m,"movieApi/movie/v1/verify/findMoviePageList",map).result(new HttpListener() {
+        new Utility().gethead("movieApi/movie/v1/verify/findMoviePageList",map,m).result(new HttpListener() {
                @Override
                public void success(String data) {
                    Toast.makeText(context,"电影："+data,Toast.LENGTH_LONG).show();
@@ -91,9 +89,7 @@ import java.util.Map;
                        moveList.addAll(result);
                        myLoveMoveAdpater.notifyDataSetChanged();
                    }
-                   else{
-                       Toast.makeText(context,""+data,Toast.LENGTH_LONG).show();
-                   }
+
                }
 
                @Override
